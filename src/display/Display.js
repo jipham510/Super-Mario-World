@@ -47,6 +47,7 @@ export default class Display {
         this.ctx.clearRect(0, 0, this.width, this.height);
         this.ctx.fillStyle = this.backgroundColor;
         this.ctx.fillRect(0, 0, this.width, this.height);
+        
         if (this.spriteSheets.has("background")){
             const backgroundSheet = this.spriteSheets.get("background");
             const tileWidth = 29;

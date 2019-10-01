@@ -1,0 +1,20 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background: #1B1B1D;
+}
+#canvas {
+    width: 100vw;
+    max-width: 800px;
+    min-width: 400px;
+}
+
+h1 {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 2em;
+    color: white;
+    padding: 20px 0;
+}

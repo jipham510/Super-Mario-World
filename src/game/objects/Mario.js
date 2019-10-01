@@ -1,6 +1,6 @@
 import MovingObject from './Moving_Object';
-import Jump from './behaviors/Jump';
-import Walk from './behaviors/Walk';
+import Jump from '../behaviors/Jump';
+import Walk from '../behaviors/Walk';
 
 export default class Mario extends MovingObject {
     constructor(){
