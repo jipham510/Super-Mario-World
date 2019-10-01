@@ -14,4 +14,5 @@ export default class Mario extends MovingObject {
     draw(ctx){
         // sprite
     }
+
 }

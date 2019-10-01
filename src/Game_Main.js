@@ -22,9 +22,9 @@ export default class GameMain {
     animate(time) {
         this.accumulatedTime += (time - this.lastTime) / 1000;
         while (this.accumulatedTime > this.deltaTime) {
-            this.game.world.update( this.deltaTime )
-            this.display.drawWorld();
-            this.display.drawMario(this.game.world.mario);
+            this.game.update( this.deltaTime )
+            this.display.drawWorld(this.game);
+            this.display.drawMario(this.game.mario);
             this.accumulatedTime -= this.deltaTime;
         }
 
@@ -35,29 +35,3 @@ export default class GameMain {
 
 }
 
-// start() {
-//     this.lastTime = 0;
-//     this.accumulatedTime = 0;
-//     this.deltaTime = 1 / 60;
-
-//     this.display.loadWorld();
-//     this.display.loadMario();
-//     this.controller.listenForInput();
-
-//     //start timer
-//     requestAnimationFrame(this.animate);
-// }
-// animate(time) {
-//     this.accumulatedTime += (time - this.lastTime) / 1000;
-//     while (this.accumulatedTime > this.deltaTime) {
-//         // console.log( this.accumulatedTime);
-//         // this.game.world.update( this.deltaTime )
-//         // this.display.drawWorld();
-//         // this.display.drawMario(this.game.world.mario);
-//         this.accumulatedTime -= this.deltaTime;
-//     }
-
-//     this.lastTime = time;
-
-//     requestAnimationFrame(this.animate);
-// };

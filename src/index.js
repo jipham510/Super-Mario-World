@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const canvas = document.getElementById("canvas");
     const game = new Game(height, width); 
     const display = new Display(canvas, height, width);
-    const controller = new Controller(game.world.mario);
+    const controller = new Controller(game.mario);
     const gameMain = new GameMain(game,display, controller);
     gameMain.start();
 });

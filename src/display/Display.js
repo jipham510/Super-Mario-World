@@ -1,6 +1,7 @@
 import SpriteSheet from "./Sprite_Sheet.js";
 import { backgroundImage, marioImage} from "../files";
-import {createBackgroundLayer} from "./layers";
+import tilemap from './tilemap.js';
+
 export default class Display {
     constructor(canvas, height, width) {
         canvas.height = height;
@@ -14,17 +15,22 @@ export default class Display {
         this.layers = [];
         this.loadWorld = this.loadWorld.bind(this);
         this.loadMario = this.loadMario.bind(this);
+        this.drawTilemapLayer = this.drawTilemapLayer.bind(this);
+        
         // this.sprites = this.createSprites();
+    }
+    drawTilemapLayer(backgroundSheet, game, tileWidth, tileHeight) {
+        game.iterateTilemap((tile, x, y) => 
+            backgroundSheet.draw(tile.name, this.ctx, x * tileWidth, y * tileHeight)
+        );
     }
     loadWorld() {
         const spriteSheets = this.spriteSheets;
-        // const createBackgroundLayer = this.createBackgroundLayer;
         backgroundImage.onload = function () {
            const backgroundSheet = new SpriteSheet(backgroundImage, 29, 29);
            backgroundSheet.addSprite("sky", 155, 165);
            backgroundSheet.addSprite("ground1", 445, 202);
            backgroundSheet.addSprite("ground2", 445, 220);
-           createBackgroundLayer(backgroundSheet)
            spriteSheets.set("background", backgroundSheet);
         }   
     }
@@ -37,13 +43,17 @@ export default class Display {
         }
     }
 
-    drawWorld(){
+    drawWorld(game){
         this.ctx.clearRect(0, 0, this.width, this.height);
         this.ctx.fillStyle = this.backgroundColor;
         this.ctx.fillRect(0, 0, this.width, this.height);
         if (this.spriteSheets.has("background")){
-            this.spriteSheets.get("background").draw("ground1",this.ctx, 100,100);
-            this.spriteSheets.get("background").draw("ground2",this.ctx, 100,129);
+            const backgroundSheet = this.spriteSheets.get("background");
+            const tileWidth = 29;
+            const tileHeight = 29;
+            game.iterateTilemap((tile, x, y) =>
+                backgroundSheet.draw(tile.name, this.ctx, x * tileWidth, y * tileHeight)
+            );
         } 
     }
     drawMario(mario){
