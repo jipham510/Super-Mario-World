@@ -13,17 +13,20 @@ export default class Game {
         this.layers = [];
         
         this.tileMap = [];
-        this.collider = new Collider(this.tileMap);
+        this.collider = new Collider(this.tileMap, this);
         this.setTilemapLayer = this.setTilemapLayer.bind(this);
         this.setTilemapLayer();
     }
     update(deltaTime) {
         this.objects.forEach(object => {
             object.update(deltaTime);
-            object.vel.y += this.gravity;
             object.pos.x += object.vel.x * deltaTime;
+            this.collider.checkX(object);
+    
             object.pos.y += object.vel.y * deltaTime;
-            this.collider.checkCollision(object, this.width, this.height);
+            object.vel.y += this.gravity;
+            this.collider.checkY(object);
+            // this.collider.checkCollision(object, this.width, this.height);
         })
     }
 

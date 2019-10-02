@@ -27,10 +27,13 @@ export default class Display {
     loadWorld() {
         const spriteSheets = this.spriteSheets;
         backgroundImage.onload = function () {
-           const backgroundSheet = new SpriteSheet(backgroundImage, 29, 29);
-           backgroundSheet.addSprite("sky", 155, 165);
-           backgroundSheet.addSprite("ground1", 445, 202);
-           backgroundSheet.addSprite("ground2", 445, 220);
+            const backgroundSheet = new SpriteSheet(backgroundImage, 29, 29);
+            backgroundSheet.addSprite("sky", 155, 165);
+            backgroundSheet.addSprite("ground1", 445, 202);
+            backgroundSheet.addSprite("ground2", 445, 220);
+            backgroundSheet.addSprite("cloudLeft", 171.5, 113);
+            backgroundSheet.addSprite("cloudMiddle", 190, 113);
+            backgroundSheet.addSprite("cloudRight", 206.5, 113);
            spriteSheets.set("background", backgroundSheet);
         }   
     }
@@ -47,7 +50,7 @@ export default class Display {
         this.ctx.clearRect(0, 0, this.width, this.height);
         this.ctx.fillStyle = this.backgroundColor;
         this.ctx.fillRect(0, 0, this.width, this.height);
-        
+
         if (this.spriteSheets.has("background")){
             const backgroundSheet = this.spriteSheets.get("background");
             const tileWidth = 29;

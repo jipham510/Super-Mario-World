@@ -5,8 +5,9 @@ import Walk from '../behaviors/Walk';
 export default class Mario extends MovingObject {
     constructor(){
         super();
-        this.size.x = 29;
-        this.size.y = 40;
+        this.width = 29;
+        this.height = 40;
+        this.pos.y = 200;
         this.addBehavior (new Jump());
         this.addBehavior (new Walk());
     }

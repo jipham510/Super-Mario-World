@@ -2,15 +2,17 @@ import Behavior from './Behavior';
 export default class Jump extends Behavior {
     constructor() {
         super('jump');
-        this.maxDuration = 0.3;
+        this.maxDuration = 0.2;
         this.vel = 300;
         this.duration = 0;
+        this.isGrounded = true;
     }
 
     start() {
-        this.duration = this.maxDuration;
+        if(this.isGrounded) this.duration = this.maxDuration;
     }
     cancel() {
+        this.isGrounded = false;
         this.duration = 0;
     }
     update(mario, deltaTime) {
@@ -18,6 +20,7 @@ export default class Jump extends Behavior {
             mario.vel.y = -this.vel;
             this.duration -= deltaTime;
         }
+        if(mario.isGrounded) this.isGrounded = true;
     }
 }
 

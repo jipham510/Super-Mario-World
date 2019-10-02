@@ -9,11 +9,27 @@ export default {
             "ranges": [
                 [
                     10, 20, // x range
-                    9, 10   // y range
+                    8, 9   // y range
                 ], 
                 [
                    0, 20,
                    12,13 
+                ],
+                [
+                   0, 10,
+                   11,12 
+                ],
+                [
+                    0,5,
+                    10,11
+                ],
+                [
+                    0,4,
+                    7,8
+                ],
+                [
+                    5,10,
+                    8,9
                 ]
             ]
         },
@@ -24,6 +40,36 @@ export default {
                 [
                     0, 20,
                     13, 14
+                ]
+            ]
+        },
+       {
+            "tile": "cloudMiddle",
+           "type": "floatingPlatform",
+            "ranges": [
+                [
+                    0, 8,
+                    5, 6
+                ]
+            ]
+        },
+       {
+           "tile": "cloudLeft",
+           "type": "floatingPlatform",
+            "ranges": [
+                [
+                    0, 1,
+                    5, 6
+                ]
+            ]
+        },
+       {
+           "tile": "cloudRight",
+           "type": "floatingPlatform",
+            "ranges": [
+                [
+                    7, 8,
+                    5, 6
                 ]
             ]
         }
