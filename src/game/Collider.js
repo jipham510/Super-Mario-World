@@ -145,7 +145,8 @@ export default class Collider {
         return range;
     }
     getByIndex(indexX, indexY) {
-        const tile = this.getTile(indexX, indexY);
+        let tile;
+        if (this.tileMap[indexX]) tile = this.tileMap[indexX][indexY];
         if (tile) { // top left corner, bottom right corner
             const left = indexX * this.tileSize;
             const right = left + this.tileSize;
@@ -153,9 +154,6 @@ export default class Collider {
             const bottom = top + this.tileSize;
             return { tile, left, right, top, bottom, }; 
         }
-    }
-    getTile(x, y) {
-        if (this.tileMap[x]) return this.tileMap[x][y];
     }
 
 }

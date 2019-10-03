@@ -9,6 +9,7 @@ export default class GameObject {
         this.width = 0;
         this.height = 0;
         this.isGrounded = true;
+        this.frames = 0;
     }
     // top and left positions of object are already defined by pos.x and pos.y
     getRight(){

@@ -1,6 +1,6 @@
 import Mario from './objects/Mario';
 import Collider from './Collider';
-import tilemap from '../display/tilemap';
+import tilemap from './tilemap';
 
 export default class Game {
     constructor(height, width){
@@ -20,11 +20,12 @@ export default class Game {
     update(deltaTime) {
         this.objects.forEach(object => {
             object.update(deltaTime); //updates velocities
+            object.frames = (object.frames + 1) % 60;
             object.lastPos.x = object.pos.x;
+            object.lastPos.y = object.pos.y;
             object.pos.x += object.vel.x * deltaTime;
             this.collider.checkX(object);
             
-            object.lastPos.y = object.pos.y;
             object.vel.y += this.gravity;
             object.pos.y += object.vel.y * deltaTime;
             this.collider.checkY(object);
@@ -55,11 +56,14 @@ export default class Game {
     getTile(x,y){
         if(this.tileMap[x]) return this.tileMap[x][y];
     }
-    iterateTilemap(cb){
+    cameraView( camera, cb){
         this.tileMap.forEach((col,x) =>{
             col.forEach((tile, y) =>{
                 cb(tile, x, y);
             });
         });
+    }
+    relevantTiles(start, end) {
+
     }
 }

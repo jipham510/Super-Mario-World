@@ -15,7 +15,7 @@ export default class GameMain {
     }
     start() {
         //starting player position
-        this.game.mario.pos.set(100, 250);
+        this.game.mario.pos.set(145, 250);
 
 
 
@@ -61,6 +61,7 @@ export default class GameMain {
             this.game.update( this.deltaTime )
             // console.log(this.game.mario.pos.y);
             this.display.drawWorld(this.game);
+            this.display.drawCameraRect(this.display.camera);
             this.display.drawMario(this.game.mario);
             this.accumulatedTime -= this.deltaTime;
         }

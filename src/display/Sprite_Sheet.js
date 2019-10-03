@@ -27,14 +27,3 @@ export default class SpriteSheet {
         // debugger
     }
 }
-
-// const buffer = document.createElement('canvas');
-// buffer.width = this.width;
-// buffer.height = this.height;
-// buffer.getContext('2d')
-//     .drawImage(this.image,
-//         x, y,                            // clip from (x,y)
-//         this.width, this.height,         // width/height of clipped image
-//         0, 0,                            //(x,y) to position image on canvas
-//         this.width * 2, this.height * 2      // stretch or reduce width/height
-//     );

@@ -1,7 +1,6 @@
 export default {
     "tileWidth": 29,
     "tileHeight": 29,
-    "spriteSheet": "world",
     "backgrounds": [
         {
             "tile": "ground1",
@@ -28,7 +27,7 @@ export default {
                     8,9
                 ],
                 [
-                    12,13,
+                    12,30,
                     8,9
                 ]
             ]
