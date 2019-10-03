@@ -1,7 +1,7 @@
 import Controller from './Controller';
 
 export default class GameMain {
-    constructor(game, display, controller) {
+    constructor(game, display) {
         this.game = game;
         this.display = display;
         this.pauseStatus = false;
@@ -16,9 +16,6 @@ export default class GameMain {
     start() {
         //starting player position
         this.game.mario.pos.set(145, 250);
-
-
-
 
 
         this.lastTime = 0;
@@ -55,14 +52,12 @@ export default class GameMain {
         cancelAnimationFrame(this.id);
     }
     animate(time) {
-        // console.log("animating")
         this.accumulatedTime += (time - this.lastTime) / 1000;
         while (this.accumulatedTime > this.deltaTime) {
             this.game.update( this.deltaTime )
-            // console.log(this.game.mario.pos.y);
             this.display.drawWorld(this.game);
-            this.display.drawCameraRect(this.display.camera);
             this.display.drawMario(this.game.mario);
+ 
             this.accumulatedTime -= this.deltaTime;
         }
 

@@ -1,8 +1,9 @@
 import {Vector} from "../util";
 
 export default class Camera {
-    constructor() {
+    constructor(height, width) {
         this.pos = new Vector(0, 0);
-        this.size = new Vector(500, 500);
+        this.width = width, 
+        this.height = height;
     }
 }

@@ -13,8 +13,10 @@ export default class Game {
         this.layers = [];
         
         this.tileMap = [];
+        this.tileSize = 29;
         this.collider = new Collider(this.tileMap);
         this.setTilemapLayer = this.setTilemapLayer.bind(this);
+        this.cameraView = this.cameraView.bind(this);
         this.setTilemapLayer();
     }
     update(deltaTime) {
@@ -56,14 +58,33 @@ export default class Game {
     getTile(x,y){
         if(this.tileMap[x]) return this.tileMap[x][y];
     }
-    cameraView( camera, cb){
-        this.tileMap.forEach((col,x) =>{
-            col.forEach((tile, y) =>{
-                cb(tile, x, y);
-            });
-        });
-    }
-    relevantTiles(start, end) {
+    cameraView(camera, backgroundSpriteSheet, ctx){
+        // center camera on mario
+        if ( this.mario.pos.x > 300) {
+            camera.pos.x = this.mario.pos.x - 300;
+        }
+    
+        const cameraPanel = document.createElement('canvas');
+        cameraPanel.width = camera.width + this.tileSize;
+        cameraPanel.height = camera.height;
+        const panelCtx = cameraPanel.getContext('2d');
+        // first need to figure out what tile columns to draw
+        const columnStart = this.getTileIndex( camera.pos.x);
+        const columnEnd = columnStart + this.getTileIndex( camera.width);
 
+        // draw what the camera is focusing on
+        for (let x = columnStart; x <= columnEnd; x++) {
+            const column = this.tileMap[x];
+            if (column) {
+                column.forEach((tile, y) => {
+                    backgroundSpriteSheet.draw(tile.name, panelCtx, (x - columnStart) * this.tileSize, y * this.tileSize);
+                });
+            }
+        }
+        //draw camera by pixel for a smooth transition
+        ctx.drawImage(cameraPanel, -camera.pos.x % 29, -camera.pos.y);
+    }
+    getTileIndex(pos){
+        return Math.floor(pos / this.tileSize)
     }
 }

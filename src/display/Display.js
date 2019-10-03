@@ -8,7 +8,7 @@ export default class Display {
     constructor(canvas, height, width) {
         canvas.height = height;
         canvas.width = width;
-        this.camera = new Camera();
+        this.camera = new Camera(height, width);
         this.canvas = canvas;
         this.ctx = canvas.getContext("2d");
         this.height = height;
@@ -51,30 +51,16 @@ export default class Display {
 
         if (this.spriteSheets.has("background")){
             const backgroundSheet = this.spriteSheets.get("background");
-            const tileWidth = 29;
-            const tileHeight = 29;
-            
+
             // only draw the tiles that the camera is viewing
-            game.cameraView( this.camera,(tile, x, y) =>
-                backgroundSheet.draw(tile.name, this.ctx, x * tileWidth, y * tileHeight)
-            );
+            game.cameraView(this.camera, backgroundSheet, this.ctx);
         } 
     }
     drawMario(mario){
         if (this.spriteSheets.has("mario")) {
-            this.spriteSheets.get("mario").draw( mario.frame, this.ctx, mario.pos.x, mario.pos.y);
+            this.spriteSheets.get("mario").draw(mario.frame, this.ctx, mario.pos.x - this.camera.pos.x, mario.pos.y - this.camera.pos.y);
         }
     }
-    drawCameraRect(cameraToDraw) {
-        this.ctx.strokeStyle = 'purple';
-        this.ctx.beginPath();
-        this.ctx.rect(
-            cameraToDraw.pos.x - this.camera.pos.x,
-            cameraToDraw.pos.y - this.camera.pos.y,
-            cameraToDraw.size.x,
-            cameraToDraw.size.y
-        );
-        this.ctx.stroke();
-    }
+
 }
 

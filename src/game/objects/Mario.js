@@ -9,7 +9,7 @@ export default class Mario extends GameObject {
         this.height = 40;
         this.addBehavior(new Jump());
         this.addBehavior(new Walk());
-
+''
         this.status = "idle"; //other statuses are walking, jumping 
         this.facing = "right";
         this.frame = "idleRight"
@@ -21,7 +21,6 @@ export default class Mario extends GameObject {
             behavior.update(this, deltaTime); //takes in object and deltaTime
         })
         this.decideStatus();
-        console.log(this.status);
     }
 
     decideStatus(){

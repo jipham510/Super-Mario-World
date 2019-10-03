@@ -21,7 +21,6 @@ export default class Controller {
         const togglePause = this.gameMain.togglePause;
         this.map("KeyP", keyState => { 
             if( keyState) {
-                // console.log("key P pressed")
                 togglePause();
             }
         });

@@ -11,7 +11,6 @@ export default class Walk extends Behavior {
     update(mario, deltaTime) {
         mario.vel.x = (this.leftDirection + this.rightDirection)  * this.speed * deltaTime;
         this.distance += mario.vel.x;
-        console.log(this.distance);
         // mario.vel.x = this.speed * this.direction * deltaTime;
     }
 }

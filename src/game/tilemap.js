@@ -71,7 +71,16 @@ export default {
                     5, 6
                 ]
             ]
-        }
+        },
+    //     {
+    //         "tile": "sky",
+    //         "ranges": [
+    //             [
+    //                 0, 212, // x range
+    //                 0, 14   // y range
+    //             ]
+    //         ]
+    //     },
     ]
     // "backgrounds": [
     //     {
