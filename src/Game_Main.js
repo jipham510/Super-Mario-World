@@ -1,4 +1,5 @@
 import Controller from './Controller';
+
 export default class GameMain {
     constructor(game, display, controller) {
         this.game = game;
@@ -13,15 +14,27 @@ export default class GameMain {
 
     }
     start() {
+        //starting player position
+        this.game.mario.pos.set(100, 250);
+
+
+
+
+
         this.lastTime = 0;
         this.accumulatedTime = 0;
         
         this.display.loadWorld();
         this.display.loadMario();
-
         const controller = new Controller(this);
         controller.listenForInput();
-        
+//////TESTING///////////////////////////////
+        mouseDebugger(this.display.canvas, this.game.mario, this.display.camera)
+////////////////////////////////////////////
+
+
+
+
         //start fixed timestep of 1/60
         this.deltaTime = 1 / 60;
         this.run();
@@ -59,3 +72,22 @@ export default class GameMain {
 
 }
 
+function mouseDebugger(canvas, entity, camera) {
+    let lastEvent;
+    ['mousedown', 'mousemove'].forEach(eventName => {
+        canvas.addEventListener(eventName, event => {
+            if (event.buttons === 1) {
+
+                entity.vel.set(0, 0);
+                entity.pos.set(event.offsetX + camera.pos.x, event.offsetY + camera.pos.y);
+            } else if (event.buttons === 2 && lastEvent && lastEvent.buttons === 2 && lastEvent.type === "mousemove") {
+
+                camera.pos.x -= event.offsetX - lastEvent.offsetX;
+            }
+            lastEvent = event;
+        });
+    });
+    canvas.addEventListener('contextmenu', event => {
+        event.preventDefault();
+    })
+}

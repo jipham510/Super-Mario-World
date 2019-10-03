@@ -8,10 +8,6 @@ export default {
             "type": "ground",
             "ranges": [
                 [
-                    10, 20, // x range
-                    8, 9   // y range
-                ], 
-                [
                    0, 20,
                    12,13 
                 ],
@@ -28,7 +24,11 @@ export default {
                     7,8
                 ],
                 [
-                    5,10,
+                    6,10,
+                    8,9
+                ],
+                [
+                    12,13,
                     8,9
                 ]
             ]

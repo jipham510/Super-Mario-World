@@ -1,51 +1,50 @@
 export default class Collider {
-    constructor(tileMap, game){
+    constructor(tileMap){
         this.tileMap = tileMap; 
         this.tileSize = 29;
-        this.game = game;
         this.handleMatchingTiles = this.handleMatchingTiles;
     }
 
-    checkCollision(movingObj, screenWidth, screenHeight) {
-        if (movingObj.pos.x < 0) {
-            movingObj.pos.x = 0;
-            movingObj.vel.x = 0;
-        } else if (movingObj.pos.x + movingObj.width > screenWidth) {
-            movingObj.pos.x = screenWidth - movingObj.width;
-            movingObj.vel.x = 0;
-        }
+    // checkCollision(gameObj, screenWidth, screenHeight) {
+    //     if (gameObj.pos.x < 0) {
+    //         gameObj.pos.x = 0;
+    //         gameObj.vel.x = 0;
+    //     } else if (gameObj.getRight() > screenWidth) {
+    //         gameObj.pos.x = screenWidth - gameObj.width;
+    //         gameObj.vel.x = 0;
+    //     }
 
-        if (movingObj.pos.y < 0) {
-            movingObj.pos.y = 0; 
-            movingObj.vel.y = 0;
-        } else if (movingObj.pos.y + movingObj.height > screenHeight) {
-            movingObj.pos.y = screenHeight - movingObj.height; movingObj.vel.y = 0;
-        }
-    }
+    //     if (gameObj.pos.y < 0) {
+    //         gameObj.pos.y = 0; 
+    //         gameObj.vel.y = 0;
+    //     } else if (gameObj.getBottom() > screenHeight) {
+    //         gameObj.pos.y = screenHeight - gameObj.height; gameObj.vel.y = 0;
+    //     }
+    // }
 
-    checkX(movingObj) {
-        if (movingObj.pos.x < 0) {
-            movingObj.pos.x = 0;
-            movingObj.vel.x = 0;
+    checkX(gameObj) {
+        if (gameObj.pos.x < 0) {
+            gameObj.pos.x = 0;
+            gameObj.vel.x = 0;
         }
         let x;
-        if (movingObj.vel.x > 0) {
-            x = movingObj.pos.x + movingObj.width; //mario right side
-        } else if (movingObj.vel.x < 0) {
-            x = movingObj.pos.x; //mario bottom side
+        if (gameObj.vel.x > 0) {
+            x = gameObj.getRight(); //mario right side
+        } else if (gameObj.vel.x < 0) {
+            x = gameObj.pos.x; //mario bottom side
         } else {
             return;
         }
         const matchingTiles = this.findMatchingTiles(x, x,
-            movingObj.pos.y, movingObj.pos.y + movingObj.height);
-        this.handleMatchingTilesX(movingObj, matchingTiles);
+            gameObj.pos.y, gameObj.getBottom());
+        this.handleMatchingTilesX(gameObj, matchingTiles);
 
     }
 
-    handleMatchingTilesX(movingObj, matchingTiles) {
+    handleMatchingTilesX(gameObj, matchingTiles) {
         matchingTiles.forEach(match => {
             if (match.tile.type === "ground") {
-                this.handleGroundCollisionX(movingObj, match);
+                this.handleGroundCollisionX(gameObj, match);
             // } else if (match.tile.type === "floatingPlatform") {
                 //no x detection needed for floating platform
             }
@@ -53,72 +52,71 @@ export default class Collider {
         });
     }
 
-    handleGroundCollisionX(movingObj, match) {
-        if (movingObj.vel.x > 0) {
-            if (movingObj.pos.x + movingObj.width > match.left) {
-                movingObj.pos.x = match.left - movingObj.width;
-                movingObj.vel.x = 0;
+    handleGroundCollisionX(gameObj, match) {
+        if (gameObj.vel.x > 0) {
+            if (gameObj.getRight() > match.left) {
+                gameObj.pos.x = match.left - gameObj.width;
+                gameObj.vel.x = 0;
             }
         }
-        if (movingObj.vel.x < 0) {
-            if (movingObj.pos.x < match.right) {
-                movingObj.pos.x = match.right;
-                movingObj.vel.x = 0;
+        if (gameObj.vel.x < 0) {
+            if (gameObj.pos.x < match.right) {
+                gameObj.pos.x = match.right;
+                gameObj.vel.x = 0;
             }
         }
     }
 
-
-    checkY(movingObj){
+    checkY(gameObj){
         let y;
         // 3 cases of velocity 
-        if ( movingObj.vel.y === 0 ) {
+        if ( gameObj.vel.y === 0 ) {
             return;
-        } else if ( movingObj.vel.y > 0 ) {
+        } else if ( gameObj.vel.y > 0 ) {
             //object moving down, check bottom of object
-            y = movingObj.pos.y + movingObj.height;
-        } else if ( movingObj.vel.y < 0 ) {
+            y = gameObj.getBottom();
+        } else if ( gameObj.vel.y < 0 ) {
             //object moving up, check top of object
-            y = movingObj.pos.y;
+            y = gameObj.pos.y;
         }
-        const xStart = movingObj.pos.x;
-        const xEnd = movingObj.pos.x + movingObj.width;
+        const xStart = gameObj.pos.x;
+        const xEnd = gameObj.getRight();
 
         const matchingTiles = this.findMatchingTiles(xStart, xEnd, y, y);
-        this.handleMatchingTilesY(movingObj, matchingTiles);
+        this.handleMatchingTilesY(gameObj, matchingTiles);
     }
 
-    handleMatchingTilesY(movingObj,matchingTiles) {
+    handleMatchingTilesY(gameObj,matchingTiles) {
         matchingTiles.forEach(match => {
             if (match.tile.type === "ground") {
-                this.handleGroundCollisionY(movingObj,match);
+                this.handleGroundCollisionY(gameObj,match);
             } else if (match.tile.type === "floatingPlatform") {
-                this.handleFloatingPlatformY(movingObj,match);
+                this.handleFloatingPlatformY(gameObj,match);
             }
 
         });
     }
-    handleGroundCollisionY(movingObj, match) {
-        if (movingObj.vel.y > 0) {
-            if (movingObj.pos.y + movingObj.height > match.top) {
-                movingObj.pos.y = match.top - movingObj.height;
-                movingObj.vel.y = 0;
-                movingObj.isGrounded = true;
+    handleGroundCollisionY(gameObj, match) {
+        if (gameObj.vel.y > 0) {
+            if (gameObj.getBottom() > match.top) {
+                gameObj.pos.y = match.top - gameObj.height;
+                gameObj.vel.y = 0;
+                gameObj.isGrounded = true;
             }
         }
-        if (movingObj.vel.y < 0) {
-            if (movingObj.pos.y < match.bottom) {
-                movingObj.pos.y = match.bottom;
-                movingObj.vel.y = 0;
+        if (gameObj.vel.y < 0) {
+            if (gameObj.pos.y < match.bottom) {
+                gameObj.pos.y = match.bottom;
+                gameObj.vel.y = 0;
             }
         }
     }
-    handleFloatingPlatformY(movingObj, match) {
-        if (movingObj.vel.y > 0) {
-            if (movingObj.pos.y + movingObj.height > match.top) {
-                movingObj.pos.y = match.top - movingObj.height;
-                movingObj.vel.y = 0;
-                movingObj.isGrounded = true;
+    handleFloatingPlatformY(gameObj, match) {
+        if (gameObj.vel.y > 0) {
+            if (gameObj.getBottom() > match.top && gameObj.getLastBottom() <= match.top ) {
+                gameObj.pos.y = match.top - gameObj.height;
+                gameObj.vel.y = 0;
+                gameObj.isGrounded = true;
             }
         }
     }
@@ -147,7 +145,7 @@ export default class Collider {
         return range;
     }
     getByIndex(indexX, indexY) {
-        const tile = this.game.getTile(indexX, indexY);
+        const tile = this.getTile(indexX, indexY);
         if (tile) { // top left corner, bottom right corner
             const left = indexX * this.tileSize;
             const right = left + this.tileSize;
@@ -156,6 +154,8 @@ export default class Collider {
             return { tile, left, right, top, bottom, }; 
         }
     }
-
+    getTile(x, y) {
+        if (this.tileMap[x]) return this.tileMap[x][y];
+    }
 
 }

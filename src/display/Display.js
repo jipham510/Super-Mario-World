@@ -1,11 +1,13 @@
 import SpriteSheet from "./Sprite_Sheet.js";
 import { backgroundImage, marioImage} from "../files";
-import tilemap from './tilemap.js';
+import Camera from './Camera';
 
 export default class Display {
     constructor(canvas, height, width) {
         canvas.height = height;
         canvas.width = width;
+        this.camera = new Camera();
+        this.canvas = canvas;
         this.ctx = canvas.getContext("2d");
         this.height = height;
         this.width = width;
@@ -42,6 +44,8 @@ export default class Display {
         marioImage.onload = function() {
             const marioSheet = new SpriteSheet(marioImage, 60, 60);
             marioSheet.addSprite("idle", 209, 0);
+            marioSheet.addSprite("runningRight", 329, 0);
+            marioSheet.addSprite("runningLeft", 49, 0);
             spriteSheets.set("mario", marioSheet);
         }
     }
@@ -62,7 +66,8 @@ export default class Display {
     }
     drawMario(mario){
         if (this.spriteSheets.has("mario")) {
-            this.spriteSheets.get("mario").draw("idle", this.ctx, mario.pos.x, mario.pos.y);
+            this.spriteSheets.get("mario").draw( mario.status, this.ctx, mario.pos.x, mario.pos.y);
         }
     }
 }
+

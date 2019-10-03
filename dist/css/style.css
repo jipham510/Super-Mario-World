@@ -4,10 +4,11 @@ body {
     justify-content: flex-start;
     align-items: center;
     background: #1B1B1D;
+    color: white;
 }
 #canvas {
     width: 100vw;
-    max-width: 800px;
+    max-width: 580px;
     min-width: 400px;
 }
 
@@ -15,6 +16,29 @@ h1 {
     font-family: sans-serif;
     font-weight: bold;
     font-size: 2em;
-    color: white;
     padding: 20px 0;
+}
+.col {
+    width: 24.25px;
+    border: 1px white solid;
+}
+.row {
+    height: 23.6px;
+    border: 1px white solid;
+}
+.test-grid {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.grid-cols {
+    margin-left: 16px;
+    display: flex;
+    flex-direction: row;
+}
+.grid-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+
 }
