@@ -1,5 +1,5 @@
 import SpriteSheet from "./Sprite_Sheet.js";
-import { backgroundImage, marioImage} from "../files";
+import { backgroundImage, marioImage, backgroundLastLayerImage} from "../files";
 import Camera from './Camera';
 import backgroundSheet1Sprites from './sprites/background_sheet1_sprites';
 import marioSheetSprites from './sprites/mini_mario_sheet_sprites';
@@ -14,6 +14,7 @@ export default class Display {
         this.height = height;
         this.width = width;
         this.backgroundColor = "#0F5EF1";
+        this.pauseScreen = "#0F5EF1";
         this.spriteSheets = new Map();
 
         this.layers = [];
@@ -32,6 +33,9 @@ export default class Display {
             });
            spriteSheets.set("background", backgroundSheet);
         }   
+        backgroundLastLayerImage.onload = function () {
+            spriteSheets.set("backgroundLastLayer", 0);
+        }   
     }
     loadMario(){
         const spriteSheets = this.spriteSheets;
@@ -45,15 +49,16 @@ export default class Display {
     }
 
     drawWorld(game){
-        this.ctx.clearRect(0, 0, this.width, this.height);
-        this.ctx.fillStyle = this.backgroundColor;
-        this.ctx.fillRect(0, 0, this.width, this.height);
+        if (this.spriteSheets.has("background") && this.spriteSheets.has("backgroundLastLayer")){
+            // this.ctx.clearRect(0, 0, this.width, this.height);
+            // this.ctx.fillStyle = this.backgroundColor;
+            // this.ctx.fillRect(0, 0, this.width, this.height);
+            this.ctx.drawImage(backgroundLastLayerImage, -this.camera.pos.x / 6, 0);
 
-        if (this.spriteSheets.has("background")){
             const backgroundSheet = this.spriteSheets.get("background");
-
             // only draw the tiles that the camera is viewing
-            game.cameraView(this.camera, backgroundSheet, this.ctx);
+            const cameraPanel = game.cameraView(this.camera, backgroundSheet, this.ctx);
+            this.ctx.drawImage(cameraPanel, -this.camera.pos.x % 29, 0);
         } 
     }
     drawMario(mario){
@@ -61,6 +66,7 @@ export default class Display {
             this.spriteSheets.get("mario").draw(mario.frame, this.ctx, mario.pos.x - this.camera.pos.x, mario.pos.y - this.camera.pos.y);
         }
     }
+
 
 }
 

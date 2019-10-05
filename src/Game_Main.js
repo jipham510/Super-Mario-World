@@ -17,7 +17,8 @@ export default class GameMain {
         //starting player position
         this.game.mario.pos.set(145, 250);
 
-
+        // //testing for maping out area
+        // this.display.camera.pos.x = 4000;
         this.lastTime = 0;
         this.accumulatedTime = 0;
         
@@ -50,14 +51,14 @@ export default class GameMain {
     pause(){
         this.pauseStatus = true;
         cancelAnimationFrame(this.id);
+        this.display.drawPauseScreen();
     }
     animate(time) {
         this.accumulatedTime += (time - this.lastTime) / 1000;
         while (this.accumulatedTime > this.deltaTime) {
             this.game.update( this.deltaTime )
             this.display.drawWorld(this.game);
-            this.display.drawMario(this.game.mario);
- 
+            this.display.drawMario(this.game.mario);   
             this.accumulatedTime -= this.deltaTime;
         }
 

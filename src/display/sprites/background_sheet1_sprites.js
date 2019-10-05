@@ -1,34 +1,140 @@
 export default {
     "sprites": [
+        //transparent sky
         {
-            "name": "sky",
+            "name": "transparent",
             "x": 155,
             "y": 165
         },
+        // {
+        //     "name": "sky",
+        //     "x": 510,
+        //     "y": 570
+        // },
         {
-            "name": "ground1",
+            "name": "groundTop",
             "x": 445,
             "y": 202
         },
         {
-            "name": "ground2",
+            "name": "groundSoil",
             "x": 445,
             "y": 220
         },
         {
-            "name": "cloudLeft",
-            "x": 171.5,
-            "y": 113
+            "name": "groundMidLeftEdge",
+            "x": 427,
+            "y": 220
         },
         {
-            "name": "cloudMiddle",
-            "x": 190,
-            "y": 113
+            "name": "groundMidRightEdge",
+            "x": 462,
+            "y": 220
         },
         {
-            "name": "cloudRight",
-            "x": 206.5,
-            "y": 113
+            "name": "groundTopRightEdge",
+            "x": 462,
+            "y": 202
+        },
+        {
+            "name": "groundTopLeftEdge",
+            "x": 427,
+            "y": 202
+        },
+        {
+            "name": "groundTopRightPatch",
+            "x": 358,
+            "y": 383
+        },
+        {
+            "name": "groundTopLeftPatch",
+            "x": 374.5,
+            "y": 382.5
+        },
+        {
+            "name": "groundTopFloatingLeft",
+            "x": 427,
+            "y": 253
+        },
+        {
+            "name": "groundTopFloatingRight",
+            "x": 462,
+            "y": 253
+        },
+        {
+            "name": "groundTopFloatingRightSoil",
+            "x": 462,
+            "y": 271
+        },
+        {
+            "name": "groundTopFloatingLeftSoil",
+            "x": 427,
+            "y": 271
+        },
+        {
+            "name": "platformLeft",
+            "x": 37.5,
+            "y": 0
+        },
+        {
+            "name": "platformMiddle",
+            "x": 55,
+            "y": 0
+        },
+        {
+            "name": "platformRight",
+            "x": 72.5,
+            "y": 0
+        },
+        {
+            "name": "mysteryBox1",
+            "x": 173.3,
+            "y": 181.3
+        },
+        {
+            "name": "mysteryBox2",
+            "x": 190.3,
+            "y": 181.3
+        },
+        {
+            "name": "mysteryBox3",
+            "x": 207.3,
+            "y": 181.3
+        },
+        {
+            "name": "mysteryBox4",
+            "x": 224.3,
+            "y": 181.3
+        },
+        {
+            "name": "grass1",
+            "x": 90,
+            "y": 464
+        },
+        {
+            "name": "grass2",
+            "x": 124,
+            "y": 464
+        },
+        {
+            "name": "grass3",
+            "x": 158,
+            "y": 464
+        },
+        {
+            "name": "grass4",
+            "x": 192,
+            "y": 464
+        },
+        {
+            "name": "happyCloud",
+            "x": 257.8,
+            "y": 13.8
+        },
+        {
+            "name": "mushroom",
+            "x": 292,
+            "y": 30
         }
     ]
 }
