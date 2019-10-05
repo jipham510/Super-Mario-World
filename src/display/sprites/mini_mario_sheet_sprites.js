@@ -7,7 +7,7 @@ export default {
         },
         {
             "name": "walkingRight",
-            "x": 329,
+            "x": 328,
             "y": 0
         },
 

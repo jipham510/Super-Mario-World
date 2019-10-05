@@ -260,7 +260,8 @@ export default {
         },
         {
             "tile": "groundTopFloatingLeft",
-            "type": "floatingPlatform",
+            // "type": "floatingPlatform",
+            "type": "ground",
             "ranges": [
                 [
                     73, 1,
@@ -278,7 +279,8 @@ export default {
         },
         {
             "tile": "groundTop",
-            "type": "floatingPlatform",
+            // "type": "floatingPlatform",
+            "type": "ground",
             "ranges": [
                 [
                     74, 3,
@@ -304,7 +306,8 @@ export default {
         },
        {
            "tile": "groundTopFloatingRight",
-           "type": "floatingPlatform",
+        //    "type": "floatingPlatform",
+           "type": "ground",
             "ranges": [
                 [
                     77, 1,
@@ -374,7 +377,8 @@ export default {
 
        {
            "tile": "platformMiddle",
-           "type": "floatingPlatform",
+        //    "type": "floatingPlatform",
+           "type": "ground",
             "ranges": [
                 [
                     14, 11,
@@ -396,7 +400,8 @@ export default {
         },
        {
            "tile": "platformLeft",
-           "type": "floatingPlatform",
+        //    "type": "floatingPlatform",
+           "type": "ground",
             "ranges": [
                 [
                     8, 1,
@@ -430,7 +435,8 @@ export default {
         },
        {
            "tile": "platformRight",
-           "type": "floatingPlatform",
+        //    "type": "floatingPlatform",
+           "type": "ground",
             "ranges": [
                 [
                     9, 1,
@@ -556,8 +562,9 @@ export default {
             ]
         },
         {
-            "tile": "happyCloud",
-            "type": "floatingPlatform",
+            "tile": "singlePlatform",
+            // "type": "floatingPlatform",
+            "type": "ground",
             "ranges": [
                 [
                     70, 1,

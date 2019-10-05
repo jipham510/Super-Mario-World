@@ -53,7 +53,7 @@ export default class Display {
             // this.ctx.clearRect(0, 0, this.width, this.height);
             // this.ctx.fillStyle = this.backgroundColor;
             // this.ctx.fillRect(0, 0, this.width, this.height);
-            this.ctx.drawImage(backgroundLastLayerImage, -this.camera.pos.x / 6, 0);
+            this.ctx.drawImage(backgroundLastLayerImage, -this.camera.pos.x / 4.6, 0);
 
             const backgroundSheet = this.spriteSheets.get("background");
             // only draw the tiles that the camera is viewing
