@@ -260,8 +260,7 @@ export default {
         },
         {
             "tile": "groundTopFloatingLeft",
-            // "type": "floatingPlatform",
-            "type": "ground",
+            "type": "floatingPlatform",
             "ranges": [
                 [
                     73, 1,
@@ -279,8 +278,7 @@ export default {
         },
         {
             "tile": "groundTop",
-            // "type": "floatingPlatform",
-            "type": "ground",
+            "type": "floatingPlatform",
             "ranges": [
                 [
                     74, 3,
@@ -306,8 +304,7 @@ export default {
         },
        {
            "tile": "groundTopFloatingRight",
-        //    "type": "floatingPlatform",
-           "type": "ground",
+           "type": "floatingPlatform",
             "ranges": [
                 [
                     77, 1,
@@ -469,7 +466,7 @@ export default {
             ]
         },
         {
-            "tile": "mysteryBox3",
+            "tile": "mysteryBox",
             "type": "ground",
             "ranges": [
                 [

@@ -50,9 +50,6 @@ export default class Display {
 
     drawWorld(game){
         if (this.spriteSheets.has("background") && this.spriteSheets.has("backgroundLastLayer")){
-            // this.ctx.clearRect(0, 0, this.width, this.height);
-            // this.ctx.fillStyle = this.backgroundColor;
-            // this.ctx.fillRect(0, 0, this.width, this.height);
             this.ctx.drawImage(backgroundLastLayerImage, -this.camera.pos.x / 4.6, 0);
 
             const backgroundSheet = this.spriteSheets.get("background");

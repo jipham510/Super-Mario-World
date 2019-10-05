@@ -11,7 +11,8 @@ export default class Game {
         this.mario = new Mario();
         this.objects.add(this.mario);
         this.layers = [];
-        
+        this.totalTime = 0;
+
         this.tileMap = [];
         this.tileSize = 29;
         this.collider = new Collider(this.tileMap);
@@ -33,6 +34,8 @@ export default class Game {
             this.collider.checkY(object);
             // this.collider.checkCollision(object, this.width, this.height);
         })
+
+        this.totalTime += deltaTime;
     }
 
     setTilemapLayer() {
@@ -80,7 +83,19 @@ export default class Game {
             const column = this.tileMap[x];
             if (column) {
                 column.forEach((tile, y) => {
-                    backgroundSpriteSheet.draw(tile.name, panelCtx, (x - columnStart) * this.tileSize, y * this.tileSize);
+                    if (tile.name === "mysteryBox") {
+
+                        // drawAnim(name, context, x, y, distance) {
+                        //     const animation = this.animations.get(name);
+                        //     this.drawTile(animation(distance), context, x, y);
+                        // }
+                        const boxAnimation = ["mysteryBox1", "mysteryBox2", "mysteryBox3", "mysteryBox4"];
+                        const frame = Math.floor(this.totalTime / 0.15) % boxAnimation.length;
+                        // debugger
+                        backgroundSpriteSheet.draw( boxAnimation[frame], panelCtx, (x - columnStart) * this.tileSize, y * this.tileSize);
+                    } else {
+                        backgroundSpriteSheet.draw(tile.name, panelCtx, (x - columnStart) * this.tileSize, y * this.tileSize);
+                    }
                 });
             }
         }

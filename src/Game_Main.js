@@ -55,6 +55,7 @@ export default class GameMain {
     }
     animate(time) {
         this.accumulatedTime += (time - this.lastTime) / 1000;
+        if (this.accumulatedTime > 1) this.accumulatedTime = 1;
         while (this.accumulatedTime > this.deltaTime) {
             this.game.update( this.deltaTime )
             this.display.drawWorld(this.game);
