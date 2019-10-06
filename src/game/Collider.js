@@ -5,23 +5,6 @@ export default class Collider {
         this.handleMatchingTiles = this.handleMatchingTiles;
     }
 
-    // checkCollision(gameObj, screenWidth, screenHeight) {
-    //     if (gameObj.pos.x < 0) {
-    //         gameObj.pos.x = 0;
-    //         gameObj.vel.x = 0;
-    //     } else if (gameObj.getRight() > screenWidth) {
-    //         gameObj.pos.x = screenWidth - gameObj.width;
-    //         gameObj.vel.x = 0;
-    //     }
-
-    //     if (gameObj.pos.y < 0) {
-    //         gameObj.pos.y = 0; 
-    //         gameObj.vel.y = 0;
-    //     } else if (gameObj.getBottom() > screenHeight) {
-    //         gameObj.pos.y = screenHeight - gameObj.height; gameObj.vel.y = 0;
-    //     }
-    // }
-
     checkX(gameObj) {
         if(gameObj.status === "ignoreCollisions") return;
         

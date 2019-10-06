@@ -22,10 +22,12 @@ export default class Bullet extends GameObject {
         })
         if(this.pos.x < this.initialPos - 1200 || this.pos.y > 400) objects.delete(this);
     }
+
     collides(mario) {
         if (mario.invinciblity) return;
         if (!this.falling) {
-            if (mario.vel.y > this.vel.y ) {
+            if (mario.vel.y > this.vel.y &&  mario.getBottom() > this.getTop() && mario.getLastBottom() <= this.getTop() ) {
+
                 mario.stomp.bounce();
                 this.vel.y += 40;
                 this.vel.x = 0;
@@ -33,7 +35,6 @@ export default class Bullet extends GameObject {
                 this.removeBehavior("autoMove");
                 this.falling = true;
             } else {
-                console.log("hit mario")
                 mario.lives -= 1;
                 mario.invincible.start();
                 mario.invinciblity = true;

@@ -8,11 +8,13 @@ export default class Invincible extends Behavior {
     start() {
         this.duration = this.maxDuration;
     }
+    cancel() {
+        this.duration = 0;
+    }
     update(mario, deltaTime) {
         if (this.duration > 0) {
             mario.invinciblity = true;
             this.duration -= deltaTime;
-            console.log(this.duration);
         } else {
             mario.invinciblity = false;
         }

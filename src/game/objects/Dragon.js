@@ -29,7 +29,6 @@ export default class Dragon extends GameObject {
                 mario.stomp.bounce();
                 this.stompedCount += 1;
             } else {
-                console.log("hit mario")
                 mario.lives -= 1;
                 mario.invincible.start();
                 mario.invinciblity = true;

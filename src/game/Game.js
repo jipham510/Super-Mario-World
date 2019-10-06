@@ -94,6 +94,7 @@ export default class Game {
                 game.removeEnemies();
                 game.mario.lives = 1;
                 game.mario.pos.set(145, 100);
+                game.mario.invincible.cancel();
                 camera.pos.x = 0;
 
                 game.addSpawns()

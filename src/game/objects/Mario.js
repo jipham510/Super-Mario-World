@@ -27,14 +27,14 @@ export default class Mario extends GameObject {
         this.walkLeftFrames = ["walkingLeft", "idleLeft"];
         this.walkLeftFramesMushroom = ["walkingLeft1", "walkingLeft2", "idleLeft"];
     }
-    update(deltaTime) {
+    update(deltaTime,totalTime) {
         this.behaviors.forEach(behavior => {
             behavior.update(this, deltaTime); //takes in object and deltaTime
         })
-        this.decideStatus();
+        this.decideStatus(totalTime);
     }
 
-    decideStatus(){
+    decideStatus(totalTime){
         if (this.pos.y > 400) this.lives = 0; 
         if (this.lives === 0) {
             this.width = 29;
@@ -53,6 +53,8 @@ export default class Mario extends GameObject {
             this.height = 56;
             this.mario = "mushroomMario";
         }
+
+
 
         if (!this.isGrounded ) {
             if (this.mario === "regularMario" || this.vel.y < 0) {
@@ -94,8 +96,6 @@ export default class Mario extends GameObject {
                 this.frame = this.walkRightFrames[frameIdx];
 
             }
-
-            // debugger
         } else if (this.vel.x < 0) {
             this.status = "walking";
             this.facing = "left"
@@ -120,17 +120,25 @@ export default class Mario extends GameObject {
             }
 
         }
+
+        if (this.invinciblity && this.lives === 1) {
+            if ( Math.floor( totalTime / 0.2) % 2)
+            this.frame = "transparent"
+        }
     }
 
     draw(ctx, spriteSheets, camera){ 
-        ctx.strokeStyle = 'red';
-        ctx.beginPath();
-        ctx.rect(this.pos.x - camera.pos.x, 
-            this.pos.y - camera.pos.y,
-            this.width, this.height);
-        ctx.stroke();
-
-        spriteSheets.get(this.mario).draw(this.frame, ctx, this.pos.x - camera.pos.x, this.pos.y - camera.pos.y);
+        // ctx.strokeStyle = 'red';
+        // ctx.beginPath();
+        // ctx.rect(this.pos.x - camera.pos.x, 
+        //     this.pos.y - camera.pos.y,
+        //     this.width, this.height);
+        // ctx.stroke();
+        // if(this.invinciblity) {
+        //     spriteSheets.get(this.mario).draw(this.frame, ctx, this.pos.x - camera.pos.x, this.pos.y - camera.pos.y);
+        // } else {
+            spriteSheets.get(this.mario).draw(this.frame, ctx, this.pos.x - camera.pos.x, this.pos.y - camera.pos.y);
+        // }
     }
     overlaps(object){
         return this.getBottom() > object.getTop()

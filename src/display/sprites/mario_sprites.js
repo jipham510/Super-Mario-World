@@ -102,6 +102,11 @@ export default {
                     "name": "jumpingLeft",
                     "x": 168,
                     "y": 40
+                },
+                {
+                    "name": "transparent",
+                    "x": 0,
+                    "y": 0
                 }
             ]
         }
