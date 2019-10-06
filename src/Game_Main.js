@@ -23,7 +23,7 @@ export default class GameMain {
         this.accumulatedTime = 0;
         
         this.display.loadWorld();
-        this.display.loadMario();
+
         const controller = new Controller(this);
         controller.listenForInput();
 //////TESTING///////////////////////////////
@@ -35,6 +35,7 @@ export default class GameMain {
 
         //start fixed timestep of 1/60
         this.deltaTime = 1 / 60;
+
         this.run();
     }
     togglePause(){
@@ -59,7 +60,7 @@ export default class GameMain {
         while (this.accumulatedTime > this.deltaTime) {
             this.game.update( this.deltaTime )
             this.display.drawWorld(this.game);
-            this.display.drawMario(this.game.mario);   
+            
             this.accumulatedTime -= this.deltaTime;
         }
 

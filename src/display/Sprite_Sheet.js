@@ -10,13 +10,31 @@ export default class SpriteSheet {
         const clip = document.createElement('canvas');
         clip.width = this.tileWidth;
         clip.height = this.tileHeight;
-        clip.getContext('2d')
-            .drawImage( this.image, 
-                           offsetX, offsetY, 
-                           this.tileWidth, this.tileHeight, 
-                           0, 0, 
-                           this.tileWidth * 2, this.tileHeight * 2
-                        );
+        const ctx = clip.getContext('2d');
+        ctx.drawImage( this.image, 
+                        offsetX, offsetY, 
+                        this.tileWidth, this.tileHeight, 
+                        0, 0, 
+                        this.tileWidth * 2, this.tileHeight * 2
+                    );
+
+        this.sprites.set(sprite, clip);
+    }
+    addSpriteFlipped(sprite, offsetX, offsetY){ 
+    //add sprite flipped horizontally
+
+        const clip = document.createElement('canvas');
+        clip.width = this.tileWidth;
+        clip.height = this.tileHeight;
+        const ctx = clip.getContext('2d');
+        ctx.translate(this.tileWidth, 0);
+        ctx.scale(-1, 1);
+        ctx.drawImage( this.image, 
+                        offsetX, offsetY, 
+                        this.tileWidth, this.tileHeight, 
+                        0, 0, 
+                        this.tileWidth * 2, this.tileHeight * 2
+                    );
 
         this.sprites.set(sprite, clip);
     }

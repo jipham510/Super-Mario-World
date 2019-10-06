@@ -1,8 +1,9 @@
 import SpriteSheet from "./Sprite_Sheet.js";
-import { backgroundImage, marioImage, backgroundLastLayerImage} from "../files";
+import { backgroundImage, marioImage, backgroundFirstLayerImage, enemiesImage} from "../files";
 import Camera from './Camera';
 import backgroundSheet1Sprites from './sprites/background_sheet1_sprites';
 import marioSheetSprites from './sprites/mini_mario_sheet_sprites';
+import enemiesSheetSprites from './sprites/enemy_sprites';
 
 export default class Display {
     constructor(canvas, height, width) {
@@ -14,56 +15,69 @@ export default class Display {
         this.height = height;
         this.width = width;
         this.backgroundColor = "#0F5EF1";
-        this.pauseScreen = "#0F5EF1";
         this.spriteSheets = new Map();
-
-        this.layers = [];
+        this.loadedSheets = new Set();
         this.loadWorld = this.loadWorld.bind(this);
-        this.loadMario = this.loadMario.bind(this);
         
-        // this.sprites = this.createSprites();
     }
 
     loadWorld() {
         const spriteSheets = this.spriteSheets;
+        const loadedSheets = this.loadedSheets;
         backgroundImage.onload = function () {
             const backgroundSheet = new SpriteSheet(backgroundImage, 29, 29);
             backgroundSheet1Sprites.sprites.forEach( (sprite) => {
                 backgroundSheet.addSprite( sprite.name, sprite.x, sprite.y );
             });
            spriteSheets.set("background", backgroundSheet);
+            loadedSheets.add("background");
         }   
-        backgroundLastLayerImage.onload = function () {
-            spriteSheets.set("backgroundLastLayer", 0);
+        backgroundFirstLayerImage.onload = function () {
+            loadedSheets.add("backgroundLastLayer");
         }   
-    }
-    loadMario(){
-        const spriteSheets = this.spriteSheets;
-        marioImage.onload = function() {
+        marioImage.onload = function () {
             const marioSheet = new SpriteSheet(marioImage, 60, 60);
-            marioSheetSprites.sprites.forEach( (sprite) => {
-                marioSheet.addSprite( sprite.name, sprite.x, sprite.y );
+            marioSheetSprites.sprites.forEach((sprite) => {
+                marioSheet.addSprite(sprite.name, sprite.x, sprite.y);
             })
             spriteSheets.set("mario", marioSheet);
+            loadedSheets.add("mario");
+        }
+        enemiesImage.onload = function () {
+            enemiesSheetSprites.enemies.forEach((enemy) => {
+                const enemySheet = new SpriteSheet(enemiesImage, enemy.width, enemy.height);
+                enemy.sprites.forEach( (sprite) => {
+                    if (sprite.type === "flip") {
+                        enemySheet.addSpriteFlipped(sprite.name, sprite.x, sprite.y);
+
+                    } else {
+                        enemySheet.addSprite(sprite.name, sprite.x, sprite.y);
+                    }
+                })
+                spriteSheets.set( enemy.SpriteSheet, enemySheet);
+            })
+            loadedSheets.add("enemies");
         }
     }
+
+
 
     drawWorld(game){
-        if (this.spriteSheets.has("background") && this.spriteSheets.has("backgroundLastLayer")){
-            this.ctx.drawImage(backgroundLastLayerImage, -this.camera.pos.x / 4.6, 0);
-
+        if (this.finishedLoading()) {
+            //draw first layer of background
+            this.ctx.drawImage(backgroundFirstLayerImage, -this.camera.pos.x / 4.6, 0);
             const backgroundSheet = this.spriteSheets.get("background");
+
             // only draw the tiles that the camera is viewing
-            const cameraPanel = game.cameraView(this.camera, backgroundSheet, this.ctx);
+            const cameraPanel = game.cameraView(this.camera, backgroundSheet);
             this.ctx.drawImage(cameraPanel, -this.camera.pos.x % 29, 0);
-        } 
-    }
-    drawMario(mario){
-        if (this.spriteSheets.has("mario")) {
-            this.spriteSheets.get("mario").draw(mario.frame, this.ctx, mario.pos.x - this.camera.pos.x, mario.pos.y - this.camera.pos.y);
+
+            game.objects.forEach(object => object.draw(this.ctx, this.spriteSheets, this.camera) )
         }
     }
-
+    finishedLoading(){ 
+        return this.loadedSheets.has("background") && this.loadedSheets.has("backgroundLastLayer") && this.loadedSheets.has("mario") && this.loadedSheets.has("enemies")
+    }
 
 }
 

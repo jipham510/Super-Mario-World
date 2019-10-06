@@ -1,6 +1,8 @@
 import Mario from './objects/Mario';
+import Dragon from './objects/Dragon';
+import Bullet from './objects/Bullet';
 import Collider from './Collider';
-import tilemap from './tilemap';
+import tilemap from '../display/tilemap';
 
 export default class Game {
     constructor(height, width){
@@ -9,8 +11,21 @@ export default class Game {
         this.gravity = 20;
         this.objects = new Set();
         this.mario = new Mario();
+
+
         this.objects.add(this.mario);
-        this.layers = [];
+
+
+/////////////////// test
+        const dragon = new Dragon();
+        dragon.pos.set(600, 100);
+        const bullet = new Bullet();
+        bullet.pos.set(300, 100);
+
+        this.objects.add(dragon);
+        this.objects.add(bullet);
+/////////////////////////////
+
         this.totalTime = 0;
 
         this.tileMap = [];
@@ -22,7 +37,7 @@ export default class Game {
     }
     update(deltaTime) {
         this.objects.forEach(object => {
-            object.update(deltaTime); //updates velocities
+            object.update(deltaTime, this.totalTime); //updates velocities
             object.frames = (object.frames + 1) % 60;
             object.lastPos.x = object.pos.x;
             object.lastPos.y = object.pos.y;
@@ -63,7 +78,7 @@ export default class Game {
     getTile(x,y){
         if(this.tileMap[x]) return this.tileMap[x][y];
     }
-    cameraView(camera, backgroundSpriteSheet, ctx){
+    cameraView(camera, backgroundSpriteSheet){
         // center camera on mario
         //scrolling commented out for testing
         if ( this.mario.pos.x > 300) {
@@ -85,10 +100,6 @@ export default class Game {
                 column.forEach((tile, y) => {
                     if (tile.name === "mysteryBox") {
 
-                        // drawAnim(name, context, x, y, distance) {
-                        //     const animation = this.animations.get(name);
-                        //     this.drawTile(animation(distance), context, x, y);
-                        // }
                         const boxAnimation = ["mysteryBox1", "mysteryBox2", "mysteryBox3", "mysteryBox4"];
                         const frame = Math.floor(this.totalTime / 0.15) % boxAnimation.length;
                         // debugger

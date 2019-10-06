@@ -9,7 +9,6 @@ export default class Mario extends GameObject {
         this.height = 40;
         this.addBehavior(new Jump());
         this.addBehavior(new Walk());
-''
         this.status = "idle"; //other statuses are walking, jumping 
         this.facing = "right";
         this.frame = "idleRight"
@@ -64,5 +63,8 @@ export default class Mario extends GameObject {
         }
     }
 
+    draw(ctx, spriteSheets, camera){ 
+        spriteSheets.get("mario").draw(this.frame, ctx, this.pos.x - camera.pos.x, this.pos.y - camera.pos.y);
+    }
 
 }
