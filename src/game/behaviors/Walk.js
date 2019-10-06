@@ -9,6 +9,7 @@ export default class Walk extends Behavior {
     }
 
     update(mario, deltaTime) {
+        if (mario.frame === "lose") return;
         mario.vel.x = (this.leftDirection + this.rightDirection)  * this.speed * deltaTime;
         this.distance += mario.vel.x;
         // mario.vel.x = this.speed * this.direction * deltaTime;

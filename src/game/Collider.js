@@ -23,6 +23,8 @@ export default class Collider {
     // }
 
     checkX(gameObj) {
+        if(gameObj.status === "ignoreCollisions") return;
+        
         if (gameObj.pos.x < 0) {
             gameObj.pos.x = 0;
             gameObj.vel.x = 0;
@@ -70,7 +72,7 @@ export default class Collider {
     checkY(gameObj){
         let y;
         // 3 cases of velocity 
-        if ( gameObj.vel.y === 0 ) {
+        if (gameObj.vel.y === 0 || gameObj.status === "ignoreCollisions") {
             return;
         } else if ( gameObj.vel.y > 0 ) {
             //object moving down, check bottom of object

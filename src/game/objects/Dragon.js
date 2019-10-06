@@ -1,12 +1,17 @@
 import GameObject from './Game_Object';
-import AutoWalk from '../behaviors/Auto_Walk';
+import AutoMove from '../behaviors/Auto_Move';
 
 export default class Dragon extends GameObject {
-    constructor() {
+    constructor(xSpawn, ySpawn, moveLeftLimit, moveRightLimit) {
         super();
+        this.pos.set(xSpawn, ySpawn);
+
         this.width = 43;
         this.height = 63;
-        this.addBehavior(new AutoWalk());
+        this.speed = 8000;
+        this.addBehavior(new AutoMove(moveLeftLimit, moveRightLimit));
+        this.stompedCount = 0;
+
         this.status = "dragonRegular";
         this.facing = "left";
         this.frame = "regularWalkLeft1";
@@ -24,25 +29,32 @@ export default class Dragon extends GameObject {
         this.decideStatus(totalTime);
     }
     decideStatus(totalTime){
-    // status 1 regular
-        const frames = (this.facing === "left") ? this.regularWalkLeftFrames : this.regularWalkRightFrames;
-        this.frame = this.animationFrame( frames, totalTime, 0.15);
-    // status 2 half flattened
-    // need to determine flatten by top collision stomp
-        // this.status = "dragonHalfFlattened";
-        // this.width = 43;
-        // this.height = 34;
+        if (this.stompedCount === 2){
+            this.speed = 0;
+            this.status = "dragonFlattened";
+            this.width = 43;
+            this.height = 20;
 
-        // const frames = (this.facing === "left") ? this.halfWalkLeftFrames : this.halfWalkRightFrames;
-        // this.frame = this.animationFrame(frames, totalTime, 0.15);
+            this.frame = (this.facing === "left") ? "flattenedLeft" : "flattenedRight";    
 
-    // status 3 flattened
-        // this.status = "dragonFlattened";
-        // this.width = 43;
-        // this.height = 20;
+        } else if (this.stompedCount === 1) {
+            this.status = "dragonHalfFlattened";
+            this.width = 43;
+            this.height = 34;
 
-        // this.frame = (this.facing === "left") ? "flattenedLeft" : "flattenedRight";
+            this.facing = (this.vel.x > 0) ? "right" : "left";
+            const frames = (this.facing === "left") ? this.halfWalkLeftFrames : this.halfWalkRightFrames;
+            this.frame = this.animationFrame(frames, totalTime, 0.20);
+
+        } else {
+            this.facing = (this.vel.x > 0) ? "right" : "left";
+            const frames = (this.facing === "left") ? this.regularWalkLeftFrames : this.regularWalkRightFrames;
+            this.frame = this.animationFrame(frames, totalTime, 0.20);
+        }
+
+
     }
+
 
     draw(ctx, spriteSheets, camera) {
         ctx.strokeStyle = 'red';

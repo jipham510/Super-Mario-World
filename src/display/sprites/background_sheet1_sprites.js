@@ -74,17 +74,17 @@ export default {
         {
             "name": "platformLeft",
             "x": 37.5,
-            "y": 0
+            "y": 1
         },
         {
             "name": "platformMiddle",
             "x": 55,
-            "y": 0
+            "y": 1
         },
         {
             "name": "platformRight",
             "x": 72.5,
-            "y": 0
+            "y": 1
         },
         {
             "name": "mysteryBox1",

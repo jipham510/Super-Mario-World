@@ -2,7 +2,7 @@ import SpriteSheet from "./Sprite_Sheet.js";
 import { backgroundImage, marioImage, backgroundFirstLayerImage, enemiesImage} from "../files";
 import Camera from './Camera';
 import backgroundSheet1Sprites from './sprites/background_sheet1_sprites';
-import marioSheetSprites from './sprites/mini_mario_sheet_sprites';
+import marioSheetSprites from './sprites/mario_sprites';
 import enemiesSheetSprites from './sprites/enemy_sprites';
 
 export default class Display {
@@ -24,25 +24,35 @@ export default class Display {
     loadWorld() {
         const spriteSheets = this.spriteSheets;
         const loadedSheets = this.loadedSheets;
+
         backgroundImage.onload = function () {
             const backgroundSheet = new SpriteSheet(backgroundImage, 29, 29);
             backgroundSheet1Sprites.sprites.forEach( (sprite) => {
                 backgroundSheet.addSprite( sprite.name, sprite.x, sprite.y );
             });
            spriteSheets.set("background", backgroundSheet);
-            loadedSheets.add("background");
+           loadedSheets.add("background");
         }   
+
         backgroundFirstLayerImage.onload = function () {
             loadedSheets.add("backgroundLastLayer");
         }   
+
         marioImage.onload = function () {
-            const marioSheet = new SpriteSheet(marioImage, 60, 60);
-            marioSheetSprites.sprites.forEach((sprite) => {
-                marioSheet.addSprite(sprite.name, sprite.x, sprite.y);
+            marioSheetSprites.marios.forEach((mario) => {
+                const marioSheet = new SpriteSheet(marioImage, mario.width, mario.height);
+                mario.sprites.forEach(sprite => {
+                    if (sprite.type === "flip") {
+                        marioSheet.addSpriteFlipped(sprite.name, sprite.x, sprite.y);
+                    } else {
+                        marioSheet.addSprite(sprite.name, sprite.x, sprite.y);
+                    }
+                });
+                spriteSheets.set( mario.SpriteSheet , marioSheet);
             })
-            spriteSheets.set("mario", marioSheet);
             loadedSheets.add("mario");
         }
+
         enemiesImage.onload = function () {
             enemiesSheetSprites.enemies.forEach((enemy) => {
                 const enemySheet = new SpriteSheet(enemiesImage, enemy.width, enemy.height);
@@ -53,7 +63,7 @@ export default class Display {
                     } else {
                         enemySheet.addSprite(sprite.name, sprite.x, sprite.y);
                     }
-                })
+                });
                 spriteSheets.set( enemy.SpriteSheet, enemySheet);
             })
             loadedSheets.add("enemies");
