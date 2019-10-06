@@ -1,6 +1,4 @@
 export default {
-    "tileWidth": 29,
-    "tileHeight": 29,
     "backgrounds": [
         {
             "tile": "groundTop",
@@ -272,7 +270,7 @@ export default {
                 ],
                 [
                     113, 1,
-                    3, 1
+                    6, 1
                 ],
             ]
         },
@@ -290,7 +288,7 @@ export default {
                 ],
                 [
                     114, 10,
-                    3, 1
+                    6, 1
                 ],
                 [
                     136, 4,
@@ -316,7 +314,7 @@ export default {
                 ],
                 [
                     124, 1,
-                    3, 1
+                    6, 1
                 ],
             ]
         }, 
@@ -333,7 +331,7 @@ export default {
                 ],
                 [
                     113, 1,
-                    4, 10
+                    7, 10
                 ],
             ]
         },
@@ -350,7 +348,7 @@ export default {
                 ],
                 [
                     114, 10,
-                    4, 10
+                    7, 10
                 ],
             ]
         },
@@ -367,7 +365,7 @@ export default {
                 ],
                 [
                     124, 1,
-                    4, 10
+                    7, 10
                 ],
             ]
         },
@@ -425,6 +423,10 @@ export default {
                     8, 1
                 ],
                 [
+                    148, 1,
+                    3, 1
+                ],
+                [
                     185, 1,
                     6, 1
                 ],
@@ -458,6 +460,10 @@ export default {
                 [
                     149, 1,
                     8, 1
+                ],       
+                [
+                    149, 1,
+                    3, 1
                 ],       
                 [
                     193, 1,
@@ -575,11 +581,6 @@ export default {
                     45, 3,
                     7, 1
                 ],
-
-                [
-                    62, 1,
-                    9, 1
-                ],
                 [
                     109, 1,
                     9, 1
@@ -587,6 +588,10 @@ export default {
                 [
                     109, 1,
                     4, 1
+                ],
+                [
+                    137, 1,
+                    7, 1
                 ],
                 [
                     160, 1,
@@ -636,5 +641,86 @@ export default {
             ]
         },
 
+    ],
+    "enemies": [
+
+        {
+            "name": "dragon",
+            "x": 1900,
+            "y": 200,
+            "x1Limit": 1200,
+            "x2Limit": 1900,
+            "trigger": 600
+        },
+        {
+            "name": "dragon",
+            "x": 1200,
+            "y": 200,
+            "x1Limit": 1200,
+            "x2Limit": 1900,
+            "trigger": 600
+        },
+        {
+            "name": "dragon",
+            "x": 2900,
+            "y": 200,
+            "x1Limit": 2700,
+            "x2Limit": 3100,
+            "trigger": 2000
+        },
+        {
+            "name": "dragon",
+            "x": 4000,
+            "y": 200,
+            "x1Limit": 3950,
+            "x2Limit": 4050,
+            "trigger": 3500
+        },
+        {
+            "name": "dragon",
+            "x": 5100,
+            "y": 0,
+            "x1Limit": 4700,
+            "x2Limit": 5120,
+            "trigger": 4000
+        },
+        {
+            "name": "dragon",
+            "x": 4700,
+            "y": 0,
+            "x1Limit": 4700,
+            "x2Limit": 5120,
+            "trigger": 4000
+        },
+        {
+            "name": "bullet",
+            "x": 1300,
+            "y": 100,
+            "trigger": 700
+        },
+        {
+            "name": "bullet",
+            "x": 3700,
+            "y": 40,
+            "trigger": 3300
+        },
+        {
+            "name": "bullet",
+            "x": 4400,
+            "y": 150,
+            "trigger": 4000
+        },
+        {
+            "name": "bullet",
+            "x": 5100,
+            "y": 50,
+            "trigger": 4700
+        },
+        {
+            "name": "bullet",
+            "x": 4800,
+            "y": 50,
+            "trigger": 4400
+        },
     ]
 }

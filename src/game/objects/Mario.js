@@ -2,6 +2,8 @@ import GameObject from './Game_Object';
 import Jump from '../behaviors/Jump';
 import JumpOnLose from '../behaviors/Jump_On_Lose';
 import Walk from '../behaviors/Walk';
+import Stomp from '../behaviors/Stomp';
+import Invincible from '../behaviors/Invincible';
 
 export default class Mario extends GameObject {
     constructor(){
@@ -9,10 +11,13 @@ export default class Mario extends GameObject {
         this.width = 29;
         this.height = 40;
         this.lives = 2;
+        this.invinciblity = false;
         this.addBehavior(new Jump());
         this.JumpOnLose = new JumpOnLose();
         this.addBehavior(this.JumpOnLose);
         this.addBehavior(new Walk());
+        this.addBehavior(new Stomp());
+        this.addBehavior(new Invincible());
         this.status = "idle"; //other statuses are walking, jumping 
         this.mario = "regularMario";
         this.facing = "right";
@@ -127,5 +132,10 @@ export default class Mario extends GameObject {
 
         spriteSheets.get(this.mario).draw(this.frame, ctx, this.pos.x - camera.pos.x, this.pos.y - camera.pos.y);
     }
-
+    overlaps(object){
+        return this.getBottom() > object.getTop()
+            && this.getTop() < object.getBottom()
+            && this.getLeft() < object.getRight()
+            && this.getRight() > object.getLeft();
+    }
 }

@@ -3,6 +3,7 @@ import Dragon from './objects/Dragon';
 import Bullet from './objects/Bullet';
 import Collider from './Collider';
 import tilemap from '../display/tilemap';
+import SpawnEnemies from './behaviors/Spawn_Enemies';
 
 export default class Game {
     constructor(height, width){
@@ -11,35 +12,18 @@ export default class Game {
         this.gravity = 20;
         this.objects = new Set();
         this.mario = new Mario();
-
-        this.restarting = false;
-
         this.objects.add(this.mario);
-
-
-/////////////////// test
-        const dragon = new Dragon(
-            600, 100,  //initial spawn
-            400, 700 // walk path
-            );
-        // dragon.pos.set(600, 100);
-        const bullet = new Bullet(
-            1200, 50 //initial spawn
-        );
-        // bullet.pos.set(300, 100);
-
-        this.objects.add(dragon);
-        this.objects.add(bullet);
-/////////////////////////////
-
+        this.addSpawns()
+        
+        this.restarting = false;
         this.totalTime = 0;
-
         this.tileMap = [];
         this.tileSize = 29;
         this.collider = new Collider(this.tileMap);
         this.setTilemapLayer = this.setTilemapLayer.bind(this);
         this.cameraView = this.cameraView.bind(this);
         this.restartLevel = this.restartLevel.bind(this);
+        this.checkEnemyCollision = this.checkEnemyCollision.bind(this);
         this.setTilemapLayer();
     }
     update(deltaTime) {
@@ -54,12 +38,37 @@ export default class Game {
             object.vel.y += this.gravity;
             object.pos.y += object.vel.y * deltaTime;
             this.collider.checkY(object);
-            // this.collider.checkCollision(object, this.width, this.height);
+            if (object !== this.mario) this.checkEnemyCollision(object);
         })
 
         this.totalTime += deltaTime;
     }
+    checkEnemyCollision(object){
+        if (this.mario.overlaps(object)) {
+            object.collides(this.mario);
+            this.mario.collides(object);
+        }
+    }
+    addSpawns() {
+        const enemies = new Set();
+        let newEnemy;
+        tilemap.enemies.forEach( enemy => {
+            if (enemy.name === "dragon") {
+                newEnemy = new Dragon(
+                    enemy.x, enemy.y,  //initial spawn
+                    enemy.x1Limit, enemy.x2Limit // walk path
+                );
+            } else if ( enemy.name === "bullet") {
+                newEnemy = new Bullet(
+                    enemy.x, enemy.y //initial spawn
+                );
+            }
+            newEnemy.trigger = enemy.trigger;
+            enemies.add(newEnemy);
+        })
+        this.mario.addBehavior(new SpawnEnemies(this.objects,enemies));
 
+    }
     setTilemapLayer() {
         tilemap.backgrounds.forEach(background => {
             background.ranges.forEach(range => {
@@ -80,15 +89,24 @@ export default class Game {
     restartLevel(camera){
         if(this.mario.status === "ignoreCollisions" && !this.restarting){
             this.restarting = true;
-            const mario = this.mario;
             const game = this;
             setTimeout( () => {
-                mario.lives = 1;
-                mario.pos.set(145, 100);
+                game.removeEnemies();
+                game.mario.lives = 1;
+                game.mario.pos.set(145, 100);
                 camera.pos.x = 0;
+
+                game.addSpawns()
+
                 game.restarting = false;
+
             }, 1500)
         }
+    }
+    removeEnemies() {
+        this.objects.forEach( object => {
+            if (object !== this.mario) this.objects.delete(object);
+        })
     }
     setTile(x, y, tile){
         if(!this.tileMap[x]) this.tileMap[x] = [];
@@ -135,7 +153,7 @@ export default class Game {
         const marioPosY = this.getTileIndex(this.mario.pos.y) + 1;
         let tileName = this.getTile(marioPosX, marioPosY);
         if (tileName) tileName = tileName.name;
-        console.log("x: ", marioPosX, ", y: ", marioPosY, ", tilename: ", tileName);
+        // console.log("x: ", marioPosX, ", y: ", marioPosY, ", tilename: ", tileName);
         //draw camera by pixel for a smooth transition
         return cameraPanel;
     }

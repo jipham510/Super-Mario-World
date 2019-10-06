@@ -13,22 +13,34 @@ export default class Bullet extends GameObject {
         this.addBehavior(new AutoMove());
         this.frame = "bulletLeft"
         this.status = "ignoreCollisions";
+        this.falling = false;
         this.speed = 10000;
     }
     update(deltaTime, totalTime, objects) {
         this.behaviors.forEach(behavior => {
             behavior.update(this, deltaTime); //takes in object and deltaTime
         })
-        if(this.pos.x < this.initialPos - 1200) objects.delete(this);
+        if(this.pos.x < this.initialPos - 1200 || this.pos.y > 400) objects.delete(this);
+    }
+    collides(mario) {
+        if (mario.invinciblity) return;
+        if (!this.falling) {
+            if (mario.vel.y > this.vel.y ) {
+                mario.stomp.bounce();
+                this.vel.y += 40;
+                this.vel.x = 0;
+                this.removeBehavior("ignoreGravity");
+                this.removeBehavior("autoMove");
+                this.falling = true;
+            } else {
+                console.log("hit mario")
+                mario.lives -= 1;
+                mario.invincible.start();
+                mario.invinciblity = true;
+            }
+        }
     }
     draw(ctx, spriteSheets, camera) {
-        // ctx.strokeStyle = 'red';
-        // ctx.beginPath();
-        // ctx.rect(this.pos.x - camera.pos.x,
-        //     this.pos.y - camera.pos.y,
-        //     this.width, this.height);
-        // ctx.stroke();
-
         spriteSheets.get("bullet").draw(this.frame, ctx, this.pos.x - camera.pos.x, this.pos.y - camera.pos.y)
     }
 }
