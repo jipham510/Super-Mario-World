@@ -126,7 +126,7 @@ export default class Game {
         //scrolling commented out for testing
         this.restartLevel(camera);
 
-        if ( this.mario.pos.x > 310 && this.mario.frame !== "lose") {
+        if ( this.mario.pos.x > 300 && this.mario.frame !== "lose") {
             camera.pos.x = this.mario.pos.x - 300;
         }
     

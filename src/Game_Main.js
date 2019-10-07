@@ -22,7 +22,7 @@ export default class GameMain {
         this.lastTime = 0;
         this.accumulatedTime = 0;
         
-        this.display.loadWorld();
+        // this.display.loadWorld();
 
         const controller = new Controller(this);
         controller.listenForInput();
