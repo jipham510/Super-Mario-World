@@ -18,12 +18,6 @@ export default class Controller {
 
         this.mapLeftMove("ArrowLeft");
         this.mapLeftMove("KeyA");
-        const togglePause = this.gameMain.togglePause;
-        this.map("KeyP", keyState => { 
-            if( keyState) {
-                togglePause();
-            }
-        });
 
     }
     mapRightMove(input) {

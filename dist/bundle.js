@@ -129,12 +129,6 @@ function () {
       this.mapRightMove("KeyD");
       this.mapLeftMove("ArrowLeft");
       this.mapLeftMove("KeyA");
-      var togglePause = this.gameMain.togglePause;
-      this.map("KeyP", function (keyState) {
-        if (keyState) {
-          togglePause();
-        }
-      });
     }
   }, {
     key: "mapRightMove",
