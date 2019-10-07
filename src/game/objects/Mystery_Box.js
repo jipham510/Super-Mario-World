@@ -45,7 +45,6 @@ export default class MysteryBox extends GameObject {
     setToTile(objects){
         this.tile.name = "singlePlatform";
         this.tile.type = "ground";
-        console.log("setting Tile");
         const mushroom = new Mushroom(this.pos.x, this.pos.y)
         objects.add(mushroom);
     }
