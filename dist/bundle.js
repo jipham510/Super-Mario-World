@@ -247,10 +247,7 @@ function () {
       this.accumulatedTime = 0; // this.display.loadWorld();
 
       var controller = new _Controller__WEBPACK_IMPORTED_MODULE_0__["default"](this);
-      controller.listenForInput(); //////TESTING///////////////////////////////
-
-      mouseDebugger(this.display.canvas, this.game.mario, this.display.camera); ////////////////////////////////////////////
-      //start fixed timestep of 1/60
+      controller.listenForInput(); //start fixed timestep of 1/60
 
       this.deltaTime = 1 / 60;
       this.run();
@@ -297,25 +294,6 @@ function () {
 }();
 
 
-
-function mouseDebugger(canvas, entity, camera) {
-  var lastEvent;
-  ['mousedown', 'mousemove'].forEach(function (eventName) {
-    canvas.addEventListener(eventName, function (event) {
-      if (event.buttons === 1) {
-        entity.vel.set(0, 0);
-        entity.pos.set(event.offsetX + camera.pos.x, event.offsetY + camera.pos.y);
-      } else if (event.buttons === 2 && lastEvent && lastEvent.buttons === 2 && lastEvent.type === "mousemove") {
-        camera.pos.x -= event.offsetX - lastEvent.offsetX;
-      }
-
-      lastEvent = event;
-    });
-  });
-  canvas.addEventListener('contextmenu', function (event) {
-    event.preventDefault();
-  });
-}
 
 /***/ }),
 
