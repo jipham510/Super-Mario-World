@@ -8,14 +8,56 @@ body {
 }
 #canvas {
     width: 100vw;
-    max-width: 800px;
-    min-width: 400px;
+    max-width: 700px;
+    min-width: 540px;
 }
-
+.canvasScreen {
+    background: url("../files/background.png");
+    position: relative;
+}
 h1 {
     font-family: sans-serif;
     font-weight: bold;
     font-size: 2em;
     padding: 20px 0;
 }
+.sound {
+    position: absolute;
+    bottom: 100px;
+    left: 120px;
+}
+.noSound {
+    position: absolute;
+    bottom: 100px;
+    right: 120px;
+    
+}
 
+.btn {
+    font-size: 14px;
+    font-family: sans-serif;
+    padding: 10px;
+    background: #0E60B8;
+    border-radius: 5px;
+    border: 2px black solid;
+    font-weight: bold;
+}
+.btn:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    cursor: pointer;
+}
+.icons {
+    margin: 20px;
+}
+a {
+    margin: 10px;
+    color: #0E60B8;
+    text-decoration: none;
+}
+a:hover {
+    cursor: pointer;
+    color: white;
+}
+.instructions {
+    margin-bottom: 20px;
+}
