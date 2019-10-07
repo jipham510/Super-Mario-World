@@ -1,4 +1,6 @@
 export default {
+    "width": 29,
+    "height": 29,
     "sprites": [
         //transparent sky
         {

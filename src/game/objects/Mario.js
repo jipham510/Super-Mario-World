@@ -10,7 +10,7 @@ export default class Mario extends GameObject {
         super();
         this.width = 29;
         this.height = 40;
-        this.lives = 2;
+        this.lives = 1;
         this.invinciblity = false;
         this.addBehavior(new Jump());
         this.JumpOnLose = new JumpOnLose();

@@ -473,7 +473,8 @@ export default {
         },
         {
             "tile": "mysteryBox",
-            "type": "ground",
+            "type": "box",
+            "item": "mushroom",
             "ranges": [
                 [
                     19, 1,

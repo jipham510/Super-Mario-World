@@ -28,7 +28,7 @@ export default class Collider {
 
     handleMatchingTilesX(gameObj, matchingTiles) {
         matchingTiles.forEach(match => {
-            if (match.tile.type === "ground") {
+            if (match.tile.type === "ground" || match.tile.type === "box") {
                 this.handleGroundCollisionX(gameObj, match);
             // } else if (match.tile.type === "floatingPlatform") {
                 //no x detection needed for floating platform
@@ -75,7 +75,7 @@ export default class Collider {
         matchingTiles.forEach(match => {
             if (match.tile.type === "ground") {
                 this.handleGroundCollisionY(gameObj,match);
-            } else if (match.tile.type === "floatingPlatform") {
+            } else if (match.tile.type === "floatingPlatform" || match.tile.type === "box") {
                 this.handleFloatingPlatformY(gameObj,match);
             }
 
@@ -93,6 +93,7 @@ export default class Collider {
             if (gameObj.pos.y < match.bottom) {
                 gameObj.pos.y = match.bottom;
                 gameObj.vel.y = 0;
+                if (gameObj.jump) gameObj.jump.cancel();
             }
         }
     }

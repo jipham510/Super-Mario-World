@@ -1,6 +1,7 @@
 import Mario from './objects/Mario';
 import Dragon from './objects/Dragon';
 import Bullet from './objects/Bullet';
+import MysteryBox from './objects/Mystery_Box';
 import Collider from './Collider';
 import tilemap from '../display/tilemap';
 import SpawnEnemies from './behaviors/Spawn_Enemies';
@@ -46,7 +47,6 @@ export default class Game {
     checkEnemyCollision(object){
         if (this.mario.overlaps(object)) {
             object.collides(this.mario);
-            this.mario.collides(object);
         }
     }
     addSpawns() {
@@ -77,10 +77,15 @@ export default class Game {
                 const yEnd = yStart + yLength;
                 for (let x = xStart; x < xEnd; x++) {
                     for (let y = yStart; y < yEnd; y++) {
-                        this.setTile(x, y, {
+                        const tile = {
                             name: background.tile,
                             type: background.type
-                        })
+                        };
+                        this.setTile(x, y, tile)
+                        if (background.tile === "mysteryBox") {
+                            const box = new MysteryBox(x, y, tile);
+                            this.objects.add(box);
+                        }
                     }
                 }
             });
@@ -98,7 +103,7 @@ export default class Game {
                 camera.pos.x = 0;
 
                 game.addSpawns()
-
+                this.setTilemapLayer();
                 game.restarting = false;
 
             }, 1500)
@@ -140,10 +145,7 @@ export default class Game {
                 column.forEach((tile, y) => {
                     if (tile.name === "mysteryBox") {
 
-                        const boxAnimation = ["mysteryBox1", "mysteryBox2", "mysteryBox3", "mysteryBox4"];
-                        const frame = Math.floor(this.totalTime / 0.15) % boxAnimation.length;
-                        // debugger
-                        backgroundSpriteSheet.draw( boxAnimation[frame], panelCtx, (x - columnStart) * this.tileSize, y * this.tileSize);
+                        backgroundSpriteSheet.draw("transparent", panelCtx, (x - columnStart) * this.tileSize, y * this.tileSize);
                     } else {
                         backgroundSpriteSheet.draw(tile.name, panelCtx, (x - columnStart) * this.tileSize, y * this.tileSize);
                     }

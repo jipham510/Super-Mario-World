@@ -52,7 +52,6 @@ export default class GameMain {
     pause(){
         this.pauseStatus = true;
         cancelAnimationFrame(this.id);
-        this.display.drawPauseScreen();
     }
     animate(time) {
         this.accumulatedTime += (time - this.lastTime) / 1000;
