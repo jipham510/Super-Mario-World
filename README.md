@@ -33,7 +33,7 @@ Used axis-aligned bounding box to check if objects or tiles were colliding with 
             gameObj.pos.y, gameObj.getBottom());
         this.handleMatchingTilesX(gameObj, matchingTiles);
     }
-    ```
+```
 ### JSON Level Parser
 Organized level tiles by putting them in an object file that maps where they belong in the level and how many there should be. This allows for easy level editing as I would just need to specifiy the x and y grid coordinates of where I want a tile to be in order to place it somewhere. For the first range array in the code below, 0 and 125 mean that I want to place a "groundTop" tile at the x-grid coordinate of 0 and have 125 of them in a row, letting me easily place all the ground tiles I want for the whole level. 12 and 1 correspond to the y axis, saying that I want to only place a single tile at the y-coordinate of 12.
 ```
@@ -51,7 +51,9 @@ export default {
                    130, 18,
                    10, 1
                 ], .....
+            ]
                 
          }
-  }
+   ]
+}
 ```
