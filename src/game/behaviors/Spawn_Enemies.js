@@ -1,4 +1,6 @@
 import Behavior from './Behavior';
+import { bulletLaunchedSound, music } from '../../files';
+
 export default class SpawnEnemies extends Behavior {
     constructor(gameObjects, enemies) {
         super('spawnEnemies');
@@ -8,7 +10,10 @@ export default class SpawnEnemies extends Behavior {
 
     update(mario, deltaTime) {
         this.enemies.forEach(enemy => {
-            if (mario.pos.x >= enemy.trigger) this.spawnEnemy(enemy);
+            if (mario.pos.x >= enemy.trigger) {
+                this.spawnEnemy(enemy);
+                if (enemy.isBullet && !music.paused) bulletLaunchedSound.play();
+            }
         });
     }
     addEnemy(enemy){
@@ -20,6 +25,3 @@ export default class SpawnEnemies extends Behavior {
     }
 
 }
-
-// this.objects.add(dragon);
-// this.objects.add(bullet);

@@ -1,5 +1,6 @@
 import GameObject from './Game_Object';
 import AutoMove from '../behaviors/Auto_Move';
+import { stomp1Sound, stomp2Sound, music, mushroomMarioHitSound } from '../../files';
 
 export default class Dragon extends GameObject {
     constructor(xSpawn, ySpawn, moveLeftLimit, moveRightLimit) {
@@ -26,9 +27,13 @@ export default class Dragon extends GameObject {
         if (mario.invinciblity) return;
         if (this.stompedCount !== 2) {
             if (mario.vel.y > this.vel.y) {
+                
                 mario.stomp.bounce();
                 this.stompedCount += 1;
+                if (!music.paused) (this.stompedCount === 1) ? stomp1Sound.play() : stomp2Sound.play();
+
             } else {
+                if (mario.lives === 2 && !music.paused) mushroomMarioHitSound.play();
                 mario.lives -= 1;
                 mario.invincible.start();
                 mario.invinciblity = true;

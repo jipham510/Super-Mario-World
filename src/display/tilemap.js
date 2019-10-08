@@ -714,13 +714,13 @@ export default {
         {
             "name": "bullet",
             "x": 5100,
-            "y": 50,
+            "y": 20,
             "trigger": 4700
         },
         {
             "name": "bullet",
             "x": 4800,
-            "y": 50,
+            "y": 20,
             "trigger": 4400
         },
     ]

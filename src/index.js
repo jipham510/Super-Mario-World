@@ -21,8 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
         noSound.parentNode.removeChild(noSound);
         sound.parentNode.removeChild(sound);
     }, { once: true })
-    noSound.addEventListener("click", ()=> {
-        
+    noSound.addEventListener("click", ()=> {        
         gameMain.start();
         sound.parentNode.removeChild(sound);
         noSound.parentNode.removeChild(noSound);

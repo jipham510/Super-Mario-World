@@ -4,6 +4,8 @@ import JumpOnLose from '../behaviors/Jump_On_Lose';
 import Walk from '../behaviors/Walk';
 import Stomp from '../behaviors/Stomp';
 import Invincible from '../behaviors/Invincible';
+import Crouch from '../behaviors/Crouch';
+import { marioLoseSound, music } from '../../files';
 
 export default class Mario extends GameObject {
     constructor(){
@@ -18,6 +20,7 @@ export default class Mario extends GameObject {
         this.addBehavior(new Walk());
         this.addBehavior(new Stomp());
         this.addBehavior(new Invincible());
+        this.addBehavior(new Crouch());
         this.status = "idle"; //other statuses are walking, jumping 
         this.mario = "regularMario";
         this.facing = "right";
@@ -43,6 +46,7 @@ export default class Mario extends GameObject {
             this.status = "ignoreCollisions";
             if (this.status === "ignoreCollisions" && this.frame !== "lose") this.JumpOnLose.start();
             this.frame = "lose";
+            if (!music.paused) marioLoseSound.play();
             return;
         } else if ( this.lives === 1 ) {
             this.width = 29;

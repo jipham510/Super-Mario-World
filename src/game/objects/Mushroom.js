@@ -1,5 +1,7 @@
 import GameObject from './Game_Object';
 import AutoMove from '../behaviors/Auto_Move';
+import { powerUpSound, music } from '../../files';
+
 export default class Mushroom extends GameObject {
     constructor(x, y) {
         super();
@@ -28,7 +30,7 @@ export default class Mushroom extends GameObject {
         if (this.status === "spawning") {
             // this.frame = this.animationFrame(this.mushroomSpawn, totalTime, 0.20);
         } else if (this.status === "delete") {
-
+            if (!music.paused) powerUpSound.play();
             objects.delete(this);
         }
     }

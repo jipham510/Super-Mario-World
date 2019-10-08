@@ -19,6 +19,9 @@ export default class Controller {
         this.mapLeftMove("ArrowLeft");
         this.mapLeftMove("KeyA");
 
+        this.mapCrouch("ArrowDown");
+        this.mapCrouch("KeyS");
+
     }
     mapRightMove(input) {
         const mario = this.gameMain.game.mario
@@ -30,6 +33,13 @@ export default class Controller {
         const mario = this.gameMain.game.mario
         this.map(input, keyState => {
             mario.walk.leftDirection = -keyState;
+        })
+    }
+    mapCrouch(input) {
+        const mario = this.gameMain.game.mario
+        this.map(input, keyState => {
+            console.log(keyState);
+            mario.crouch.stationaryVel = (keyState === 1) ? 0 : 1;
         })
     }
     mapJump(input){

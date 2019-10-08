@@ -23,7 +23,6 @@ export default class Collider {
         const matchingTiles = this.findMatchingTiles(x, x,
             gameObj.pos.y, gameObj.getBottom());
         this.handleMatchingTilesX(gameObj, matchingTiles);
-
     }
 
     handleMatchingTilesX(gameObj, matchingTiles) {

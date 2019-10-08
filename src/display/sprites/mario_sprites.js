@@ -107,7 +107,18 @@ export default {
                     "name": "transparent",
                     "x": 0,
                     "y": 0
-                }
+                },
+                {
+                    "name": "fallingRight",
+                    "x": 247,
+                    "y": 116
+                },
+                {
+                    "name": "fallingLeft",
+                    "type": "flip",
+                    "x": 247,
+                    "y": 116
+                },
             ]
         }
     ]

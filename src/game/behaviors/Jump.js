@@ -1,4 +1,5 @@
 import Behavior from './Behavior';
+import { jumpSound, music } from '../../files';
 export default class Jump extends Behavior {
     constructor() {
         super('jump');
@@ -9,7 +10,10 @@ export default class Jump extends Behavior {
     }
 
     start() {
-        if(this.isGrounded) this.duration = this.maxDuration;
+        if(this.isGrounded) {
+            this.duration = this.maxDuration;
+            if (!music.paused )jumpSound.play();
+        }
     }
     cancel() {
         this.isGrounded = false;

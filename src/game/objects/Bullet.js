@@ -1,20 +1,22 @@
 import GameObject from './Game_Object';
 import IgnoreGravity from '../behaviors/Ignore_Gravity';
 import AutoMove from '../behaviors/Auto_Move';
+import { stomp2Sound, music, mushroomMarioHitSound } from '../../files';
 
 export default class Bullet extends GameObject {
     constructor(xSpawn, ySpawn) {
         super();
+        this.isBullet = true;
         this.pos.set(xSpawn, ySpawn);
         this.initialPos = xSpawn;
-        this.width = 140;
+        this.width = 130;
         this.height = 128;
         this.addBehavior(new IgnoreGravity());
         this.addBehavior(new AutoMove());
         this.frame = "bulletLeft"
         this.status = "ignoreCollisions";
         this.falling = false;
-        this.speed = 10000;
+        this.speed = 8000;
     }
     update(deltaTime, totalTime, objects) {
         this.behaviors.forEach(behavior => {
@@ -27,7 +29,7 @@ export default class Bullet extends GameObject {
         if (mario.invinciblity) return;
         if (!this.falling) {
             if (mario.vel.y > this.vel.y &&  mario.getBottom() > this.getTop() && mario.getLastBottom() <= this.getTop() ) {
-
+                if (!music.paused) stomp2Sound.play();
                 mario.stomp.bounce();
                 this.vel.y += 40;
                 this.vel.x = 0;
@@ -35,6 +37,7 @@ export default class Bullet extends GameObject {
                 this.removeBehavior("autoMove");
                 this.falling = true;
             } else {
+                if (mario.lives === 2 && !music.paused) mushroomMarioHitSound.play();
                 mario.lives -= 1;
                 mario.invincible.start();
                 mario.invinciblity = true;
@@ -42,6 +45,12 @@ export default class Bullet extends GameObject {
         }
     }
     draw(ctx, spriteSheets, camera) {
+        // ctx.strokeStyle = 'red';
+        // ctx.beginPath();
+        // ctx.rect(this.pos.x - camera.pos.x, 
+        //     this.pos.y - camera.pos.y,
+        //     this.width, this.height);
+        // ctx.stroke();
         spriteSheets.get("bullet").draw(this.frame, ctx, this.pos.x - camera.pos.x, this.pos.y - camera.pos.y)
     }
 }

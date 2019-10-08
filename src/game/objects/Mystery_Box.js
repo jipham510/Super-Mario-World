@@ -1,6 +1,8 @@
 import GameObject from './Game_Object';
 import BoxJump from '../behaviors/Box_Jump';
 import Mushroom from './Mushroom';
+import { itemEmergingSound, stomp2Sound,music } from '../../files';
+
 export default class MysteryBox extends GameObject {
     constructor(x,y, tile) {
         super();
@@ -21,6 +23,7 @@ export default class MysteryBox extends GameObject {
     collides(mario) {
         if (mario.vel.y < 0) {
             if (mario.pos.y < this.getBottom()) {
+                if (!music.paused) stomp2Sound.play();
                 mario.pos.y = this.getBottom();
                 mario.vel.y = 0;
                 mario.jump.cancel();
@@ -45,7 +48,9 @@ export default class MysteryBox extends GameObject {
     setToTile(objects){
         this.tile.name = "singlePlatform";
         this.tile.type = "ground";
-        const mushroom = new Mushroom(this.pos.x, this.pos.y)
+        
+        const mushroom = new Mushroom(this.pos.x, this.pos.y);
+        if (!music.paused) itemEmergingSound.play();
         objects.add(mushroom);
     }
 

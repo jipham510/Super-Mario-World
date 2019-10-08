@@ -129,6 +129,8 @@ function () {
       this.mapRightMove("KeyD");
       this.mapLeftMove("ArrowLeft");
       this.mapLeftMove("KeyA");
+      this.mapCrouch("ArrowDown");
+      this.mapCrouch("KeyS");
     }
   }, {
     key: "mapRightMove",
@@ -144,6 +146,15 @@ function () {
       var mario = this.gameMain.game.mario;
       this.map(input, function (keyState) {
         mario.walk.leftDirection = -keyState;
+      });
+    }
+  }, {
+    key: "mapCrouch",
+    value: function mapCrouch(input) {
+      var mario = this.gameMain.game.mario;
+      this.map(input, function (keyState) {
+        console.log(keyState);
+        mario.crouch.stationaryVel = keyState === 1 ? 0 : 1;
       });
     }
   }, {
@@ -291,6 +302,72 @@ function () {
 
 /***/ }),
 
+/***/ "./src/audio/bulletLaunched.mp3":
+/*!**************************************!*\
+  !*** ./src/audio/bulletLaunched.mp3 ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "files/bulletLaunched.mp3";
+
+/***/ }),
+
+/***/ "./src/audio/coin.mp3":
+/*!****************************!*\
+  !*** ./src/audio/coin.mp3 ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "files/coin.mp3";
+
+/***/ }),
+
+/***/ "./src/audio/itemEmerging.mp3":
+/*!************************************!*\
+  !*** ./src/audio/itemEmerging.mp3 ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "files/itemEmerging.mp3";
+
+/***/ }),
+
+/***/ "./src/audio/jump.mp3":
+/*!****************************!*\
+  !*** ./src/audio/jump.mp3 ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "files/jump.mp3";
+
+/***/ }),
+
+/***/ "./src/audio/marioLose.mp3":
+/*!*********************************!*\
+  !*** ./src/audio/marioLose.mp3 ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "files/marioLose.mp3";
+
+/***/ }),
+
+/***/ "./src/audio/mushroomMarioHit.mp3":
+/*!****************************************!*\
+  !*** ./src/audio/mushroomMarioHit.mp3 ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "files/mushroomMarioHit.mp3";
+
+/***/ }),
+
 /***/ "./src/audio/music.mp3":
 /*!*****************************!*\
   !*** ./src/audio/music.mp3 ***!
@@ -299,6 +376,39 @@ function () {
 /***/ (function(module, exports) {
 
 module.exports = "files/music.mp3";
+
+/***/ }),
+
+/***/ "./src/audio/powerUp.mp3":
+/*!*******************************!*\
+  !*** ./src/audio/powerUp.mp3 ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "files/powerUp.mp3";
+
+/***/ }),
+
+/***/ "./src/audio/stomp1.mp3":
+/*!******************************!*\
+  !*** ./src/audio/stomp1.mp3 ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "files/stomp1.mp3";
+
+/***/ }),
+
+/***/ "./src/audio/stomp2.mp3":
+/*!******************************!*\
+  !*** ./src/audio/stomp2.mp3 ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "files/stomp2.mp3";
 
 /***/ }),
 
@@ -843,6 +953,15 @@ __webpack_require__.r(__webpack_exports__);
       "name": "transparent",
       "x": 0,
       "y": 0
+    }, {
+      "name": "fallingRight",
+      "x": 247,
+      "y": 116
+    }, {
+      "name": "fallingLeft",
+      "type": "flip",
+      "x": 247,
+      "y": 116
     }]
   }]
 });
@@ -1015,12 +1134,12 @@ __webpack_require__.r(__webpack_exports__);
   }, {
     "name": "bullet",
     "x": 5100,
-    "y": 50,
+    "y": 20,
     "trigger": 4700
   }, {
     "name": "bullet",
     "x": 4800,
-    "y": 50,
+    "y": 20,
     "trigger": 4400
   }]
 });
@@ -1031,16 +1150,25 @@ __webpack_require__.r(__webpack_exports__);
 /*!**********************!*\
   !*** ./src/files.js ***!
   \**********************/
-/*! exports provided: backgroundImage, thanksImage, titleScreenImage, backgroundFirstLayerImage, music, marioImage, enemiesImage */
+/*! exports provided: music, jumpSound, bulletLaunchedSound, coinSound, marioLoseSound, stomp1Sound, stomp2Sound, itemEmergingSound, mushroomMarioHitSound, powerUpSound, backgroundImage, thanksImage, titleScreenImage, backgroundFirstLayerImage, marioImage, enemiesImage */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "music", function() { return music; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "jumpSound", function() { return jumpSound; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "bulletLaunchedSound", function() { return bulletLaunchedSound; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "coinSound", function() { return coinSound; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "marioLoseSound", function() { return marioLoseSound; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "stomp1Sound", function() { return stomp1Sound; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "stomp2Sound", function() { return stomp2Sound; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "itemEmergingSound", function() { return itemEmergingSound; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mushroomMarioHitSound", function() { return mushroomMarioHitSound; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "powerUpSound", function() { return powerUpSound; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "backgroundImage", function() { return backgroundImage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "thanksImage", function() { return thanksImage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "titleScreenImage", function() { return titleScreenImage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "backgroundFirstLayerImage", function() { return backgroundFirstLayerImage; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "music", function() { return music; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "marioImage", function() { return marioImage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "enemiesImage", function() { return enemiesImage; });
 /* harmony import */ var _imgs_background_assets_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./imgs/background_assets.png */ "./src/imgs/background_assets.png");
@@ -1057,6 +1185,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _imgs_super_mario_world_png__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_imgs_super_mario_world_png__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _audio_music_mp3__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./audio/music.mp3 */ "./src/audio/music.mp3");
 /* harmony import */ var _audio_music_mp3__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_audio_music_mp3__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _audio_jump_mp3__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./audio/jump.mp3 */ "./src/audio/jump.mp3");
+/* harmony import */ var _audio_jump_mp3__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_audio_jump_mp3__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _audio_bulletLaunched_mp3__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./audio/bulletLaunched.mp3 */ "./src/audio/bulletLaunched.mp3");
+/* harmony import */ var _audio_bulletLaunched_mp3__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_audio_bulletLaunched_mp3__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _audio_coin_mp3__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./audio/coin.mp3 */ "./src/audio/coin.mp3");
+/* harmony import */ var _audio_coin_mp3__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_audio_coin_mp3__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _audio_marioLose_mp3__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./audio/marioLose.mp3 */ "./src/audio/marioLose.mp3");
+/* harmony import */ var _audio_marioLose_mp3__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_audio_marioLose_mp3__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _audio_stomp1_mp3__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./audio/stomp1.mp3 */ "./src/audio/stomp1.mp3");
+/* harmony import */ var _audio_stomp1_mp3__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_audio_stomp1_mp3__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _audio_stomp2_mp3__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./audio/stomp2.mp3 */ "./src/audio/stomp2.mp3");
+/* harmony import */ var _audio_stomp2_mp3__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_audio_stomp2_mp3__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var _audio_itemEmerging_mp3__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./audio/itemEmerging.mp3 */ "./src/audio/itemEmerging.mp3");
+/* harmony import */ var _audio_itemEmerging_mp3__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_audio_itemEmerging_mp3__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var _audio_mushroomMarioHit_mp3__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./audio/mushroomMarioHit.mp3 */ "./src/audio/mushroomMarioHit.mp3");
+/* harmony import */ var _audio_mushroomMarioHit_mp3__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_audio_mushroomMarioHit_mp3__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var _audio_powerUp_mp3__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./audio/powerUp.mp3 */ "./src/audio/powerUp.mp3");
+/* harmony import */ var _audio_powerUp_mp3__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_audio_powerUp_mp3__WEBPACK_IMPORTED_MODULE_15__);
 
 
 
@@ -1064,6 +1210,26 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+var music = new Audio(_audio_music_mp3__WEBPACK_IMPORTED_MODULE_6___default.a);
+music.loop = true;
+var jumpSound = new Audio(_audio_jump_mp3__WEBPACK_IMPORTED_MODULE_7___default.a);
+var bulletLaunchedSound = new Audio(_audio_bulletLaunched_mp3__WEBPACK_IMPORTED_MODULE_8___default.a);
+var coinSound = new Audio(_audio_coin_mp3__WEBPACK_IMPORTED_MODULE_9___default.a);
+var marioLoseSound = new Audio(_audio_marioLose_mp3__WEBPACK_IMPORTED_MODULE_10___default.a);
+var stomp1Sound = new Audio(_audio_stomp1_mp3__WEBPACK_IMPORTED_MODULE_11___default.a);
+var stomp2Sound = new Audio(_audio_stomp2_mp3__WEBPACK_IMPORTED_MODULE_12___default.a);
+var itemEmergingSound = new Audio(_audio_itemEmerging_mp3__WEBPACK_IMPORTED_MODULE_13___default.a);
+var mushroomMarioHitSound = new Audio(_audio_mushroomMarioHit_mp3__WEBPACK_IMPORTED_MODULE_14___default.a);
+var powerUpSound = new Audio(_audio_powerUp_mp3__WEBPACK_IMPORTED_MODULE_15___default.a);
 var backgroundImage = new Image();
 backgroundImage.src = _imgs_background_assets_png__WEBPACK_IMPORTED_MODULE_0___default.a;
 var thanksImage = new Image();
@@ -1072,7 +1238,6 @@ var titleScreenImage = new Image();
 titleScreenImage.src = _imgs_super_mario_world_png__WEBPACK_IMPORTED_MODULE_5___default.a;
 var backgroundFirstLayerImage = new Image();
 backgroundFirstLayerImage.src = _imgs_background_png__WEBPACK_IMPORTED_MODULE_3___default.a;
-var music = new Audio(_audio_music_mp3__WEBPACK_IMPORTED_MODULE_6___default.a);
 var marioImage = new Image();
 marioImage.src = _imgs_mario_png__WEBPACK_IMPORTED_MODULE_1___default.a;
 var enemiesImage = new Image();
@@ -1735,6 +1900,67 @@ function (_Behavior) {
 
 /***/ }),
 
+/***/ "./src/game/behaviors/Crouch.js":
+/*!**************************************!*\
+  !*** ./src/game/behaviors/Crouch.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Crouch; });
+/* harmony import */ var _Behavior__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Behavior */ "./src/game/behaviors/Behavior.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var Crouch =
+/*#__PURE__*/
+function (_Behavior) {
+  _inherits(Crouch, _Behavior);
+
+  function Crouch() {
+    var _this;
+
+    _classCallCheck(this, Crouch);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Crouch).call(this, 'crouch'));
+    _this.stationaryVel = 1;
+    return _this;
+  }
+
+  _createClass(Crouch, [{
+    key: "update",
+    value: function update(mario, deltaTime) {
+      // mario.status = "crouching";
+      mario.vel.x = mario.vel.x * this.stationaryVel;
+    }
+  }]);
+
+  return Crouch;
+}(_Behavior__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+
+
+/***/ }),
+
 /***/ "./src/game/behaviors/Ignore_Gravity.js":
 /*!**********************************************!*\
   !*** ./src/game/behaviors/Ignore_Gravity.js ***!
@@ -1882,6 +2108,7 @@ function (_Behavior) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Jump; });
 /* harmony import */ var _Behavior__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Behavior */ "./src/game/behaviors/Behavior.js");
+/* harmony import */ var _files__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../files */ "./src/files.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1899,6 +2126,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -1923,7 +2151,10 @@ function (_Behavior) {
   _createClass(Jump, [{
     key: "start",
     value: function start() {
-      if (this.isGrounded) this.duration = this.maxDuration;
+      if (this.isGrounded) {
+        this.duration = this.maxDuration;
+        if (!_files__WEBPACK_IMPORTED_MODULE_1__["music"].paused) _files__WEBPACK_IMPORTED_MODULE_1__["jumpSound"].play();
+      }
     }
   }, {
     key: "cancel",
@@ -2033,6 +2264,7 @@ function (_Behavior) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SpawnEnemies; });
 /* harmony import */ var _Behavior__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Behavior */ "./src/game/behaviors/Behavior.js");
+/* harmony import */ var _files__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../files */ "./src/files.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2050,6 +2282,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -2075,7 +2308,11 @@ function (_Behavior) {
       var _this2 = this;
 
       this.enemies.forEach(function (enemy) {
-        if (mario.pos.x >= enemy.trigger) _this2.spawnEnemy(enemy);
+        if (mario.pos.x >= enemy.trigger) {
+          _this2.spawnEnemy(enemy);
+
+          if (enemy.isBullet && !_files__WEBPACK_IMPORTED_MODULE_1__["music"].paused) _files__WEBPACK_IMPORTED_MODULE_1__["bulletLaunchedSound"].play();
+        }
       });
     }
   }, {
@@ -2092,9 +2329,7 @@ function (_Behavior) {
   }]);
 
   return SpawnEnemies;
-}(_Behavior__WEBPACK_IMPORTED_MODULE_0__["default"]); // this.objects.add(dragon);
-// this.objects.add(bullet);
-
+}(_Behavior__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
 
 
@@ -2247,6 +2482,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Game_Object__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Game_Object */ "./src/game/objects/Game_Object.js");
 /* harmony import */ var _behaviors_Ignore_Gravity__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../behaviors/Ignore_Gravity */ "./src/game/behaviors/Ignore_Gravity.js");
 /* harmony import */ var _behaviors_Auto_Move__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../behaviors/Auto_Move */ "./src/game/behaviors/Auto_Move.js");
+/* harmony import */ var _files__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../files */ "./src/files.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2269,6 +2505,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var Bullet =
 /*#__PURE__*/
 function (_GameObject) {
@@ -2280,11 +2517,12 @@ function (_GameObject) {
     _classCallCheck(this, Bullet);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Bullet).call(this));
+    _this.isBullet = true;
 
     _this.pos.set(xSpawn, ySpawn);
 
     _this.initialPos = xSpawn;
-    _this.width = 140;
+    _this.width = 130;
     _this.height = 128;
 
     _this.addBehavior(new _behaviors_Ignore_Gravity__WEBPACK_IMPORTED_MODULE_1__["default"]());
@@ -2294,7 +2532,7 @@ function (_GameObject) {
     _this.frame = "bulletLeft";
     _this.status = "ignoreCollisions";
     _this.falling = false;
-    _this.speed = 10000;
+    _this.speed = 8000;
     return _this;
   }
 
@@ -2315,6 +2553,7 @@ function (_GameObject) {
 
       if (!this.falling) {
         if (mario.vel.y > this.vel.y && mario.getBottom() > this.getTop() && mario.getLastBottom() <= this.getTop()) {
+          if (!_files__WEBPACK_IMPORTED_MODULE_3__["music"].paused) _files__WEBPACK_IMPORTED_MODULE_3__["stomp2Sound"].play();
           mario.stomp.bounce();
           this.vel.y += 40;
           this.vel.x = 0;
@@ -2322,6 +2561,7 @@ function (_GameObject) {
           this.removeBehavior("autoMove");
           this.falling = true;
         } else {
+          if (mario.lives === 2 && !_files__WEBPACK_IMPORTED_MODULE_3__["music"].paused) _files__WEBPACK_IMPORTED_MODULE_3__["mushroomMarioHitSound"].play();
           mario.lives -= 1;
           mario.invincible.start();
           mario.invinciblity = true;
@@ -2331,6 +2571,12 @@ function (_GameObject) {
   }, {
     key: "draw",
     value: function draw(ctx, spriteSheets, camera) {
+      // ctx.strokeStyle = 'red';
+      // ctx.beginPath();
+      // ctx.rect(this.pos.x - camera.pos.x, 
+      //     this.pos.y - camera.pos.y,
+      //     this.width, this.height);
+      // ctx.stroke();
       spriteSheets.get("bullet").draw(this.frame, ctx, this.pos.x - camera.pos.x, this.pos.y - camera.pos.y);
     }
   }]);
@@ -2354,6 +2600,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Dragon; });
 /* harmony import */ var _Game_Object__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Game_Object */ "./src/game/objects/Game_Object.js");
 /* harmony import */ var _behaviors_Auto_Move__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../behaviors/Auto_Move */ "./src/game/behaviors/Auto_Move.js");
+/* harmony import */ var _files__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../files */ "./src/files.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2371,6 +2618,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -2415,7 +2663,9 @@ function (_GameObject) {
         if (mario.vel.y > this.vel.y) {
           mario.stomp.bounce();
           this.stompedCount += 1;
+          if (!_files__WEBPACK_IMPORTED_MODULE_2__["music"].paused) this.stompedCount === 1 ? _files__WEBPACK_IMPORTED_MODULE_2__["stomp1Sound"].play() : _files__WEBPACK_IMPORTED_MODULE_2__["stomp2Sound"].play();
         } else {
+          if (mario.lives === 2 && !_files__WEBPACK_IMPORTED_MODULE_2__["music"].paused) _files__WEBPACK_IMPORTED_MODULE_2__["mushroomMarioHitSound"].play();
           mario.lives -= 1;
           mario.invincible.start();
           mario.invinciblity = true;
@@ -2599,6 +2849,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _behaviors_Walk__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../behaviors/Walk */ "./src/game/behaviors/Walk.js");
 /* harmony import */ var _behaviors_Stomp__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../behaviors/Stomp */ "./src/game/behaviors/Stomp.js");
 /* harmony import */ var _behaviors_Invincible__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../behaviors/Invincible */ "./src/game/behaviors/Invincible.js");
+/* harmony import */ var _behaviors_Crouch__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../behaviors/Crouch */ "./src/game/behaviors/Crouch.js");
+/* harmony import */ var _files__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../files */ "./src/files.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2616,6 +2868,8 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
 
 
 
@@ -2652,6 +2906,8 @@ function (_GameObject) {
 
     _this.addBehavior(new _behaviors_Invincible__WEBPACK_IMPORTED_MODULE_5__["default"]());
 
+    _this.addBehavior(new _behaviors_Crouch__WEBPACK_IMPORTED_MODULE_6__["default"]());
+
     _this.status = "idle"; //other statuses are walking, jumping 
 
     _this.mario = "regularMario";
@@ -2686,6 +2942,7 @@ function (_GameObject) {
         this.status = "ignoreCollisions";
         if (this.status === "ignoreCollisions" && this.frame !== "lose") this.JumpOnLose.start();
         this.frame = "lose";
+        if (!_files__WEBPACK_IMPORTED_MODULE_7__["music"].paused) _files__WEBPACK_IMPORTED_MODULE_7__["marioLoseSound"].play();
         return;
       } else if (this.lives === 1) {
         this.width = 29;
@@ -2807,6 +3064,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Mushroom; });
 /* harmony import */ var _Game_Object__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Game_Object */ "./src/game/objects/Game_Object.js");
 /* harmony import */ var _behaviors_Auto_Move__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../behaviors/Auto_Move */ "./src/game/behaviors/Auto_Move.js");
+/* harmony import */ var _files__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../files */ "./src/files.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2824,6 +3082,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -2874,6 +3133,7 @@ function (_GameObject) {
     value: function decideStatus(totalTime, objects) {
       if (this.status === "spawning") {// this.frame = this.animationFrame(this.mushroomSpawn, totalTime, 0.20);
       } else if (this.status === "delete") {
+        if (!_files__WEBPACK_IMPORTED_MODULE_2__["music"].paused) _files__WEBPACK_IMPORTED_MODULE_2__["powerUpSound"].play();
         objects["delete"](this);
       }
     }
@@ -2904,6 +3164,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Game_Object__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Game_Object */ "./src/game/objects/Game_Object.js");
 /* harmony import */ var _behaviors_Box_Jump__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../behaviors/Box_Jump */ "./src/game/behaviors/Box_Jump.js");
 /* harmony import */ var _Mushroom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Mushroom */ "./src/game/objects/Mushroom.js");
+/* harmony import */ var _files__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../files */ "./src/files.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2921,6 +3182,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -2959,6 +3221,7 @@ function (_GameObject) {
     value: function collides(mario) {
       if (mario.vel.y < 0) {
         if (mario.pos.y < this.getBottom()) {
+          if (!_files__WEBPACK_IMPORTED_MODULE_3__["music"].paused) _files__WEBPACK_IMPORTED_MODULE_3__["stomp2Sound"].play();
           mario.pos.y = this.getBottom();
           mario.vel.y = 0;
           mario.jump.cancel();
@@ -2992,6 +3255,7 @@ function (_GameObject) {
       this.tile.name = "singlePlatform";
       this.tile.type = "ground";
       var mushroom = new _Mushroom__WEBPACK_IMPORTED_MODULE_2__["default"](this.pos.x, this.pos.y);
+      if (!_files__WEBPACK_IMPORTED_MODULE_3__["music"].paused) _files__WEBPACK_IMPORTED_MODULE_3__["itemEmergingSound"].play();
       objects.add(mushroom);
     }
   }, {
