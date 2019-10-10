@@ -30,7 +30,15 @@ export default class Dragon extends GameObject {
                 
                 mario.stomp.bounce();
                 this.stompedCount += 1;
-                if (!music.paused) (this.stompedCount === 1) ? stomp1Sound.play() : stomp2Sound.play();
+                if (!music.paused) {
+                    if ((this.stompedCount === 1)) {
+                        stomp1Sound.currentTime = 0;
+                        stomp1Sound.play();
+                    } else {
+                        stomp2Sound.currentTime = 0;
+                        stomp2Sound.play();
+                    }
+                }
 
             } else {
                 if (mario.lives === 2 && !music.paused) mushroomMarioHitSound.play();

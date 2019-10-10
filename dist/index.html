@@ -9,31 +9,47 @@
     </head>
 
     <body>
-        <h1> Super Mario World JS</h1>
-            <div class="instructions">
-                <h2>
-                    Use Arrow Keys or WASD to move
-                </h2>
-            </div>
-
-            <div class="canvasScreen">
-                <canvas id="canvas"></canvas>
-                <div class="btn sound">
-                    Play with Sound
-                </div>
-                <div class="btn noSound">
-                    Play without Sound
+        <div class="instructions">
+            <div class="heading">
+                <h1> Super Mario World JS</h1>
+                <div class="icons">
+                    <a href="https://www.linkedin.com/in/jimmy-pham-38a208139/">
+                        <i class="fab fa-linkedin fa-2x"></i>
+                    </a>
+                    <a href="https://github.com/jipham510/Super-Mario-World">
+                        <i class="fab fa-github fa-2x"></i>
+                    </a>
                 </div>
             </div>
-            <div class="icons">
+            <h2>
+                <span class="instructionHighlight">
+                    <i class="fas fa-arrow-up"></i>
+                    <i class="fas fa-arrow-left"></i>
+                    <i class="fas fa-arrow-down"></i>
+                    <i class="fas fa-arrow-right"></i>
 
-                <a href="https://www.linkedin.com/in/jimmy-pham-38a208139/">
-                    <i class="fab fa-linkedin fa-2x"></i>
-                </a>
-                <a href="https://github.com/jipham510/Super-Mario-World">
-                    <i class="fab fa-github fa-2x"></i>
-                </a>
+                </span>
+                or 
+                <span class="instructionHighlight WASD">
+                    WASD  
+                </span>
+
+                to move. 
+                Hop on top of any enememy to damage them. Expand/Shrink screen through the top right corner.
+            </h2>
+        </div>
+
+        <div class="canvasScreen">
+            <canvas id="canvas"></canvas>
+            <div class="btn sound">
+                Play with Sound
             </div>
+            <div class="btn noSound">
+                Play without Sound
+            </div>
+            <div class="expand fas fa-expand-arrows-alt">
+            </div>
+        </div>
 
         <script type="application/javascript" src="./bundle.js"></script>
     </body>

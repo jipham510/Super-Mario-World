@@ -12,13 +12,17 @@ export default class Jump extends Behavior {
     start() {
         if(this.isGrounded) {
             this.duration = this.maxDuration;
-            if (!music.paused )jumpSound.play();
+            if (!music.paused ){
+                jumpSound.currentTime = 0;
+                jumpSound.play();
+            }
         }
     }
     cancel() {
         this.isGrounded = false;
         this.duration = 0;
     }
+
     update(mario, deltaTime) {
         if (mario.frame === "lose") return;
 

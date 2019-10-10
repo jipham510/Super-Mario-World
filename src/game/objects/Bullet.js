@@ -29,7 +29,10 @@ export default class Bullet extends GameObject {
         if (mario.invinciblity) return;
         if (!this.falling) {
             if (mario.vel.y > this.vel.y &&  mario.getBottom() > this.getTop() && mario.getLastBottom() <= this.getTop() ) {
-                if (!music.paused) stomp2Sound.play();
+                if (!music.paused) {
+                    stomp2Sound.currentTime = 0;
+                    stomp2Sound.play();
+                }
                 mario.stomp.bounce();
                 this.vel.y += 40;
                 this.vel.x = 0;

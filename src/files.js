@@ -2,8 +2,11 @@ import backgroundAssets from "./imgs/background_assets.png";
 import mario from "./imgs/mario.png";
 import enemies from "./imgs/enemies.png";
 import backgroundFirstLayer from "./imgs/background.png";
+import pageBackground from "./imgs/pageBackground.png";
 import thanks from "./imgs/thank_you.png";
 import titleScreen from "./imgs/super-mario-world.png";
+
+
 import musicAudio from "./audio/music.mp3";
 import jumpAudio from "./audio/jump.mp3";
 import bulletLaunchedAudio from "./audio/bulletLaunched.mp3";
@@ -39,6 +42,8 @@ titleScreenImage.src = titleScreen;
 
 export const backgroundFirstLayerImage = new Image();
 backgroundFirstLayerImage.src = backgroundFirstLayer;
+
+
 
 
 export const marioImage = new Image();

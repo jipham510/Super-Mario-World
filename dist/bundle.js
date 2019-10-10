@@ -1179,30 +1179,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _imgs_enemies_png__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_imgs_enemies_png__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _imgs_background_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./imgs/background.png */ "./src/imgs/background.png");
 /* harmony import */ var _imgs_background_png__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_imgs_background_png__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _imgs_thank_you_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./imgs/thank_you.png */ "./src/imgs/thank_you.png");
-/* harmony import */ var _imgs_thank_you_png__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_imgs_thank_you_png__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _imgs_super_mario_world_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./imgs/super-mario-world.png */ "./src/imgs/super-mario-world.png");
-/* harmony import */ var _imgs_super_mario_world_png__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_imgs_super_mario_world_png__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _audio_music_mp3__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./audio/music.mp3 */ "./src/audio/music.mp3");
-/* harmony import */ var _audio_music_mp3__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_audio_music_mp3__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _audio_jump_mp3__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./audio/jump.mp3 */ "./src/audio/jump.mp3");
-/* harmony import */ var _audio_jump_mp3__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_audio_jump_mp3__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _audio_bulletLaunched_mp3__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./audio/bulletLaunched.mp3 */ "./src/audio/bulletLaunched.mp3");
-/* harmony import */ var _audio_bulletLaunched_mp3__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_audio_bulletLaunched_mp3__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _audio_coin_mp3__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./audio/coin.mp3 */ "./src/audio/coin.mp3");
-/* harmony import */ var _audio_coin_mp3__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_audio_coin_mp3__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _audio_marioLose_mp3__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./audio/marioLose.mp3 */ "./src/audio/marioLose.mp3");
-/* harmony import */ var _audio_marioLose_mp3__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_audio_marioLose_mp3__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _audio_stomp1_mp3__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./audio/stomp1.mp3 */ "./src/audio/stomp1.mp3");
-/* harmony import */ var _audio_stomp1_mp3__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_audio_stomp1_mp3__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var _audio_stomp2_mp3__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./audio/stomp2.mp3 */ "./src/audio/stomp2.mp3");
-/* harmony import */ var _audio_stomp2_mp3__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_audio_stomp2_mp3__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var _audio_itemEmerging_mp3__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./audio/itemEmerging.mp3 */ "./src/audio/itemEmerging.mp3");
-/* harmony import */ var _audio_itemEmerging_mp3__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_audio_itemEmerging_mp3__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var _audio_mushroomMarioHit_mp3__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./audio/mushroomMarioHit.mp3 */ "./src/audio/mushroomMarioHit.mp3");
-/* harmony import */ var _audio_mushroomMarioHit_mp3__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_audio_mushroomMarioHit_mp3__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var _audio_powerUp_mp3__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./audio/powerUp.mp3 */ "./src/audio/powerUp.mp3");
-/* harmony import */ var _audio_powerUp_mp3__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_audio_powerUp_mp3__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var _imgs_pageBackground_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./imgs/pageBackground.png */ "./src/imgs/pageBackground.png");
+/* harmony import */ var _imgs_pageBackground_png__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_imgs_pageBackground_png__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _imgs_thank_you_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./imgs/thank_you.png */ "./src/imgs/thank_you.png");
+/* harmony import */ var _imgs_thank_you_png__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_imgs_thank_you_png__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _imgs_super_mario_world_png__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./imgs/super-mario-world.png */ "./src/imgs/super-mario-world.png");
+/* harmony import */ var _imgs_super_mario_world_png__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_imgs_super_mario_world_png__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _audio_music_mp3__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./audio/music.mp3 */ "./src/audio/music.mp3");
+/* harmony import */ var _audio_music_mp3__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_audio_music_mp3__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _audio_jump_mp3__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./audio/jump.mp3 */ "./src/audio/jump.mp3");
+/* harmony import */ var _audio_jump_mp3__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_audio_jump_mp3__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _audio_bulletLaunched_mp3__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./audio/bulletLaunched.mp3 */ "./src/audio/bulletLaunched.mp3");
+/* harmony import */ var _audio_bulletLaunched_mp3__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_audio_bulletLaunched_mp3__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _audio_coin_mp3__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./audio/coin.mp3 */ "./src/audio/coin.mp3");
+/* harmony import */ var _audio_coin_mp3__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_audio_coin_mp3__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _audio_marioLose_mp3__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./audio/marioLose.mp3 */ "./src/audio/marioLose.mp3");
+/* harmony import */ var _audio_marioLose_mp3__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_audio_marioLose_mp3__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _audio_stomp1_mp3__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./audio/stomp1.mp3 */ "./src/audio/stomp1.mp3");
+/* harmony import */ var _audio_stomp1_mp3__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_audio_stomp1_mp3__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var _audio_stomp2_mp3__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./audio/stomp2.mp3 */ "./src/audio/stomp2.mp3");
+/* harmony import */ var _audio_stomp2_mp3__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_audio_stomp2_mp3__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var _audio_itemEmerging_mp3__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./audio/itemEmerging.mp3 */ "./src/audio/itemEmerging.mp3");
+/* harmony import */ var _audio_itemEmerging_mp3__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_audio_itemEmerging_mp3__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var _audio_mushroomMarioHit_mp3__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./audio/mushroomMarioHit.mp3 */ "./src/audio/mushroomMarioHit.mp3");
+/* harmony import */ var _audio_mushroomMarioHit_mp3__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_audio_mushroomMarioHit_mp3__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var _audio_powerUp_mp3__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./audio/powerUp.mp3 */ "./src/audio/powerUp.mp3");
+/* harmony import */ var _audio_powerUp_mp3__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(_audio_powerUp_mp3__WEBPACK_IMPORTED_MODULE_16__);
 
 
 
@@ -1219,23 +1221,24 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var music = new Audio(_audio_music_mp3__WEBPACK_IMPORTED_MODULE_6___default.a);
+
+var music = new Audio(_audio_music_mp3__WEBPACK_IMPORTED_MODULE_7___default.a);
 music.loop = true;
-var jumpSound = new Audio(_audio_jump_mp3__WEBPACK_IMPORTED_MODULE_7___default.a);
-var bulletLaunchedSound = new Audio(_audio_bulletLaunched_mp3__WEBPACK_IMPORTED_MODULE_8___default.a);
-var coinSound = new Audio(_audio_coin_mp3__WEBPACK_IMPORTED_MODULE_9___default.a);
-var marioLoseSound = new Audio(_audio_marioLose_mp3__WEBPACK_IMPORTED_MODULE_10___default.a);
-var stomp1Sound = new Audio(_audio_stomp1_mp3__WEBPACK_IMPORTED_MODULE_11___default.a);
-var stomp2Sound = new Audio(_audio_stomp2_mp3__WEBPACK_IMPORTED_MODULE_12___default.a);
-var itemEmergingSound = new Audio(_audio_itemEmerging_mp3__WEBPACK_IMPORTED_MODULE_13___default.a);
-var mushroomMarioHitSound = new Audio(_audio_mushroomMarioHit_mp3__WEBPACK_IMPORTED_MODULE_14___default.a);
-var powerUpSound = new Audio(_audio_powerUp_mp3__WEBPACK_IMPORTED_MODULE_15___default.a);
+var jumpSound = new Audio(_audio_jump_mp3__WEBPACK_IMPORTED_MODULE_8___default.a);
+var bulletLaunchedSound = new Audio(_audio_bulletLaunched_mp3__WEBPACK_IMPORTED_MODULE_9___default.a);
+var coinSound = new Audio(_audio_coin_mp3__WEBPACK_IMPORTED_MODULE_10___default.a);
+var marioLoseSound = new Audio(_audio_marioLose_mp3__WEBPACK_IMPORTED_MODULE_11___default.a);
+var stomp1Sound = new Audio(_audio_stomp1_mp3__WEBPACK_IMPORTED_MODULE_12___default.a);
+var stomp2Sound = new Audio(_audio_stomp2_mp3__WEBPACK_IMPORTED_MODULE_13___default.a);
+var itemEmergingSound = new Audio(_audio_itemEmerging_mp3__WEBPACK_IMPORTED_MODULE_14___default.a);
+var mushroomMarioHitSound = new Audio(_audio_mushroomMarioHit_mp3__WEBPACK_IMPORTED_MODULE_15___default.a);
+var powerUpSound = new Audio(_audio_powerUp_mp3__WEBPACK_IMPORTED_MODULE_16___default.a);
 var backgroundImage = new Image();
 backgroundImage.src = _imgs_background_assets_png__WEBPACK_IMPORTED_MODULE_0___default.a;
 var thanksImage = new Image();
-thanksImage.src = _imgs_thank_you_png__WEBPACK_IMPORTED_MODULE_4___default.a;
+thanksImage.src = _imgs_thank_you_png__WEBPACK_IMPORTED_MODULE_5___default.a;
 var titleScreenImage = new Image();
-titleScreenImage.src = _imgs_super_mario_world_png__WEBPACK_IMPORTED_MODULE_5___default.a;
+titleScreenImage.src = _imgs_super_mario_world_png__WEBPACK_IMPORTED_MODULE_6___default.a;
 var backgroundFirstLayerImage = new Image();
 backgroundFirstLayerImage.src = _imgs_background_png__WEBPACK_IMPORTED_MODULE_3___default.a;
 var marioImage = new Image();
@@ -2153,7 +2156,11 @@ function (_Behavior) {
     value: function start() {
       if (this.isGrounded) {
         this.duration = this.maxDuration;
-        if (!_files__WEBPACK_IMPORTED_MODULE_1__["music"].paused) _files__WEBPACK_IMPORTED_MODULE_1__["jumpSound"].play();
+
+        if (!_files__WEBPACK_IMPORTED_MODULE_1__["music"].paused) {
+          _files__WEBPACK_IMPORTED_MODULE_1__["jumpSound"].currentTime = 0;
+          _files__WEBPACK_IMPORTED_MODULE_1__["jumpSound"].play();
+        }
       }
     }
   }, {
@@ -2553,7 +2560,11 @@ function (_GameObject) {
 
       if (!this.falling) {
         if (mario.vel.y > this.vel.y && mario.getBottom() > this.getTop() && mario.getLastBottom() <= this.getTop()) {
-          if (!_files__WEBPACK_IMPORTED_MODULE_3__["music"].paused) _files__WEBPACK_IMPORTED_MODULE_3__["stomp2Sound"].play();
+          if (!_files__WEBPACK_IMPORTED_MODULE_3__["music"].paused) {
+            _files__WEBPACK_IMPORTED_MODULE_3__["stomp2Sound"].currentTime = 0;
+            _files__WEBPACK_IMPORTED_MODULE_3__["stomp2Sound"].play();
+          }
+
           mario.stomp.bounce();
           this.vel.y += 40;
           this.vel.x = 0;
@@ -2663,7 +2674,16 @@ function (_GameObject) {
         if (mario.vel.y > this.vel.y) {
           mario.stomp.bounce();
           this.stompedCount += 1;
-          if (!_files__WEBPACK_IMPORTED_MODULE_2__["music"].paused) this.stompedCount === 1 ? _files__WEBPACK_IMPORTED_MODULE_2__["stomp1Sound"].play() : _files__WEBPACK_IMPORTED_MODULE_2__["stomp2Sound"].play();
+
+          if (!_files__WEBPACK_IMPORTED_MODULE_2__["music"].paused) {
+            if (this.stompedCount === 1) {
+              _files__WEBPACK_IMPORTED_MODULE_2__["stomp1Sound"].currentTime = 0;
+              _files__WEBPACK_IMPORTED_MODULE_2__["stomp1Sound"].play();
+            } else {
+              _files__WEBPACK_IMPORTED_MODULE_2__["stomp2Sound"].currentTime = 0;
+              _files__WEBPACK_IMPORTED_MODULE_2__["stomp2Sound"].play();
+            }
+          }
         } else {
           if (mario.lives === 2 && !_files__WEBPACK_IMPORTED_MODULE_2__["music"].paused) _files__WEBPACK_IMPORTED_MODULE_2__["mushroomMarioHitSound"].play();
           mario.lives -= 1;
@@ -3221,7 +3241,11 @@ function (_GameObject) {
     value: function collides(mario) {
       if (mario.vel.y < 0) {
         if (mario.pos.y < this.getBottom()) {
-          if (!_files__WEBPACK_IMPORTED_MODULE_3__["music"].paused) _files__WEBPACK_IMPORTED_MODULE_3__["stomp2Sound"].play();
+          if (!_files__WEBPACK_IMPORTED_MODULE_3__["music"].paused) {
+            _files__WEBPACK_IMPORTED_MODULE_3__["stomp2Sound"].currentTime = 0;
+            _files__WEBPACK_IMPORTED_MODULE_3__["stomp2Sound"].play();
+          }
+
           mario.pos.y = this.getBottom();
           mario.vel.y = 0;
           mario.jump.cancel();
@@ -3316,6 +3340,17 @@ module.exports = "files/mario.png";
 
 /***/ }),
 
+/***/ "./src/imgs/pageBackground.png":
+/*!*************************************!*\
+  !*** ./src/imgs/pageBackground.png ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "files/pageBackground.png";
+
+/***/ }),
+
 /***/ "./src/imgs/super-mario-world.png":
 /*!****************************************!*\
   !*** ./src/imgs/super-mario-world.png ***!
@@ -3365,6 +3400,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var gameMain = new _Game_Main_js__WEBPACK_IMPORTED_MODULE_2__["default"](game, display);
   var sound = document.querySelector(".sound");
   var noSound = document.querySelector(".noSound");
+  var expand = document.querySelector(".expand");
   sound.addEventListener("click", function () {
     _files__WEBPACK_IMPORTED_MODULE_3__["music"].play();
     gameMain.start();
@@ -3379,6 +3415,21 @@ document.addEventListener("DOMContentLoaded", function () {
     noSound.parentNode.removeChild(noSound);
   }, {
     once: true
+  });
+  canvas.style.maxWidth = "700px";
+  expand.addEventListener("click", function (e) {
+    var canvas = document.getElementById("canvas");
+
+    if (canvas.style.maxWidth === "700px") {
+      canvas.style.maxWidth = "1200px"; // e.target.innerHTML = "Shrink";
+
+      e.target.classList.remove("fa-expand-arrows-alt");
+      e.target.classList.add("fa-compress-arrows-alt");
+    } else {
+      canvas.style.maxWidth = "700px";
+      e.target.classList.remove("fa-compress-arrows-alt");
+      e.target.classList.add("fa-expand-arrows-alt");
+    }
   });
 
   _files__WEBPACK_IMPORTED_MODULE_3__["titleScreenImage"].onload = function () {

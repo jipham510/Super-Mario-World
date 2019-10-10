@@ -23,7 +23,10 @@ export default class MysteryBox extends GameObject {
     collides(mario) {
         if (mario.vel.y < 0) {
             if (mario.pos.y < this.getBottom()) {
-                if (!music.paused) stomp2Sound.play();
+                if (!music.paused) { 
+                    stomp2Sound.currentTime = 0;
+                    stomp2Sound.play();
+                }
                 mario.pos.y = this.getBottom();
                 mario.vel.y = 0;
                 mario.jump.cancel();
