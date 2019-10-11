@@ -11,6 +11,7 @@ export default class Stomp extends Behavior {
     update(mario) {
         if (this.bouncing) {
             mario.vel.y = -this.bounceSpeed;
+            mario.invincible.startFrame();
             this.bouncing = false;
         }
     }

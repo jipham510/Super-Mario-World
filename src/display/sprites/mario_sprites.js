@@ -120,6 +120,52 @@ export default {
                     "y": 116
                 },
             ]
+        },
+        {
+            "SpriteSheet": "crouchingRegularMario",
+            "width": 29,
+            "height": 30,
+            "sprites": [
+                {
+                    "name": "crouchingRight",
+                    "x": 288,
+                    "y": 42
+                },
+                {
+                    "name": "crouchingLeft",
+                    "type": "flip",
+                    "x": 288,
+                    "y": 42
+                },
+                {
+                    "name": "transparent",
+                    "x": 0,
+                    "y": 0
+                },
+            ]
+        },
+        {
+            "SpriteSheet": "crouchingMushroomMario",
+            "width": 29,
+            "height": 32,
+            "sprites": [
+                {
+                    "name": "crouchingRight",
+                    "x": 288,
+                    "y": 121
+                },
+                {
+                    "name": "crouchingLeft",
+                    "type": "flip",
+                    "x": 288,
+                    "y": 121
+                },
+                {
+                    "name": "transparent",
+                    "x": 0,
+                    "y": 0
+                },
+            ]
         }
     ]
 }

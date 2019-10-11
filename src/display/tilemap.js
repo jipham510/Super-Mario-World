@@ -268,6 +268,12 @@ export default {
                     100, 1,
                     7, 1
                 ],
+            ]
+        },
+        {
+            "tile": "groundTopFloatingLeft",
+            "type": "ground",
+            "ranges": [
                 [
                     113, 1,
                     6, 1
@@ -286,6 +292,12 @@ export default {
                     101, 5,
                     7, 1
                 ],
+            ]
+        },
+        {
+            "tile": "groundTop",
+            "type": "ground",
+            "ranges": [
                 [
                     114, 10,
                     6, 1
@@ -312,6 +324,12 @@ export default {
                     106, 1,
                     7, 1
                 ],
+            ]
+        }, 
+       {
+           "tile": "groundTopFloatingRight",
+           "type": "ground",
+            "ranges": [
                 [
                     124, 1,
                     6, 1
@@ -579,7 +597,7 @@ export default {
                     7, 1
                 ],
                 [
-                    45, 3,
+                    47, 3,
                     7, 1
                 ],
                 [
@@ -696,31 +714,31 @@ export default {
         {
             "name": "bullet",
             "x": 1300,
-            "y": 100,
+            "y": 90,
             "trigger": 700
         },
         {
             "name": "bullet",
             "x": 3700,
-            "y": 40,
+            "y": 10,
             "trigger": 3300
         },
         {
             "name": "bullet",
             "x": 4400,
-            "y": 150,
+            "y": 120,
             "trigger": 4000
         },
         {
             "name": "bullet",
             "x": 5100,
-            "y": 20,
+            "y": 10,
             "trigger": 4700
         },
         {
             "name": "bullet",
             "x": 4800,
-            "y": 20,
+            "y": 10,
             "trigger": 4400
         },
     ]

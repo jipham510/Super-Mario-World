@@ -38,15 +38,18 @@ export default class Controller {
     mapCrouch(input) {
         const mario = this.gameMain.game.mario
         this.map(input, keyState => {
-            console.log(keyState);
-            mario.crouch.stationaryVel = (keyState === 1) ? 0 : 1;
+            if ( keyState === 1) {
+                mario.crouch.start(mario);
+            } else {
+                mario.crouch.cancel(mario);
+            }
         })
     }
     mapJump(input){
         const mario = this.gameMain.game.mario
         this.map(input, keyState => {
             if (keyState && mario.vel.y <= 0 ) {
-    
+
                 mario.isGrounded = false;
                 mario.jump.start();
             } else {

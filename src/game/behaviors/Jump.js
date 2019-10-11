@@ -4,7 +4,7 @@ export default class Jump extends Behavior {
     constructor() {
         super('jump');
         this.maxDuration = 0.2;
-        this.vel = 300;
+        this.vel = 370;
         this.duration = 0;
         this.isGrounded = true;
     }

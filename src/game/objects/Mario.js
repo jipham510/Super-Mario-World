@@ -35,6 +35,10 @@ export default class Mario extends GameObject {
             behavior.update(this, deltaTime); //takes in object and deltaTime
         })
         this.decideStatus(totalTime);
+        console.log(this.vel.y)
+        if(this.vel.y > 500) {
+            this.vel.y = 500;
+        }
     }
 
     decideStatus(totalTime){
@@ -112,15 +116,42 @@ export default class Mario extends GameObject {
                 this.frame = this.walkLeftFrames[frameIdx];
             }
         } else {
-            if (this.status === "idle") return;
+            if (this.status === "idle" && !this.crouch.active) return;
 
             if (this.facing === "right") {
-                this.frame = "idleRight";
-                this.status = "idle";
+                if (this.crouch.active) {
+                    this.status = "crouch";
+                    this.frame = "crouchingRight";
+                    if(this.mario === "regularMario") {
+                        this.height = 29;
+                        this.mario = "crouchingRegularMario";
+                    } else {
+                        this.height = 32;
+                        this.mario = "crouchingMushroomMario";
+                    }
+                } else {
+                    this.status = "idle";
+                    this.frame = "idleRight";
+                    this.mario = "regularMario";
+                }
             } else if (this.facing === "left") {
-                
-                this.frame = "idleLeft";
-                this.status = "idle";
+                if (this.crouch.active) {
+                    this.status = "crouch";
+                    this.frame = "crouchingLeft";
+                    if (this.mario === "regularMario") {
+                        this.height = 29;
+                        this.width = 29;
+                        this.mario = "crouchingRegularMario";
+                    } else {
+                        this.height = 32;
+                        this.width = 29;
+                        this.mario = "crouchingMushroomMario";
+                    }
+                } else {
+                    this.status = "idle";
+                    this.frame = "idleLeft";
+                    this.mario = "regularMario";
+                }            
             }
 
         }
@@ -141,7 +172,7 @@ export default class Mario extends GameObject {
         // if(this.invinciblity) {
         //     spriteSheets.get(this.mario).draw(this.frame, ctx, this.pos.x - camera.pos.x, this.pos.y - camera.pos.y);
         // } else {
-            spriteSheets.get(this.mario).draw(this.frame, ctx, this.pos.x - camera.pos.x, this.pos.y - camera.pos.y);
+        spriteSheets.get(this.mario).draw(this.frame, ctx, this.pos.x - camera.pos.x, this.pos.y - camera.pos.y);
         // }
     }
     overlaps(object){

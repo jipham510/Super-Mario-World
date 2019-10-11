@@ -153,8 +153,11 @@ function () {
     value: function mapCrouch(input) {
       var mario = this.gameMain.game.mario;
       this.map(input, function (keyState) {
-        console.log(keyState);
-        mario.crouch.stationaryVel = keyState === 1 ? 0 : 1;
+        if (keyState === 1) {
+          mario.crouch.start(mario);
+        } else {
+          mario.crouch.cancel(mario);
+        }
       });
     }
   }, {
@@ -963,6 +966,42 @@ __webpack_require__.r(__webpack_exports__);
       "x": 247,
       "y": 116
     }]
+  }, {
+    "SpriteSheet": "crouchingRegularMario",
+    "width": 29,
+    "height": 30,
+    "sprites": [{
+      "name": "crouchingRight",
+      "x": 288,
+      "y": 42
+    }, {
+      "name": "crouchingLeft",
+      "type": "flip",
+      "x": 288,
+      "y": 42
+    }, {
+      "name": "transparent",
+      "x": 0,
+      "y": 0
+    }]
+  }, {
+    "SpriteSheet": "crouchingMushroomMario",
+    "width": 29,
+    "height": 32,
+    "sprites": [{
+      "name": "crouchingRight",
+      "x": 288,
+      "y": 121
+    }, {
+      "name": "crouchingLeft",
+      "type": "flip",
+      "x": 288,
+      "y": 121
+    }, {
+      "name": "transparent",
+      "x": 0,
+      "y": 0
+    }]
   }]
 });
 
@@ -1013,15 +1052,27 @@ __webpack_require__.r(__webpack_exports__);
   }, {
     "tile": "groundTopFloatingLeft",
     "type": "floatingPlatform",
-    "ranges": [[73, 1, 8, 1], [100, 1, 7, 1], [113, 1, 6, 1]]
+    "ranges": [[73, 1, 8, 1], [100, 1, 7, 1]]
+  }, {
+    "tile": "groundTopFloatingLeft",
+    "type": "ground",
+    "ranges": [[113, 1, 6, 1]]
   }, {
     "tile": "groundTop",
     "type": "floatingPlatform",
-    "ranges": [[74, 3, 8, 1], [101, 5, 7, 1], [114, 10, 6, 1], [136, 4, 12, 1], [159, 3, 8, 1]]
+    "ranges": [[74, 3, 8, 1], [101, 5, 7, 1]]
+  }, {
+    "tile": "groundTop",
+    "type": "ground",
+    "ranges": [[114, 10, 6, 1], [136, 4, 12, 1], [159, 3, 8, 1]]
   }, {
     "tile": "groundTopFloatingRight",
     "type": "floatingPlatform",
-    "ranges": [[77, 1, 8, 1], [106, 1, 7, 1], [124, 1, 6, 1]]
+    "ranges": [[77, 1, 8, 1], [106, 1, 7, 1]]
+  }, {
+    "tile": "groundTopFloatingRight",
+    "type": "ground",
+    "ranges": [[124, 1, 6, 1]]
   }, {
     "tile": "groundTopFloatingLeftSoil",
     "ranges": [[73, 1, 9, 3], [100, 1, 8, 4], [113, 1, 7, 10]]
@@ -1069,7 +1120,7 @@ __webpack_require__.r(__webpack_exports__);
     "tile": "singlePlatform",
     // "type": "floatingPlatform",
     "type": "ground",
-    "ranges": [[70, 1, 9, 1], [40, 3, 7, 1], [45, 3, 7, 1], [109, 1, 9, 1], [109, 1, 4, 1], [137, 1, 7, 1], [160, 1, 3, 1], [181, 1, 8, 1], [196, 1, 8, 1], [199, 1, 10, 1]]
+    "ranges": [[70, 1, 9, 1], [40, 3, 7, 1], [47, 3, 7, 1], [109, 1, 9, 1], [109, 1, 4, 1], [137, 1, 7, 1], [160, 1, 3, 1], [181, 1, 8, 1], [196, 1, 8, 1], [199, 1, 10, 1]]
   }, {
     "tile": "transparent",
     "ranges": [[79, 14, 12, 2], [111, 2, 12, 2], [125, 5, 12, 2], [136, 4, 10, 2], [146, 3, 10, 4], [159, 3, 6, 2]]
@@ -1119,27 +1170,27 @@ __webpack_require__.r(__webpack_exports__);
   }, {
     "name": "bullet",
     "x": 1300,
-    "y": 100,
+    "y": 90,
     "trigger": 700
   }, {
     "name": "bullet",
     "x": 3700,
-    "y": 40,
+    "y": 10,
     "trigger": 3300
   }, {
     "name": "bullet",
     "x": 4400,
-    "y": 150,
+    "y": 120,
     "trigger": 4000
   }, {
     "name": "bullet",
     "x": 5100,
-    "y": 20,
+    "y": 10,
     "trigger": 4700
   }, {
     "name": "bullet",
     "x": 4800,
-    "y": 20,
+    "y": 10,
     "trigger": 4400
   }]
 });
@@ -1946,13 +1997,25 @@ function (_Behavior) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Crouch).call(this, 'crouch'));
     _this.stationaryVel = 1;
+    _this.active = false;
     return _this;
   }
 
   _createClass(Crouch, [{
+    key: "start",
+    value: function start(mario) {
+      this.stationaryVel = 0;
+      this.active = true;
+    }
+  }, {
+    key: "cancel",
+    value: function cancel(mario) {
+      this.stationaryVel = 1;
+      this.active = false;
+    }
+  }, {
     key: "update",
     value: function update(mario, deltaTime) {
-      // mario.status = "crouching";
       mario.vel.x = mario.vel.x * this.stationaryVel;
     }
   }]);
@@ -2077,6 +2140,11 @@ function (_Behavior) {
       this.duration = this.maxDuration;
     }
   }, {
+    key: "startFrame",
+    value: function startFrame() {
+      this.duration = 0.01;
+    }
+  }, {
     key: "cancel",
     value: function cancel() {
       this.duration = 0;
@@ -2145,7 +2213,7 @@ function (_Behavior) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Jump).call(this, 'jump'));
     _this.maxDuration = 0.2;
-    _this.vel = 300;
+    _this.vel = 370;
     _this.duration = 0;
     _this.isGrounded = true;
     return _this;
@@ -2399,6 +2467,7 @@ function (_Behavior) {
     value: function update(mario) {
       if (this.bouncing) {
         mario.vel.y = -this.bounceSpeed;
+        mario.invincible.startFrame();
         this.bouncing = false;
       }
     }
@@ -2650,7 +2719,7 @@ function (_GameObject) {
 
     _this.width = 43;
     _this.height = 63;
-    _this.speed = 8000;
+    _this.speed = 6000;
 
     _this.addBehavior(new _behaviors_Auto_Move__WEBPACK_IMPORTED_MODULE_1__["default"](moveLeftLimit, moveRightLimit));
 
@@ -2659,6 +2728,7 @@ function (_GameObject) {
     _this.facing = "left";
     _this.frame = "regularWalkLeft1";
     _this.regularWalkLeftFrames = ["regularWalkLeft1", "regularWalkLeft2"];
+    _this.regularWalkRightFrames = ["regularWalkRight1", "regularWalkRight2"];
     _this.regularWalkRightFrames = ["regularWalkRight1", "regularWalkRight2"];
     _this.halfWalkLeftFrames = ["halfFlattenedWalkLeft1", "halfFlattenedWalkLeft2"];
     _this.halfWalkRightFrames = ["halfFlattenedWalkRight1", "halfFlattenedWalkRight2"];
@@ -2671,7 +2741,7 @@ function (_GameObject) {
       if (mario.invinciblity) return;
 
       if (this.stompedCount !== 2) {
-        if (mario.vel.y > this.vel.y) {
+        if (mario.vel.y > this.vel.y && mario.getBottom() > this.getTop() && mario.getLastBottom() <= this.getTop()) {
           mario.stomp.bounce();
           this.stompedCount += 1;
 
@@ -2686,6 +2756,7 @@ function (_GameObject) {
           }
         } else {
           if (mario.lives === 2 && !_files__WEBPACK_IMPORTED_MODULE_2__["music"].paused) _files__WEBPACK_IMPORTED_MODULE_2__["mushroomMarioHitSound"].play();
+          debugger;
           mario.lives -= 1;
           mario.invincible.start();
           mario.invinciblity = true;
@@ -2735,6 +2806,12 @@ function (_GameObject) {
   }, {
     key: "draw",
     value: function draw(ctx, spriteSheets, camera) {
+      // ctx.strokeStyle = 'red';
+      // ctx.beginPath();
+      // ctx.rect(this.pos.x - camera.pos.x,
+      //     this.pos.y - camera.pos.y,
+      //     this.width, this.height);
+      // ctx.stroke(); 
       spriteSheets.get(this.status).draw(this.frame, ctx, this.pos.x - camera.pos.x, this.pos.y - camera.pos.y);
     }
   }]);
@@ -2949,6 +3026,11 @@ function (_GameObject) {
         behavior.update(_this2, deltaTime); //takes in object and deltaTime
       });
       this.decideStatus(totalTime);
+      console.log(this.vel.y);
+
+      if (this.vel.y > 500) {
+        this.vel.y = 500;
+      }
     }
   }, {
     key: "decideStatus",
@@ -3029,14 +3111,44 @@ function (_GameObject) {
           this.frame = this.walkLeftFrames[_frameIdx3];
         }
       } else {
-        if (this.status === "idle") return;
+        if (this.status === "idle" && !this.crouch.active) return;
 
         if (this.facing === "right") {
-          this.frame = "idleRight";
-          this.status = "idle";
+          if (this.crouch.active) {
+            this.status = "crouch";
+            this.frame = "crouchingRight";
+
+            if (this.mario === "regularMario") {
+              this.height = 29;
+              this.mario = "crouchingRegularMario";
+            } else {
+              this.height = 32;
+              this.mario = "crouchingMushroomMario";
+            }
+          } else {
+            this.status = "idle";
+            this.frame = "idleRight";
+            this.mario = "regularMario";
+          }
         } else if (this.facing === "left") {
-          this.frame = "idleLeft";
-          this.status = "idle";
+          if (this.crouch.active) {
+            this.status = "crouch";
+            this.frame = "crouchingLeft";
+
+            if (this.mario === "regularMario") {
+              this.height = 29;
+              this.width = 29;
+              this.mario = "crouchingRegularMario";
+            } else {
+              this.height = 32;
+              this.width = 29;
+              this.mario = "crouchingMushroomMario";
+            }
+          } else {
+            this.status = "idle";
+            this.frame = "idleLeft";
+            this.mario = "regularMario";
+          }
         }
       }
 
