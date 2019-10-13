@@ -248,7 +248,7 @@ function () {
     key: "start",
     value: function start() {
       //starting player position
-      this.game.mario.pos.set(145, 250); // //testing for maping out area
+      this.game.mario.pos.set(0, 250); // //testing for maping out area
       // this.display.camera.pos.x = 4000;
 
       this.lastTime = 0;
@@ -855,6 +855,49 @@ __webpack_require__.r(__webpack_exports__);
       "x": 249,
       "y": 318
     }]
+  }, {
+    "SpriteSheet": "koopa",
+    "width": 35,
+    "height": 50,
+    "sprites": [{
+      "name": "walkLeft1",
+      "x": 291,
+      "y": 0
+    }, {
+      "name": "walkLeft2",
+      "x": 251,
+      "y": 0
+    }, {
+      "name": "walkRight1",
+      "type": "flip",
+      "x": 291,
+      "y": 0
+    }, {
+      "name": "walkRight2",
+      "type": "flip",
+      "x": 251,
+      "y": 0
+    }]
+  }, {
+    "SpriteSheet": "koopaShell",
+    "width": 35,
+    "height": 35,
+    "sprites": [{
+      "name": "shell1",
+      "type": "flip",
+      "x": 171,
+      "y": 5
+    }, {
+      "name": "shell2",
+      "type": "flip",
+      "x": 171,
+      "y": 45
+    }, {
+      "name": "shell3",
+      "type": "flip",
+      "x": 171,
+      "y": 85
+    }]
   }]
 });
 
@@ -1007,196 +1050,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/display/tilemap.js":
-/*!********************************!*\
-  !*** ./src/display/tilemap.js ***!
-  \********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ({
-  "backgrounds": [{
-    "tile": "groundTop",
-    "type": "ground",
-    "ranges": [[0, 125, 12, 1], [130, 18, 10, 1], [153, 25, 6, 1], [0, 5, 10, 1], [33, 5, 9, 5], [202, 20, 12, 1]]
-  }, {
-    "tile": "groundSoil",
-    "type": "ground",
-    "ranges": [[0, 125, 13, 1], [130, 18, 11, 3], [153, 25, 7, 7], [0, 5, 11, 2], [33, 5, 10, 4], [202, 20, 13, 1]]
-  }, {
-    "tile": "groundTopRightEdge",
-    "type": "ground",
-    "ranges": [[5, 1, 10, 1], [37, 1, 9, 1], [78, 1, 12, 1], [110, 1, 12, 1], [135, 1, 10, 1], [145, 1, 10, 1], [158, 1, 6, 1], [222, 1, 12, 1], [177, 1, 6, 1]]
-  }, {
-    "tile": "groundTopLeftEdge",
-    "type": "ground",
-    "ranges": [[32, 1, 9, 1], [93, 1, 12, 1], [130, 1, 10, 1], [140, 1, 10, 1], [152, 1, 6, 1], [162, 1, 6, 1], [202, 1, 12, 1]]
-  }, {
-    "tile": "groundMidRightEdge",
-    "type": "ground",
-    "ranges": [[5, 1, 11, 1], [5, 1, 11, 1], [37, 1, 10, 2], [78, 1, 13, 1], [110, 1, 13, 1], [135, 1, 11, 1], [145, 1, 11, 3], [158, 1, 7, 1], [222, 1, 13, 1], [177, 1, 7, 7]]
-  }, {
-    "tile": "groundMidLeftEdge",
-    "type": "ground",
-    "ranges": [[32, 1, 10, 2], [93, 1, 13, 1], [130, 1, 11, 3], [140, 1, 11, 1], [152, 1, 7, 7], [162, 1, 7, 1], [202, 1, 13, 1]]
-  }, {
-    "tile": "groundTopRightPatch",
-    "type": "ground",
-    "ranges": [[5, 1, 12, 1], [37, 1, 12, 1], [135, 1, 12, 1], [158, 1, 8, 1]]
-  }, {
-    "tile": "groundTopLeftPatch",
-    "type": "ground",
-    "ranges": [[32, 1, 12, 1], [140, 1, 12, 1], [162, 1, 8, 1]]
-  }, {
-    "tile": "groundTopFloatingLeft",
-    "type": "floatingPlatform",
-    "ranges": [[73, 1, 8, 1], [100, 1, 7, 1]]
-  }, {
-    "tile": "groundTopFloatingLeft",
-    "type": "ground",
-    "ranges": [[113, 1, 6, 1]]
-  }, {
-    "tile": "groundTop",
-    "type": "floatingPlatform",
-    "ranges": [[74, 3, 8, 1], [101, 5, 7, 1]]
-  }, {
-    "tile": "groundTop",
-    "type": "ground",
-    "ranges": [[114, 10, 6, 1], [136, 4, 12, 1], [159, 3, 8, 1]]
-  }, {
-    "tile": "groundTopFloatingRight",
-    "type": "floatingPlatform",
-    "ranges": [[77, 1, 8, 1], [106, 1, 7, 1]]
-  }, {
-    "tile": "groundTopFloatingRight",
-    "type": "ground",
-    "ranges": [[124, 1, 6, 1]]
-  }, {
-    "tile": "groundTopFloatingLeftSoil",
-    "ranges": [[73, 1, 9, 3], [100, 1, 8, 4], [113, 1, 7, 10]]
-  }, {
-    "tile": "groundSoil",
-    "ranges": [[74, 3, 9, 3], [101, 5, 8, 4], [114, 10, 7, 10]]
-  }, {
-    "tile": "groundTopFloatingRightSoil",
-    "ranges": [[77, 1, 9, 3], [106, 1, 8, 4], [124, 1, 7, 10]]
-  }, {
-    "tile": "platformMiddle",
-    //    "type": "floatingPlatform",
-    "type": "ground",
-    "ranges": [[14, 11, 8, 1], [82, 1, 7, 1], [87, 1, 7, 1], [186, 7, 6, 1]]
-  }, {
-    "tile": "platformLeft",
-    //    "type": "floatingPlatform",
-    "type": "ground",
-    "ranges": [[8, 1, 8, 1], [13, 1, 8, 1], [28, 1, 6, 1], [81, 1, 7, 1], [86, 1, 7, 1], [148, 1, 8, 1], [148, 1, 2, 1], [185, 1, 6, 1]]
-  }, {
-    "tile": "platformRight",
-    //    "type": "floatingPlatform",
-    "type": "ground",
-    "ranges": [[9, 1, 8, 1], [25, 1, 8, 1], [29, 1, 6, 1], [83, 1, 7, 1], [88, 1, 7, 1], [149, 1, 8, 1], [149, 1, 2, 1], [193, 1, 6, 1]]
-  }, {
-    "tile": "mysteryBox",
-    "type": "box",
-    "item": "mushroom",
-    "ranges": [[19, 1, 4, 1]]
-  }, {
-    "tile": "grass1",
-    "ranges": [[7, 1, 11, 1], [45, 1, 11, 1], [60, 1, 11, 1], [96, 1, 11, 1], [169, 1, 5, 1]]
-  }, {
-    "tile": "grass2",
-    "ranges": [[8, 2, 11, 1], [46, 3, 11, 1], [61, 3, 11, 1], [97, 1, 11, 1], [170, 3, 5, 1]]
-  }, // {
-  //     "tile": "grass3",
-  //     "ranges": [
-  //     ]
-  // },
-  {
-    "tile": "grass4",
-    "ranges": [[10, 1, 11, 1], [49, 1, 11, 1], [64, 1, 11, 1], [98, 1, 11, 1], [173, 1, 5, 1]]
-  }, {
-    "tile": "singlePlatform",
-    // "type": "floatingPlatform",
-    "type": "ground",
-    "ranges": [[70, 1, 9, 1], [40, 3, 7, 1], [47, 3, 7, 1], [109, 1, 9, 1], [109, 1, 4, 1], [137, 1, 7, 1], [160, 1, 3, 1], [181, 1, 8, 1], [196, 1, 8, 1], [199, 1, 10, 1]]
-  }, {
-    "tile": "transparent",
-    "ranges": [[79, 14, 12, 2], [111, 2, 12, 2], [125, 5, 12, 2], [136, 4, 10, 2], [146, 3, 10, 4], [159, 3, 6, 2]]
-  }],
-  "enemies": [{
-    "name": "dragon",
-    "x": 1900,
-    "y": 200,
-    "x1Limit": 1200,
-    "x2Limit": 1900,
-    "trigger": 600
-  }, {
-    "name": "dragon",
-    "x": 1200,
-    "y": 200,
-    "x1Limit": 1200,
-    "x2Limit": 1900,
-    "trigger": 600
-  }, {
-    "name": "dragon",
-    "x": 2900,
-    "y": 200,
-    "x1Limit": 2700,
-    "x2Limit": 3100,
-    "trigger": 2000
-  }, {
-    "name": "dragon",
-    "x": 4000,
-    "y": 200,
-    "x1Limit": 3950,
-    "x2Limit": 4050,
-    "trigger": 3500
-  }, {
-    "name": "dragon",
-    "x": 5100,
-    "y": 0,
-    "x1Limit": 4700,
-    "x2Limit": 5120,
-    "trigger": 4000
-  }, {
-    "name": "dragon",
-    "x": 4700,
-    "y": 0,
-    "x1Limit": 4700,
-    "x2Limit": 5120,
-    "trigger": 4000
-  }, {
-    "name": "bullet",
-    "x": 1300,
-    "y": 90,
-    "trigger": 700
-  }, {
-    "name": "bullet",
-    "x": 3700,
-    "y": 10,
-    "trigger": 3300
-  }, {
-    "name": "bullet",
-    "x": 4400,
-    "y": 120,
-    "trigger": 4000
-  }, {
-    "name": "bullet",
-    "x": 5100,
-    "y": 10,
-    "trigger": 4700
-  }, {
-    "name": "bullet",
-    "x": 4800,
-    "y": 10,
-    "trigger": 4400
-  }]
-});
-
-/***/ }),
-
 /***/ "./src/files.js":
 /*!**********************!*\
   !*** ./src/files.js ***!
@@ -1234,28 +1087,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _imgs_pageBackground_png__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_imgs_pageBackground_png__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _imgs_thank_you_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./imgs/thank_you.png */ "./src/imgs/thank_you.png");
 /* harmony import */ var _imgs_thank_you_png__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_imgs_thank_you_png__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _imgs_super_mario_world_png__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./imgs/super-mario-world.png */ "./src/imgs/super-mario-world.png");
-/* harmony import */ var _imgs_super_mario_world_png__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_imgs_super_mario_world_png__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _audio_music_mp3__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./audio/music.mp3 */ "./src/audio/music.mp3");
-/* harmony import */ var _audio_music_mp3__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_audio_music_mp3__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _audio_jump_mp3__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./audio/jump.mp3 */ "./src/audio/jump.mp3");
-/* harmony import */ var _audio_jump_mp3__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_audio_jump_mp3__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _audio_bulletLaunched_mp3__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./audio/bulletLaunched.mp3 */ "./src/audio/bulletLaunched.mp3");
-/* harmony import */ var _audio_bulletLaunched_mp3__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_audio_bulletLaunched_mp3__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _audio_coin_mp3__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./audio/coin.mp3 */ "./src/audio/coin.mp3");
-/* harmony import */ var _audio_coin_mp3__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_audio_coin_mp3__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _audio_marioLose_mp3__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./audio/marioLose.mp3 */ "./src/audio/marioLose.mp3");
-/* harmony import */ var _audio_marioLose_mp3__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_audio_marioLose_mp3__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var _audio_stomp1_mp3__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./audio/stomp1.mp3 */ "./src/audio/stomp1.mp3");
-/* harmony import */ var _audio_stomp1_mp3__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_audio_stomp1_mp3__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var _audio_stomp2_mp3__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./audio/stomp2.mp3 */ "./src/audio/stomp2.mp3");
-/* harmony import */ var _audio_stomp2_mp3__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_audio_stomp2_mp3__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var _audio_itemEmerging_mp3__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./audio/itemEmerging.mp3 */ "./src/audio/itemEmerging.mp3");
-/* harmony import */ var _audio_itemEmerging_mp3__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_audio_itemEmerging_mp3__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var _audio_mushroomMarioHit_mp3__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./audio/mushroomMarioHit.mp3 */ "./src/audio/mushroomMarioHit.mp3");
-/* harmony import */ var _audio_mushroomMarioHit_mp3__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_audio_mushroomMarioHit_mp3__WEBPACK_IMPORTED_MODULE_15__);
-/* harmony import */ var _audio_powerUp_mp3__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./audio/powerUp.mp3 */ "./src/audio/powerUp.mp3");
-/* harmony import */ var _audio_powerUp_mp3__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(_audio_powerUp_mp3__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var _imgs_favicon_png__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./imgs/favicon.png */ "./src/imgs/favicon.png");
+/* harmony import */ var _imgs_favicon_png__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_imgs_favicon_png__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _imgs_super_mario_world_png__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./imgs/super-mario-world.png */ "./src/imgs/super-mario-world.png");
+/* harmony import */ var _imgs_super_mario_world_png__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_imgs_super_mario_world_png__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _audio_music_mp3__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./audio/music.mp3 */ "./src/audio/music.mp3");
+/* harmony import */ var _audio_music_mp3__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_audio_music_mp3__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _audio_jump_mp3__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./audio/jump.mp3 */ "./src/audio/jump.mp3");
+/* harmony import */ var _audio_jump_mp3__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_audio_jump_mp3__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _audio_bulletLaunched_mp3__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./audio/bulletLaunched.mp3 */ "./src/audio/bulletLaunched.mp3");
+/* harmony import */ var _audio_bulletLaunched_mp3__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_audio_bulletLaunched_mp3__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _audio_coin_mp3__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./audio/coin.mp3 */ "./src/audio/coin.mp3");
+/* harmony import */ var _audio_coin_mp3__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_audio_coin_mp3__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _audio_marioLose_mp3__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./audio/marioLose.mp3 */ "./src/audio/marioLose.mp3");
+/* harmony import */ var _audio_marioLose_mp3__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_audio_marioLose_mp3__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var _audio_stomp1_mp3__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./audio/stomp1.mp3 */ "./src/audio/stomp1.mp3");
+/* harmony import */ var _audio_stomp1_mp3__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_audio_stomp1_mp3__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var _audio_stomp2_mp3__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./audio/stomp2.mp3 */ "./src/audio/stomp2.mp3");
+/* harmony import */ var _audio_stomp2_mp3__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_audio_stomp2_mp3__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var _audio_itemEmerging_mp3__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./audio/itemEmerging.mp3 */ "./src/audio/itemEmerging.mp3");
+/* harmony import */ var _audio_itemEmerging_mp3__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_audio_itemEmerging_mp3__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var _audio_mushroomMarioHit_mp3__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./audio/mushroomMarioHit.mp3 */ "./src/audio/mushroomMarioHit.mp3");
+/* harmony import */ var _audio_mushroomMarioHit_mp3__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(_audio_mushroomMarioHit_mp3__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var _audio_powerUp_mp3__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./audio/powerUp.mp3 */ "./src/audio/powerUp.mp3");
+/* harmony import */ var _audio_powerUp_mp3__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(_audio_powerUp_mp3__WEBPACK_IMPORTED_MODULE_17__);
 
 
 
@@ -1273,23 +1128,24 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var music = new Audio(_audio_music_mp3__WEBPACK_IMPORTED_MODULE_7___default.a);
+
+var music = new Audio(_audio_music_mp3__WEBPACK_IMPORTED_MODULE_8___default.a);
 music.loop = true;
-var jumpSound = new Audio(_audio_jump_mp3__WEBPACK_IMPORTED_MODULE_8___default.a);
-var bulletLaunchedSound = new Audio(_audio_bulletLaunched_mp3__WEBPACK_IMPORTED_MODULE_9___default.a);
-var coinSound = new Audio(_audio_coin_mp3__WEBPACK_IMPORTED_MODULE_10___default.a);
-var marioLoseSound = new Audio(_audio_marioLose_mp3__WEBPACK_IMPORTED_MODULE_11___default.a);
-var stomp1Sound = new Audio(_audio_stomp1_mp3__WEBPACK_IMPORTED_MODULE_12___default.a);
-var stomp2Sound = new Audio(_audio_stomp2_mp3__WEBPACK_IMPORTED_MODULE_13___default.a);
-var itemEmergingSound = new Audio(_audio_itemEmerging_mp3__WEBPACK_IMPORTED_MODULE_14___default.a);
-var mushroomMarioHitSound = new Audio(_audio_mushroomMarioHit_mp3__WEBPACK_IMPORTED_MODULE_15___default.a);
-var powerUpSound = new Audio(_audio_powerUp_mp3__WEBPACK_IMPORTED_MODULE_16___default.a);
+var jumpSound = new Audio(_audio_jump_mp3__WEBPACK_IMPORTED_MODULE_9___default.a);
+var bulletLaunchedSound = new Audio(_audio_bulletLaunched_mp3__WEBPACK_IMPORTED_MODULE_10___default.a);
+var coinSound = new Audio(_audio_coin_mp3__WEBPACK_IMPORTED_MODULE_11___default.a);
+var marioLoseSound = new Audio(_audio_marioLose_mp3__WEBPACK_IMPORTED_MODULE_12___default.a);
+var stomp1Sound = new Audio(_audio_stomp1_mp3__WEBPACK_IMPORTED_MODULE_13___default.a);
+var stomp2Sound = new Audio(_audio_stomp2_mp3__WEBPACK_IMPORTED_MODULE_14___default.a);
+var itemEmergingSound = new Audio(_audio_itemEmerging_mp3__WEBPACK_IMPORTED_MODULE_15___default.a);
+var mushroomMarioHitSound = new Audio(_audio_mushroomMarioHit_mp3__WEBPACK_IMPORTED_MODULE_16___default.a);
+var powerUpSound = new Audio(_audio_powerUp_mp3__WEBPACK_IMPORTED_MODULE_17___default.a);
 var backgroundImage = new Image();
 backgroundImage.src = _imgs_background_assets_png__WEBPACK_IMPORTED_MODULE_0___default.a;
 var thanksImage = new Image();
 thanksImage.src = _imgs_thank_you_png__WEBPACK_IMPORTED_MODULE_5___default.a;
 var titleScreenImage = new Image();
-titleScreenImage.src = _imgs_super_mario_world_png__WEBPACK_IMPORTED_MODULE_6___default.a;
+titleScreenImage.src = _imgs_super_mario_world_png__WEBPACK_IMPORTED_MODULE_7___default.a;
 var backgroundFirstLayerImage = new Image();
 backgroundFirstLayerImage.src = _imgs_background_png__WEBPACK_IMPORTED_MODULE_3___default.a;
 var marioImage = new Image();
@@ -1299,34 +1155,305 @@ enemiesImage.src = _imgs_enemies_png__WEBPACK_IMPORTED_MODULE_2___default.a;
 
 /***/ }),
 
-/***/ "./src/game/Collider.js":
-/*!******************************!*\
-  !*** ./src/game/Collider.js ***!
-  \******************************/
+/***/ "./src/game/Game.js":
+/*!**************************!*\
+  !*** ./src/game/Game.js ***!
+  \**************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Collider; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Game; });
+/* harmony import */ var _objects_Mario__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./objects/Mario */ "./src/game/objects/Mario.js");
+/* harmony import */ var _objects_Dragon__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./objects/Dragon */ "./src/game/objects/Dragon.js");
+/* harmony import */ var _objects_Bullet__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./objects/Bullet */ "./src/game/objects/Bullet.js");
+/* harmony import */ var _objects_Koopa__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./objects/Koopa */ "./src/game/objects/Koopa.js");
+/* harmony import */ var _objects_Mystery_Box__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./objects/Mystery_Box */ "./src/game/objects/Mystery_Box.js");
+/* harmony import */ var _Tile_Collision__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Tile_Collision */ "./src/game/Tile_Collision.js");
+/* harmony import */ var _background_tiles__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./background_tiles */ "./src/game/background_tiles.js");
+/* harmony import */ var _enemy_spawns__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./enemy_spawns */ "./src/game/enemy_spawns.js");
+/* harmony import */ var _behaviors_Spawn_Enemies__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./behaviors/Spawn_Enemies */ "./src/game/behaviors/Spawn_Enemies.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var Collider =
+
+
+
+
+
+
+
+
+
+
+var Game =
 /*#__PURE__*/
 function () {
-  function Collider(tileMap) {
-    _classCallCheck(this, Collider);
+  function Game(height, width) {
+    _classCallCheck(this, Game);
+
+    this.height = height;
+    this.width = width;
+    this.gravity = 20;
+    this.objects = new Set();
+    this.mario = new _objects_Mario__WEBPACK_IMPORTED_MODULE_0__["default"]();
+    this.objects.add(this.mario);
+    this.addSpawns();
+    this.restarting = false;
+    this.totalTime = 0;
+    this.tileMap = [];
+    this.tileSize = 29;
+    this.tileCollision = new _Tile_Collision__WEBPACK_IMPORTED_MODULE_5__["default"](this.tileMap);
+    this.setTilemapLayer = this.setTilemapLayer.bind(this);
+    this.cameraView = this.cameraView.bind(this);
+    this.restartLevel = this.restartLevel.bind(this);
+    this.checkEnemyCollision = this.checkEnemyCollision.bind(this);
+    this.checkShellCollision = this.checkShellCollision.bind(this);
+    this.setTilemapLayer();
+  }
+
+  _createClass(Game, [{
+    key: "update",
+    value: function update(deltaTime) {
+      var _this = this;
+
+      this.objects.forEach(function (object) {
+        object.update(deltaTime, _this.totalTime, _this.objects, _this.mario); //updates velocities
+
+        object.frames = (object.frames + 1) % 60;
+        object.lastPos.x = object.pos.x;
+        object.lastPos.y = object.pos.y;
+        object.pos.x += object.vel.x * deltaTime;
+
+        _this.tileCollision.checkX(object);
+
+        object.vel.y += _this.gravity;
+        object.pos.y += object.vel.y * deltaTime;
+
+        _this.tileCollision.checkY(object);
+
+        if (object !== _this.mario) _this.checkEnemyCollision(object);
+        if (object.lethalShell) _this.checkShellCollision(object);
+      });
+      this.totalTime += deltaTime;
+    }
+  }, {
+    key: "checkEnemyCollision",
+    value: function checkEnemyCollision(object) {
+      if (this.mario.overlaps(object)) object.collides(this.mario);
+    }
+  }, {
+    key: "checkShellCollision",
+    value: function checkShellCollision(shell) {
+      var _this2 = this;
+
+      this.objects.forEach(function (object) {
+        if (object === _this2.mario || object === shell) return;
+        if (shell.overlaps(object)) object.collidesShell(shell);
+      });
+    }
+  }, {
+    key: "addSpawns",
+    value: function addSpawns() {
+      var enemies = new Set();
+      var newEnemy;
+      _enemy_spawns__WEBPACK_IMPORTED_MODULE_7__["default"].enemies.forEach(function (enemy) {
+        if (enemy.name === "dragon") {
+          newEnemy = new _objects_Dragon__WEBPACK_IMPORTED_MODULE_1__["default"](enemy.x, enemy.y, //initial spawn
+          enemy.x1Limit, enemy.x2Limit // walk path
+          );
+        } else if (enemy.name === "bullet") {
+          newEnemy = new _objects_Bullet__WEBPACK_IMPORTED_MODULE_2__["default"](enemy.x, enemy.y //initial spawn
+          );
+        } else if (enemy.name === "koopa") {
+          newEnemy = new _objects_Koopa__WEBPACK_IMPORTED_MODULE_3__["default"](enemy.x, enemy.y, //initial spawn
+          enemy.x1Limit, enemy.x2Limit // walk path
+          );
+        }
+
+        newEnemy.trigger = enemy.trigger;
+        enemies.add(newEnemy);
+      });
+      this.mario.addBehavior(new _behaviors_Spawn_Enemies__WEBPACK_IMPORTED_MODULE_8__["default"](this.objects, enemies));
+    }
+  }, {
+    key: "setTilemapLayer",
+    value: function setTilemapLayer() {
+      var _this3 = this;
+
+      _background_tiles__WEBPACK_IMPORTED_MODULE_6__["default"].backgrounds.forEach(function (background) {
+        background.ranges.forEach(function (range) {
+          var _range = _slicedToArray(range, 4),
+              xStart = _range[0],
+              xLength = _range[1],
+              yStart = _range[2],
+              yLength = _range[3];
+
+          var xEnd = xStart + xLength;
+          var yEnd = yStart + yLength;
+
+          for (var x = xStart; x < xEnd; x++) {
+            for (var y = yStart; y < yEnd; y++) {
+              var tile = {
+                name: background.tile,
+                type: background.type
+              };
+
+              _this3.setTile(x, y, tile);
+
+              if (background.tile === "mysteryBox") {
+                var box = new _objects_Mystery_Box__WEBPACK_IMPORTED_MODULE_4__["default"](x, y, tile);
+
+                _this3.objects.add(box);
+              }
+            }
+          }
+        });
+      });
+    }
+  }, {
+    key: "restartLevel",
+    value: function restartLevel(camera) {
+      var _this4 = this;
+
+      if (this.mario.status === "ignoreCollisions" && !this.restarting) {
+        this.restarting = true;
+        var game = this;
+        setTimeout(function () {
+          game.removeEnemies();
+          game.mario.lives = 1;
+          game.mario.pos.set(0, 250);
+          game.mario.invincible.cancel();
+          camera.pos.x = 0;
+          game.addSpawns();
+
+          _this4.setTilemapLayer();
+
+          game.restarting = false;
+        }, 1500);
+      }
+    }
+  }, {
+    key: "removeEnemies",
+    value: function removeEnemies() {
+      var _this5 = this;
+
+      this.objects.forEach(function (object) {
+        if (object !== _this5.mario) _this5.objects["delete"](object);
+      });
+    }
+  }, {
+    key: "setTile",
+    value: function setTile(x, y, tile) {
+      if (!this.tileMap[x]) this.tileMap[x] = [];
+      this.tileMap[x][y] = tile;
+    }
+  }, {
+    key: "getTile",
+    value: function getTile(x, y) {
+      if (this.tileMap[x]) return this.tileMap[x][y];
+    }
+  }, {
+    key: "cameraView",
+    value: function cameraView(camera, backgroundSpriteSheet) {
+      var _this6 = this;
+
+      // center camera on mario
+      //scrolling commented out for testing
+      this.restartLevel(camera);
+
+      if (this.mario.pos.x > 300 && this.mario.frame !== "lose") {
+        camera.pos.x = this.mario.pos.x - 300;
+      }
+
+      var cameraPanel = document.createElement('canvas');
+      cameraPanel.width = camera.width + this.tileSize;
+      cameraPanel.height = camera.height;
+      var panelCtx = cameraPanel.getContext('2d'); // first need to figure out what tile columns to draw
+
+      var columnStart = this.getTileIndex(camera.pos.x);
+      var columnEnd = columnStart + this.getTileIndex(camera.width); // draw what the camera is focusing on
+
+      var _loop = function _loop(x) {
+        var column = _this6.tileMap[x];
+
+        if (column) {
+          column.forEach(function (tile, y) {
+            if (tile.name === "mysteryBox") {
+              backgroundSpriteSheet.draw("transparent", panelCtx, (x - columnStart) * _this6.tileSize, y * _this6.tileSize);
+            } else {
+              backgroundSpriteSheet.draw(tile.name, panelCtx, (x - columnStart) * _this6.tileSize, y * _this6.tileSize);
+            }
+          });
+        }
+      };
+
+      for (var x = columnStart; x <= columnEnd; x++) {
+        _loop(x);
+      }
+
+      var marioPosX = this.getTileIndex(this.mario.pos.x) + 1;
+      var marioPosY = this.getTileIndex(this.mario.pos.y) + 1;
+      var tileName = this.getTile(marioPosX, marioPosY);
+      if (tileName) tileName = tileName.name; // console.log("x: ", marioPosX, ", y: ", marioPosY, ", tilename: ", tileName);
+      //draw camera by pixel for a smooth transition
+
+      return cameraPanel;
+    }
+  }, {
+    key: "getTileIndex",
+    value: function getTileIndex(pos) {
+      return Math.floor(pos / this.tileSize);
+    }
+  }]);
+
+  return Game;
+}();
+
+
+
+/***/ }),
+
+/***/ "./src/game/Tile_Collision.js":
+/*!************************************!*\
+  !*** ./src/game/Tile_Collision.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return TileCollision; });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var TileCollision =
+/*#__PURE__*/
+function () {
+  function TileCollision(tileMap) {
+    _classCallCheck(this, TileCollision);
 
     this.tileMap = tileMap;
     this.tileSize = 29;
     this.handleMatchingTiles = this.handleMatchingTiles;
   }
 
-  _createClass(Collider, [{
+  _createClass(TileCollision, [{
     key: "checkX",
     value: function checkX(gameObj) {
       if (gameObj.status === "ignoreCollisions") return;
@@ -1366,16 +1493,16 @@ function () {
     key: "handleGroundCollisionX",
     value: function handleGroundCollisionX(gameObj, match) {
       if (gameObj.vel.x > 0) {
-        if (gameObj.getRight() > match.left) {
+        if (gameObj.getRight() > match.left && gameObj.getLastRight() <= match.left) {
           gameObj.pos.x = match.left - gameObj.width;
-          gameObj.vel.x = 0;
+          gameObj.vel.x = gameObj.koopa === "koopaShell" ? -gameObj.vel.x : 0;
         }
       }
 
       if (gameObj.vel.x < 0) {
-        if (gameObj.pos.x < match.right) {
+        if (gameObj.getLeft() < match.right && gameObj.getLastLeft() >= match.right) {
           gameObj.pos.x = match.right;
-          gameObj.vel.x = 0;
+          gameObj.vel.x = gameObj.koopa === "koopaShell" ? -gameObj.vel.x : 0;
         }
       }
     }
@@ -1496,263 +1623,132 @@ function () {
     }
   }]);
 
-  return Collider;
+  return TileCollision;
 }();
 
 
 
 /***/ }),
 
-/***/ "./src/game/Game.js":
-/*!**************************!*\
-  !*** ./src/game/Game.js ***!
-  \**************************/
+/***/ "./src/game/background_tiles.js":
+/*!**************************************!*\
+  !*** ./src/game/background_tiles.js ***!
+  \**************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Game; });
-/* harmony import */ var _objects_Mario__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./objects/Mario */ "./src/game/objects/Mario.js");
-/* harmony import */ var _objects_Dragon__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./objects/Dragon */ "./src/game/objects/Dragon.js");
-/* harmony import */ var _objects_Bullet__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./objects/Bullet */ "./src/game/objects/Bullet.js");
-/* harmony import */ var _objects_Mystery_Box__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./objects/Mystery_Box */ "./src/game/objects/Mystery_Box.js");
-/* harmony import */ var _Collider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Collider */ "./src/game/Collider.js");
-/* harmony import */ var _display_tilemap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../display/tilemap */ "./src/display/tilemap.js");
-/* harmony import */ var _behaviors_Spawn_Enemies__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./behaviors/Spawn_Enemies */ "./src/game/behaviors/Spawn_Enemies.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
-
-function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-
-
-
-
-
-
-
-
-var Game =
-/*#__PURE__*/
-function () {
-  function Game(height, width) {
-    _classCallCheck(this, Game);
-
-    this.height = height;
-    this.width = width;
-    this.gravity = 20;
-    this.objects = new Set();
-    this.mario = new _objects_Mario__WEBPACK_IMPORTED_MODULE_0__["default"]();
-    this.objects.add(this.mario);
-    this.addSpawns();
-    this.restarting = false;
-    this.totalTime = 0;
-    this.tileMap = [];
-    this.tileSize = 29;
-    this.collider = new _Collider__WEBPACK_IMPORTED_MODULE_4__["default"](this.tileMap);
-    this.setTilemapLayer = this.setTilemapLayer.bind(this);
-    this.cameraView = this.cameraView.bind(this);
-    this.restartLevel = this.restartLevel.bind(this);
-    this.checkEnemyCollision = this.checkEnemyCollision.bind(this);
-    this.setTilemapLayer();
-  }
-
-  _createClass(Game, [{
-    key: "update",
-    value: function update(deltaTime) {
-      var _this = this;
-
-      this.objects.forEach(function (object) {
-        object.update(deltaTime, _this.totalTime, _this.objects); //updates velocities
-
-        object.frames = (object.frames + 1) % 60;
-        object.lastPos.x = object.pos.x;
-        object.lastPos.y = object.pos.y;
-        object.pos.x += object.vel.x * deltaTime;
-
-        _this.collider.checkX(object);
-
-        object.vel.y += _this.gravity;
-        object.pos.y += object.vel.y * deltaTime;
-
-        _this.collider.checkY(object);
-
-        if (object !== _this.mario) _this.checkEnemyCollision(object);
-      });
-      this.totalTime += deltaTime;
-    }
+/* harmony default export */ __webpack_exports__["default"] = ({
+  "backgrounds": [{
+    "tile": "groundTop",
+    "type": "ground",
+    "ranges": [[0, 125, 12, 1], [130, 18, 10, 1], [153, 25, 6, 1], [0, 5, 10, 1], [33, 5, 9, 5], [202, 20, 12, 1]]
   }, {
-    key: "checkEnemyCollision",
-    value: function checkEnemyCollision(object) {
-      if (this.mario.overlaps(object)) {
-        object.collides(this.mario);
-      }
-    }
+    "tile": "groundSoil",
+    "type": "ground",
+    "ranges": [[0, 125, 13, 1], [130, 18, 11, 3], [153, 25, 7, 7], [0, 5, 11, 2], [33, 5, 10, 4], [202, 20, 13, 1]]
   }, {
-    key: "addSpawns",
-    value: function addSpawns() {
-      var enemies = new Set();
-      var newEnemy;
-      _display_tilemap__WEBPACK_IMPORTED_MODULE_5__["default"].enemies.forEach(function (enemy) {
-        if (enemy.name === "dragon") {
-          newEnemy = new _objects_Dragon__WEBPACK_IMPORTED_MODULE_1__["default"](enemy.x, enemy.y, //initial spawn
-          enemy.x1Limit, enemy.x2Limit // walk path
-          );
-        } else if (enemy.name === "bullet") {
-          newEnemy = new _objects_Bullet__WEBPACK_IMPORTED_MODULE_2__["default"](enemy.x, enemy.y //initial spawn
-          );
-        }
-
-        newEnemy.trigger = enemy.trigger;
-        enemies.add(newEnemy);
-      });
-      this.mario.addBehavior(new _behaviors_Spawn_Enemies__WEBPACK_IMPORTED_MODULE_6__["default"](this.objects, enemies));
-    }
+    "tile": "groundTopRightEdge",
+    "type": "ground",
+    "ranges": [[5, 1, 10, 1], [37, 1, 9, 1], [78, 1, 12, 1], [110, 1, 12, 1], [135, 1, 10, 1], [145, 1, 10, 1], [158, 1, 6, 1], [222, 1, 12, 1], [177, 1, 6, 1]]
   }, {
-    key: "setTilemapLayer",
-    value: function setTilemapLayer() {
-      var _this2 = this;
-
-      _display_tilemap__WEBPACK_IMPORTED_MODULE_5__["default"].backgrounds.forEach(function (background) {
-        background.ranges.forEach(function (range) {
-          var _range = _slicedToArray(range, 4),
-              xStart = _range[0],
-              xLength = _range[1],
-              yStart = _range[2],
-              yLength = _range[3];
-
-          var xEnd = xStart + xLength;
-          var yEnd = yStart + yLength;
-
-          for (var x = xStart; x < xEnd; x++) {
-            for (var y = yStart; y < yEnd; y++) {
-              var tile = {
-                name: background.tile,
-                type: background.type
-              };
-
-              _this2.setTile(x, y, tile);
-
-              if (background.tile === "mysteryBox") {
-                var box = new _objects_Mystery_Box__WEBPACK_IMPORTED_MODULE_3__["default"](x, y, tile);
-
-                _this2.objects.add(box);
-              }
-            }
-          }
-        });
-      });
-    }
+    "tile": "groundTopLeftEdge",
+    "type": "ground",
+    "ranges": [[32, 1, 9, 1], [93, 1, 12, 1], [130, 1, 10, 1], [140, 1, 10, 1], [152, 1, 6, 1], [162, 1, 6, 1], [202, 1, 12, 1]]
   }, {
-    key: "restartLevel",
-    value: function restartLevel(camera) {
-      var _this3 = this;
-
-      if (this.mario.status === "ignoreCollisions" && !this.restarting) {
-        this.restarting = true;
-        var game = this;
-        setTimeout(function () {
-          game.removeEnemies();
-          game.mario.lives = 1;
-          game.mario.pos.set(145, 100);
-          game.mario.invincible.cancel();
-          camera.pos.x = 0;
-          game.addSpawns();
-
-          _this3.setTilemapLayer();
-
-          game.restarting = false;
-        }, 1500);
-      }
-    }
+    "tile": "groundMidRightEdge",
+    "type": "ground",
+    "ranges": [[5, 1, 11, 1], [5, 1, 11, 1], [37, 1, 10, 2], [78, 1, 13, 1], [110, 1, 13, 1], [135, 1, 11, 1], [145, 1, 11, 3], [158, 1, 7, 1], [222, 1, 13, 1], [177, 1, 7, 7]]
   }, {
-    key: "removeEnemies",
-    value: function removeEnemies() {
-      var _this4 = this;
-
-      this.objects.forEach(function (object) {
-        if (object !== _this4.mario) _this4.objects["delete"](object);
-      });
-    }
+    "tile": "groundMidLeftEdge",
+    "type": "ground",
+    "ranges": [[32, 1, 10, 2], [93, 1, 13, 1], [130, 1, 11, 3], [140, 1, 11, 1], [152, 1, 7, 7], [162, 1, 7, 1], [202, 1, 13, 1]]
   }, {
-    key: "setTile",
-    value: function setTile(x, y, tile) {
-      if (!this.tileMap[x]) this.tileMap[x] = [];
-      this.tileMap[x][y] = tile;
-    }
+    "tile": "groundTopRightPatch",
+    "type": "ground",
+    "ranges": [[5, 1, 12, 1], [37, 1, 12, 1], [135, 1, 12, 1], [158, 1, 8, 1]]
   }, {
-    key: "getTile",
-    value: function getTile(x, y) {
-      if (this.tileMap[x]) return this.tileMap[x][y];
-    }
+    "tile": "groundTopLeftPatch",
+    "type": "ground",
+    "ranges": [[32, 1, 12, 1], [140, 1, 12, 1], [162, 1, 8, 1]]
   }, {
-    key: "cameraView",
-    value: function cameraView(camera, backgroundSpriteSheet) {
-      var _this5 = this;
-
-      // center camera on mario
-      //scrolling commented out for testing
-      this.restartLevel(camera);
-
-      if (this.mario.pos.x > 300 && this.mario.frame !== "lose") {
-        camera.pos.x = this.mario.pos.x - 300;
-      }
-
-      var cameraPanel = document.createElement('canvas');
-      cameraPanel.width = camera.width + this.tileSize;
-      cameraPanel.height = camera.height;
-      var panelCtx = cameraPanel.getContext('2d'); // first need to figure out what tile columns to draw
-
-      var columnStart = this.getTileIndex(camera.pos.x);
-      var columnEnd = columnStart + this.getTileIndex(camera.width); // draw what the camera is focusing on
-
-      var _loop = function _loop(x) {
-        var column = _this5.tileMap[x];
-
-        if (column) {
-          column.forEach(function (tile, y) {
-            if (tile.name === "mysteryBox") {
-              backgroundSpriteSheet.draw("transparent", panelCtx, (x - columnStart) * _this5.tileSize, y * _this5.tileSize);
-            } else {
-              backgroundSpriteSheet.draw(tile.name, panelCtx, (x - columnStart) * _this5.tileSize, y * _this5.tileSize);
-            }
-          });
-        }
-      };
-
-      for (var x = columnStart; x <= columnEnd; x++) {
-        _loop(x);
-      }
-
-      var marioPosX = this.getTileIndex(this.mario.pos.x) + 1;
-      var marioPosY = this.getTileIndex(this.mario.pos.y) + 1;
-      var tileName = this.getTile(marioPosX, marioPosY);
-      if (tileName) tileName = tileName.name; // console.log("x: ", marioPosX, ", y: ", marioPosY, ", tilename: ", tileName);
-      //draw camera by pixel for a smooth transition
-
-      return cameraPanel;
-    }
+    "tile": "groundTopFloatingLeft",
+    "type": "floatingPlatform",
+    "ranges": [[73, 1, 8, 1], [100, 1, 7, 1]]
   }, {
-    key: "getTileIndex",
-    value: function getTileIndex(pos) {
-      return Math.floor(pos / this.tileSize);
-    }
-  }]);
-
-  return Game;
-}();
-
-
+    "tile": "groundTopFloatingLeft",
+    "type": "ground",
+    "ranges": [[113, 1, 6, 1]]
+  }, {
+    "tile": "groundTop",
+    "type": "floatingPlatform",
+    "ranges": [[74, 3, 8, 1], [101, 5, 7, 1]]
+  }, {
+    "tile": "groundTop",
+    "type": "ground",
+    "ranges": [[114, 10, 6, 1], [136, 4, 12, 1], [159, 3, 8, 1]]
+  }, {
+    "tile": "groundTopFloatingRight",
+    "type": "floatingPlatform",
+    "ranges": [[77, 1, 8, 1], [106, 1, 7, 1]]
+  }, {
+    "tile": "groundTopFloatingRight",
+    "type": "ground",
+    "ranges": [[124, 1, 6, 1]]
+  }, {
+    "tile": "groundTopFloatingLeftSoil",
+    "ranges": [[73, 1, 9, 3], [100, 1, 8, 4], [113, 1, 7, 10]]
+  }, {
+    "tile": "groundSoil",
+    "ranges": [[74, 3, 9, 3], [101, 5, 8, 4], [114, 10, 7, 10]]
+  }, {
+    "tile": "groundTopFloatingRightSoil",
+    "ranges": [[77, 1, 9, 3], [106, 1, 8, 4], [124, 1, 7, 10]]
+  }, {
+    "tile": "platformMiddle",
+    //    "type": "floatingPlatform",
+    "type": "ground",
+    "ranges": [[14, 11, 6, 1], [82, 1, 7, 1], [87, 1, 7, 1], [186, 7, 6, 1]]
+  }, {
+    "tile": "platformLeft",
+    //    "type": "floatingPlatform",
+    "type": "ground",
+    "ranges": [[8, 1, 7, 1], [13, 1, 6, 1], [28, 1, 7, 1], [81, 1, 7, 1], [86, 1, 7, 1], [148, 1, 8, 1], [148, 1, 2, 1], [185, 1, 6, 1]]
+  }, {
+    "tile": "platformRight",
+    //    "type": "floatingPlatform",
+    "type": "ground",
+    "ranges": [[9, 1, 7, 1], [25, 1, 6, 1], [29, 1, 7, 1], [83, 1, 7, 1], [88, 1, 7, 1], [149, 1, 8, 1], [149, 1, 2, 1], [193, 1, 6, 1]]
+  }, {
+    "tile": "mysteryBox",
+    "type": "box",
+    "item": "mushroom",
+    "ranges": [[19, 1, 2, 1]]
+  }, {
+    "tile": "grass1",
+    "ranges": [[7, 1, 11, 1], [45, 1, 11, 1], [60, 1, 11, 1], [96, 1, 11, 1], [169, 1, 5, 1]]
+  }, {
+    "tile": "grass2",
+    "ranges": [[8, 2, 11, 1], [46, 3, 11, 1], [61, 3, 11, 1], [97, 1, 11, 1], [170, 3, 5, 1]]
+  }, // {
+  //     "tile": "grass3",
+  //     "ranges": [
+  //     ]
+  // },
+  {
+    "tile": "grass4",
+    "ranges": [[10, 1, 11, 1], [49, 1, 11, 1], [64, 1, 11, 1], [98, 1, 11, 1], [173, 1, 5, 1]]
+  }, {
+    "tile": "singlePlatform",
+    // "type": "floatingPlatform",
+    "type": "ground",
+    "ranges": [[70, 1, 9, 1], [40, 3, 7, 1], [47, 3, 7, 1], [109, 1, 9, 1], [109, 1, 4, 1], [137, 1, 7, 1], [160, 1, 3, 1], [181, 1, 8, 1], [196, 1, 8, 1], [199, 1, 10, 1]]
+  }, {
+    "tile": "transparent",
+    "ranges": [[79, 14, 12, 2], [111, 2, 12, 2], [125, 5, 12, 2], [136, 4, 10, 2], [146, 3, 10, 4], [159, 3, 6, 2]]
+  }]
+});
 
 /***/ }),
 
@@ -1814,9 +1810,8 @@ function (_Behavior) {
       //100 left limit
       // pos.x = 200
       // 300 right limit
-      // if (object.frame === "mushroom") debugger
       if (object.pos.x < this.moveLeftLimit) {
-        object.vel.x = object.speed * deltaTime;
+        object.vel.x = object.speed * deltaTime; // if (object.status === "koopa") debugger
       } else if (object.pos.x > this.moveRightLimit) {
         object.vel.x = -object.speed * deltaTime;
       } else if (object.vel.x === 0) {
@@ -2142,7 +2137,7 @@ function (_Behavior) {
   }, {
     key: "startFrame",
     value: function startFrame() {
-      this.duration = 0.01;
+      this.duration = 0.1;
     }
   }, {
     key: "cancel",
@@ -2300,8 +2295,8 @@ function (_Behavior) {
     _classCallCheck(this, JumpOnLose);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(JumpOnLose).call(this, 'jumpOnLose'));
-    _this.maxDuration = 0.3;
-    _this.vel = 300;
+    _this.maxDuration = 0.2;
+    _this.vel = 250;
     _this.duration = 0;
     return _this;
   }
@@ -2313,9 +2308,10 @@ function (_Behavior) {
     }
   }, {
     key: "update",
-    value: function update(mario, deltaTime) {
+    value: function update(obj, deltaTime) {
       if (this.duration > 0) {
-        mario.vel.y = -this.vel;
+        obj.status = "ignoreCollisions";
+        obj.vel.y = -this.vel;
         this.duration -= deltaTime;
       }
     }
@@ -2545,6 +2541,130 @@ function (_Behavior) {
 
 /***/ }),
 
+/***/ "./src/game/enemy_spawns.js":
+/*!**********************************!*\
+  !*** ./src/game/enemy_spawns.js ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  "enemies": [{
+    "name": "koopa",
+    "x": 200,
+    "y": 300,
+    "x1Limit": 200,
+    "x2Limit": 800,
+    "trigger": 0
+  }, {
+    "name": "koopa",
+    "x": 800,
+    "y": 300,
+    "x1Limit": 200,
+    "x2Limit": 800,
+    "trigger": 0
+  }, {
+    "name": "koopa",
+    "x": 1200,
+    "y": 200,
+    "x1Limit": 1200,
+    "x2Limit": 1900,
+    "trigger": 600
+  }, {
+    "name": "koopa",
+    "x": 3600,
+    "y": 0,
+    "x1Limit": 3300,
+    "x2Limit": 3600,
+    "trigger": 3100
+  }, {
+    "name": "koopa",
+    "x": 5100,
+    "y": 0,
+    "x1Limit": 4700,
+    "x2Limit": 5120,
+    "trigger": 4500
+  }, {
+    "name": "dragon",
+    "x": 4580,
+    "y": 0,
+    "x1Limit": 4400,
+    "x2Limit": 4580,
+    "trigger": 3800
+  }, {
+    "name": "dragon",
+    "x": 400,
+    "y": 300,
+    "x1Limit": 200,
+    "x2Limit": 800,
+    "trigger": 0
+  }, {
+    "name": "dragon",
+    "x": 1900,
+    "y": 200,
+    "x1Limit": 1200,
+    "x2Limit": 1900,
+    "trigger": 600
+  }, {
+    "name": "dragon",
+    "x": 1500,
+    "y": 200,
+    "x1Limit": 1200,
+    "x2Limit": 1900,
+    "trigger": 600
+  }, {
+    "name": "dragon",
+    "x": 2900,
+    "y": 200,
+    "x1Limit": 2700,
+    "x2Limit": 3100,
+    "trigger": 2000
+  }, {
+    "name": "dragon",
+    "x": 4000,
+    "y": 200,
+    "x1Limit": 3950,
+    "x2Limit": 4050,
+    "trigger": 3500
+  }, {
+    "name": "dragon",
+    "x": 4700,
+    "y": 0,
+    "x1Limit": 4700,
+    "x2Limit": 5120,
+    "trigger": 4000
+  }, {
+    "name": "bullet",
+    "x": 1300,
+    "y": 90,
+    "trigger": 700
+  }, {
+    "name": "bullet",
+    "x": 3700,
+    "y": 10,
+    "trigger": 3300
+  }, {
+    "name": "bullet",
+    "x": 4400,
+    "y": 125,
+    "trigger": 4000
+  }, {
+    "name": "bullet",
+    "x": 5100,
+    "y": 10,
+    "trigger": 4700
+  }, {
+    "name": "bullet",
+    "x": 4800,
+    "y": 10,
+    "trigger": 4400
+  }]
+});
+
+/***/ }),
+
 /***/ "./src/game/objects/Bullet.js":
 /*!************************************!*\
   !*** ./src/game/objects/Bullet.js ***!
@@ -2681,6 +2801,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Game_Object__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Game_Object */ "./src/game/objects/Game_Object.js");
 /* harmony import */ var _behaviors_Auto_Move__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../behaviors/Auto_Move */ "./src/game/behaviors/Auto_Move.js");
 /* harmony import */ var _files__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../files */ "./src/files.js");
+/* harmony import */ var _behaviors_Jump_On_Lose__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../behaviors/Jump_On_Lose */ "./src/game/behaviors/Jump_On_Lose.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2703,6 +2824,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var Dragon =
 /*#__PURE__*/
 function (_GameObject) {
@@ -2720,11 +2842,14 @@ function (_GameObject) {
     _this.width = 43;
     _this.height = 63;
     _this.speed = 6000;
+    _this.JumpOnLose = new _behaviors_Jump_On_Lose__WEBPACK_IMPORTED_MODULE_3__["default"]();
+
+    _this.addBehavior(_this.JumpOnLose);
 
     _this.addBehavior(new _behaviors_Auto_Move__WEBPACK_IMPORTED_MODULE_1__["default"](moveLeftLimit, moveRightLimit));
 
     _this.stompedCount = 0;
-    _this.status = "dragonRegular";
+    _this.dragon = "dragonRegular";
     _this.facing = "left";
     _this.frame = "regularWalkLeft1";
     _this.regularWalkLeftFrames = ["regularWalkLeft1", "regularWalkLeft2"];
@@ -2736,6 +2861,29 @@ function (_GameObject) {
   }
 
   _createClass(Dragon, [{
+    key: "collidesShell",
+    value: function collidesShell(shell) {
+      if (this.status === "ignoreCollisions") return;
+
+      if (shell.getRight() > this.getLeft()) {
+        this.jumpOnLose.start();
+
+        if (!_files__WEBPACK_IMPORTED_MODULE_2__["music"].paused) {
+          _files__WEBPACK_IMPORTED_MODULE_2__["stomp2Sound"].currentTime = 0;
+          _files__WEBPACK_IMPORTED_MODULE_2__["stomp2Sound"].play();
+        }
+      }
+
+      if (shell.getLeft() < this.getRight()) {
+        this.jumpOnLose.start();
+
+        if (!_files__WEBPACK_IMPORTED_MODULE_2__["music"].paused) {
+          _files__WEBPACK_IMPORTED_MODULE_2__["stomp2Sound"].currentTime = 0;
+          _files__WEBPACK_IMPORTED_MODULE_2__["stomp2Sound"].play();
+        }
+      }
+    }
+  }, {
     key: "collides",
     value: function collides(mario) {
       if (mario.invinciblity) return;
@@ -2756,7 +2904,6 @@ function (_GameObject) {
           }
         } else {
           if (mario.lives === 2 && !_files__WEBPACK_IMPORTED_MODULE_2__["music"].paused) _files__WEBPACK_IMPORTED_MODULE_2__["mushroomMarioHitSound"].play();
-          debugger;
           mario.lives -= 1;
           mario.invincible.start();
           mario.invinciblity = true;
@@ -2771,11 +2918,12 @@ function (_GameObject) {
       this.behaviors.forEach(function (behavior) {
         behavior.update(_this2, deltaTime); //takes in object and deltaTime
       });
-      this.decideStatus(totalTime, objects);
+      this.decideFrame(totalTime, objects);
+      if (this.pos.y > 400) objects["delete"](this);
     }
   }, {
-    key: "decideStatus",
-    value: function decideStatus(totalTime, objects) {
+    key: "decideFrame",
+    value: function decideFrame(totalTime, objects) {
       var _this3 = this;
 
       if (this.stompedCount === 2 && this.speed !== 0) {
@@ -2784,12 +2932,12 @@ function (_GameObject) {
         }, 5000);
         this.speed = 0;
         this.vel.x = 0;
-        this.status = "dragonFlattened";
+        this.dragon = "dragonFlattened";
         this.width = 43;
         this.height = 20;
         this.frame = this.facing === "left" ? "flattenedLeft" : "flattenedRight";
       } else if (this.stompedCount === 1) {
-        this.status = "dragonHalfFlattened";
+        this.dragon = "dragonHalfFlattened";
         this.width = 43;
         this.height = 34;
         this.facing = this.vel.x > 0 ? "right" : "left";
@@ -2812,7 +2960,7 @@ function (_GameObject) {
       //     this.pos.y - camera.pos.y,
       //     this.width, this.height);
       // ctx.stroke(); 
-      spriteSheets.get(this.status).draw(this.frame, ctx, this.pos.x - camera.pos.x, this.pos.y - camera.pos.y);
+      spriteSheets.get(this.dragon).draw(this.frame, ctx, this.pos.x - camera.pos.x, this.pos.y - camera.pos.y);
     }
   }]);
 
@@ -2866,14 +3014,29 @@ function () {
       return this.pos.x + this.width;
     }
   }, {
+    key: "getLastRight",
+    value: function getLastRight() {
+      return this.lastPos.x + this.width;
+    }
+  }, {
     key: "getLeft",
     value: function getLeft() {
       return this.pos.x;
     }
   }, {
+    key: "getLastLeft",
+    value: function getLastLeft() {
+      return this.lastPos.x;
+    }
+  }, {
     key: "getTop",
     value: function getTop() {
       return this.pos.y;
+    }
+  }, {
+    key: "getLastTop",
+    value: function getLastTop() {
+      return this.lastPos.y;
     }
   }, {
     key: "getBottom",
@@ -2884,6 +3047,11 @@ function () {
     key: "getLastBottom",
     value: function getLastBottom() {
       return this.lastPos.y + this.height;
+    }
+  }, {
+    key: "overlaps",
+    value: function overlaps(object) {
+      return this.getBottom() > object.getTop() && this.getTop() < object.getBottom() && this.getLeft() < object.getRight() && this.getRight() > object.getLeft();
     }
   }, {
     key: "update",
@@ -2908,6 +3076,7 @@ function () {
       this.behaviors.forEach(function (beh, idx) {
         if (beh.name === behavior) _this2.behaviors.splice(idx, 1);
       });
+      this[behavior] = undefined;
     }
   }, {
     key: "animationFrame",
@@ -2921,10 +3090,210 @@ function () {
   }, {
     key: "collides",
     value: function collides(object) {}
+  }, {
+    key: "collidesShell",
+    value: function collidesShell(object) {}
   }]);
 
   return GameObject;
 }();
+
+
+
+/***/ }),
+
+/***/ "./src/game/objects/Koopa.js":
+/*!***********************************!*\
+  !*** ./src/game/objects/Koopa.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Koopa; });
+/* harmony import */ var _Game_Object__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Game_Object */ "./src/game/objects/Game_Object.js");
+/* harmony import */ var _behaviors_Auto_Move__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../behaviors/Auto_Move */ "./src/game/behaviors/Auto_Move.js");
+/* harmony import */ var _files__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../files */ "./src/files.js");
+/* harmony import */ var _behaviors_Jump_On_Lose__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../behaviors/Jump_On_Lose */ "./src/game/behaviors/Jump_On_Lose.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+var Koopa =
+/*#__PURE__*/
+function (_GameObject) {
+  _inherits(Koopa, _GameObject);
+
+  function Koopa(xSpawn, ySpawn, moveLeftLimit, moveRightLimit) {
+    var _this;
+
+    _classCallCheck(this, Koopa);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Koopa).call(this));
+
+    _this.pos.set(xSpawn, ySpawn);
+
+    _this.width = 35;
+    _this.height = 50;
+    _this.speed = 5000;
+    _this.shellSpeed = 400;
+
+    _this.addBehavior(new _behaviors_Auto_Move__WEBPACK_IMPORTED_MODULE_1__["default"](moveLeftLimit, moveRightLimit));
+
+    _this.addBehavior(new _behaviors_Jump_On_Lose__WEBPACK_IMPORTED_MODULE_3__["default"]());
+
+    _this.stomped = false;
+    _this.lethalShell = false;
+    _this.koopa = "koopa";
+    _this.facing = "left";
+    _this.frame = "walkLeft1";
+    _this.walkLeftFrames = ["walkLeft1", "walkLeft2"];
+    _this.walkRightFrames = ["walkRight1", "walkRight2"];
+    _this.shellFrames = ["shell1", "shell2", "shell3"];
+    return _this;
+  }
+
+  _createClass(Koopa, [{
+    key: "collidesShell",
+    value: function collidesShell(shell) {
+      if (this.status === "ignoreCollisions") return;
+
+      if (shell.getRight() > this.getLeft()) {
+        this.jumpOnLose.start();
+
+        if (!_files__WEBPACK_IMPORTED_MODULE_2__["music"].paused) {
+          _files__WEBPACK_IMPORTED_MODULE_2__["stomp2Sound"].currentTime = 0;
+          _files__WEBPACK_IMPORTED_MODULE_2__["stomp2Sound"].play();
+        }
+      } else if (shell.getLeft() < this.getRight()) {
+        this.jumpOnLose.start();
+
+        if (!_files__WEBPACK_IMPORTED_MODULE_2__["music"].paused) {
+          _files__WEBPACK_IMPORTED_MODULE_2__["stomp2Sound"].currentTime = 0;
+          _files__WEBPACK_IMPORTED_MODULE_2__["stomp2Sound"].play();
+        }
+      }
+    }
+  }, {
+    key: "collides",
+    value: function collides(mario) {
+      if (mario.invinciblity) return;
+
+      if (!this.stomped) {
+        if (mario.vel.y > this.vel.y && mario.getBottom() > this.getTop() && mario.getLastBottom() <= this.getTop()) {
+          mario.stomp.bounce();
+          this.stomped = true;
+
+          if (!_files__WEBPACK_IMPORTED_MODULE_2__["music"].paused) {
+            _files__WEBPACK_IMPORTED_MODULE_2__["stomp2Sound"].currentTime = 0;
+            _files__WEBPACK_IMPORTED_MODULE_2__["stomp2Sound"].play();
+          }
+        } else {
+          mario.damage();
+        }
+      } else if (this.koopa === "koopaShell") {
+        if (mario.getRight() > this.getLeft()) {
+          if (mario.vel.x > 0 && this.vel.x === 0) {
+            this.vel.x = this.shellSpeed;
+            mario.invincible.startFrame();
+            mario.invinciblity = true;
+          } else if (this.vel.x !== 0) {
+            if (mario.vel.y > this.vel.y && mario.getBottom() > this.getTop() && mario.getLastBottom() <= this.getTop()) {
+              mario.stomp.bounce();
+
+              if (!_files__WEBPACK_IMPORTED_MODULE_2__["music"].paused) {
+                _files__WEBPACK_IMPORTED_MODULE_2__["stomp1Sound"].currentTime = 0;
+                _files__WEBPACK_IMPORTED_MODULE_2__["stomp1Sound"].play();
+              }
+            } else {
+              mario.damage();
+            }
+          }
+        }
+
+        if (mario.getLeft() < this.getRight()) {
+          if (mario.vel.x < 0 && this.vel.x === 0) {
+            this.vel.x = -this.shellSpeed;
+            mario.invincible.startFrame();
+            mario.invinciblity = true;
+          } else if (this.vel.x !== 0) {
+            if (mario.vel.y > this.vel.y && mario.getBottom() > this.getTop() && mario.getLastBottom() <= this.getTop()) {
+              mario.stomp.bounce();
+
+              if (!_files__WEBPACK_IMPORTED_MODULE_2__["music"].paused) {
+                _files__WEBPACK_IMPORTED_MODULE_2__["stomp1Sound"].currentTime = 0;
+                _files__WEBPACK_IMPORTED_MODULE_2__["stomp1Sound"].play();
+              }
+            } else {
+              mario.damage();
+            }
+          }
+        }
+      }
+    }
+  }, {
+    key: "update",
+    value: function update(deltaTime, totalTime, objects, mario) {
+      var _this2 = this;
+
+      this.behaviors.forEach(function (behavior) {
+        behavior.update(_this2, deltaTime); //takes in object and deltaTime
+      });
+      this.decideFrame(totalTime, objects);
+      if (this.pos.y > 400 || mario.pos.x > this.pos.x + 1000) objects["delete"](this);
+    }
+  }, {
+    key: "decideFrame",
+    value: function decideFrame(totalTime, objects) {
+      if (this.stomped && this.autoMove) {
+        this.removeBehavior("autoMove");
+        this.vel.x = 0;
+        this.koopa = "koopaShell";
+        this.width = 35;
+        this.height = 35;
+        this.frame = "shell1";
+      } else if (this.koopa === "koopa") {
+        this.facing = this.vel.x > 0 ? "right" : "left";
+        var frames = this.facing === "left" ? this.walkLeftFrames : this.walkRightFrames;
+        this.frame = this.animationFrame(frames, totalTime, 0.20);
+      } else if (this.koopa === "koopaShell") {
+        this.facing = this.vel.x > 0 ? "right" : "left"; // const frames = (this.facing === "left") ? this.walkLeftFrames : this.walkRightFrames;
+
+        if (this.vel.x !== 0) {
+          this.lethalShell = true;
+          this.frame = this.animationFrame(this.shellFrames, totalTime, 0.1);
+        }
+      }
+    }
+  }, {
+    key: "draw",
+    value: function draw(ctx, spriteSheets, camera) {
+      spriteSheets.get(this.koopa).draw(this.frame, ctx, this.pos.x - camera.pos.x, this.pos.y - camera.pos.y);
+    }
+  }]);
+
+  return Koopa;
+}(_Game_Object__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
 
 
@@ -2993,9 +3362,7 @@ function (_GameObject) {
 
     _this.addBehavior(new _behaviors_Jump__WEBPACK_IMPORTED_MODULE_1__["default"]());
 
-    _this.JumpOnLose = new _behaviors_Jump_On_Lose__WEBPACK_IMPORTED_MODULE_2__["default"]();
-
-    _this.addBehavior(_this.JumpOnLose);
+    _this.addBehavior(new _behaviors_Jump_On_Lose__WEBPACK_IMPORTED_MODULE_2__["default"]());
 
     _this.addBehavior(new _behaviors_Walk__WEBPACK_IMPORTED_MODULE_3__["default"]());
 
@@ -3025,24 +3392,26 @@ function (_GameObject) {
       this.behaviors.forEach(function (behavior) {
         behavior.update(_this2, deltaTime); //takes in object and deltaTime
       });
-      this.decideStatus(totalTime);
-      console.log(this.vel.y);
+      this.decideFrame(totalTime);
 
-      if (this.vel.y > 500) {
-        this.vel.y = 500;
+      if (this.invinciblity && this.lives === 1 && this.invincible.duration > 0.1) {
+        if (Math.floor(totalTime / 0.2) % 2) {
+          console.log(totalTime);
+          this.frame = "transparent";
+        }
       }
     }
   }, {
-    key: "decideStatus",
-    value: function decideStatus(totalTime) {
+    key: "decideFrame",
+    value: function decideFrame(totalTime) {
       if (this.pos.y > 400) this.lives = 0;
 
       if (this.lives === 0) {
         this.width = 29;
         this.height = 40;
-        this.mario = "regularMario";
-        this.status = "ignoreCollisions";
-        if (this.status === "ignoreCollisions" && this.frame !== "lose") this.JumpOnLose.start();
+        this.mario = "regularMario"; // this.status = "ignoreCollisions";
+
+        if (this.frame !== "lose") this.jumpOnLose.start();
         this.frame = "lose";
         if (!_files__WEBPACK_IMPORTED_MODULE_7__["music"].paused) _files__WEBPACK_IMPORTED_MODULE_7__["marioLoseSound"].play();
         return;
@@ -3111,7 +3480,10 @@ function (_GameObject) {
           this.frame = this.walkLeftFrames[_frameIdx3];
         }
       } else {
-        if (this.status === "idle" && !this.crouch.active) return;
+        if (this.status === "idle" && !this.crouch.active) {
+          this.frame = this.facing === "right" ? "idleRight" : "idleLeft";
+          return;
+        }
 
         if (this.facing === "right") {
           if (this.crouch.active) {
@@ -3151,10 +3523,6 @@ function (_GameObject) {
           }
         }
       }
-
-      if (this.invinciblity && this.lives === 1) {
-        if (Math.floor(totalTime / 0.2) % 2) this.frame = "transparent";
-      }
     }
   }, {
     key: "draw",
@@ -3165,15 +3533,16 @@ function (_GameObject) {
       //     this.pos.y - camera.pos.y,
       //     this.width, this.height);
       // ctx.stroke();
-      // if(this.invinciblity) {
-      //     spriteSheets.get(this.mario).draw(this.frame, ctx, this.pos.x - camera.pos.x, this.pos.y - camera.pos.y);
-      // } else {
-      spriteSheets.get(this.mario).draw(this.frame, ctx, this.pos.x - camera.pos.x, this.pos.y - camera.pos.y); // }
+      spriteSheets.get(this.mario).draw(this.frame, ctx, this.pos.x - camera.pos.x, this.pos.y - camera.pos.y);
     }
   }, {
-    key: "overlaps",
-    value: function overlaps(object) {
-      return this.getBottom() > object.getTop() && this.getTop() < object.getBottom() && this.getLeft() < object.getRight() && this.getRight() > object.getLeft();
+    key: "damage",
+    value: function damage() {
+      if (this.invinciblity) return;
+      if (this.lives === 2 && !_files__WEBPACK_IMPORTED_MODULE_7__["music"].paused) _files__WEBPACK_IMPORTED_MODULE_7__["mushroomMarioHitSound"].play();
+      this.lives -= 1;
+      this.invincible.start();
+      this.invinciblity = true;
     }
   }]);
 
@@ -3258,11 +3627,11 @@ function (_GameObject) {
       this.behaviors.forEach(function (behavior) {
         behavior.update(_this2, deltaTime, objects); //takes in object and deltaTime
       });
-      this.decideStatus(totalTime, objects);
+      this.decideFrame(totalTime, objects);
     }
   }, {
-    key: "decideStatus",
-    value: function decideStatus(totalTime, objects) {
+    key: "decideFrame",
+    value: function decideFrame(totalTime, objects) {
       if (this.status === "spawning") {// this.frame = this.animationFrame(this.mushroomSpawn, totalTime, 0.20);
       } else if (this.status === "delete") {
         if (!_files__WEBPACK_IMPORTED_MODULE_2__["music"].paused) _files__WEBPACK_IMPORTED_MODULE_2__["powerUpSound"].play();
@@ -3374,11 +3743,11 @@ function (_GameObject) {
       this.behaviors.forEach(function (behavior) {
         behavior.update(_this2, deltaTime, objects); //takes in object and deltaTime
       });
-      this.decideStatus(totalTime, objects);
+      this.decideFrame(totalTime, objects);
     }
   }, {
-    key: "decideStatus",
-    value: function decideStatus(totalTime, objects) {
+    key: "decideFrame",
+    value: function decideFrame(totalTime, objects) {
       if (this.status === "ignoreCollisions") {
         this.frame = this.animationFrame(this.boxIdleAnimation, totalTime, 0.20);
       } else {
@@ -3438,6 +3807,17 @@ module.exports = "files/background_assets.png";
 /***/ (function(module, exports) {
 
 module.exports = "files/enemies.png";
+
+/***/ }),
+
+/***/ "./src/imgs/favicon.png":
+/*!******************************!*\
+  !*** ./src/imgs/favicon.png ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "files/favicon.png";
 
 /***/ }),
 

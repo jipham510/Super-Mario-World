@@ -395,7 +395,7 @@ export default {
             "ranges": [
                 [
                     14, 11,
-                    8, 1
+                    6, 1
                 ],
                 [
                     82, 1,
@@ -418,15 +418,15 @@ export default {
             "ranges": [
                 [
                     8, 1,
-                    8, 1
+                    7, 1
                 ],
                 [
                     13, 1,
-                    8, 1
+                    6, 1
                 ],
                 [
                     28, 1,
-                    6, 1
+                    7, 1
                 ],
                 [
                     81, 1,
@@ -457,15 +457,15 @@ export default {
             "ranges": [
                 [
                     9, 1,
-                    8, 1
+                    7, 1
                 ],
                 [
                     25, 1,
-                    8, 1
+                    6, 1
                 ],
                 [
                     29, 1,
-                    6, 1
+                    7, 1
                 ],
                 [
                     83, 1,
@@ -496,7 +496,7 @@ export default {
             "ranges": [
                 [
                     19, 1,
-                    4, 1
+                    2, 1
                 ]
             ]
         },
@@ -660,86 +660,5 @@ export default {
             ]
         },
 
-    ],
-    "enemies": [
-
-        {
-            "name": "dragon",
-            "x": 1900,
-            "y": 200,
-            "x1Limit": 1200,
-            "x2Limit": 1900,
-            "trigger": 600
-        },
-        {
-            "name": "dragon",
-            "x": 1200,
-            "y": 200,
-            "x1Limit": 1200,
-            "x2Limit": 1900,
-            "trigger": 600
-        },
-        {
-            "name": "dragon",
-            "x": 2900,
-            "y": 200,
-            "x1Limit": 2700,
-            "x2Limit": 3100,
-            "trigger": 2000
-        },
-        {
-            "name": "dragon",
-            "x": 4000,
-            "y": 200,
-            "x1Limit": 3950,
-            "x2Limit": 4050,
-            "trigger": 3500
-        },
-        {
-            "name": "dragon",
-            "x": 5100,
-            "y": 0,
-            "x1Limit": 4700,
-            "x2Limit": 5120,
-            "trigger": 4000
-        },
-        {
-            "name": "dragon",
-            "x": 4700,
-            "y": 0,
-            "x1Limit": 4700,
-            "x2Limit": 5120,
-            "trigger": 4000
-        },
-        {
-            "name": "bullet",
-            "x": 1300,
-            "y": 90,
-            "trigger": 700
-        },
-        {
-            "name": "bullet",
-            "x": 3700,
-            "y": 10,
-            "trigger": 3300
-        },
-        {
-            "name": "bullet",
-            "x": 4400,
-            "y": 120,
-            "trigger": 4000
-        },
-        {
-            "name": "bullet",
-            "x": 5100,
-            "y": 10,
-            "trigger": 4700
-        },
-        {
-            "name": "bullet",
-            "x": 4800,
-            "y": 10,
-            "trigger": 4400
-        },
     ]
 }

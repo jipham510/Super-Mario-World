@@ -87,6 +87,60 @@ export default {
                     "y": 318
                 },
             ]
+        },
+        {
+            "SpriteSheet": "koopa",
+            "width": 35,
+            "height": 50,
+            "sprites": [
+                {
+                    "name": "walkLeft1",
+                    "x": 291,
+                    "y": 0
+                },
+                {
+                    "name": "walkLeft2",
+                    "x": 251,
+                    "y": 0
+                },
+                {
+                    "name": "walkRight1",
+                    "type": "flip",
+                    "x": 291,
+                    "y": 0
+                },
+                {
+                    "name": "walkRight2",
+                    "type": "flip",
+                    "x": 251,
+                    "y": 0
+                },
+            ]
+        },
+        {
+            "SpriteSheet": "koopaShell",
+            "width": 35,
+            "height": 35,
+            "sprites": [
+                {
+                    "name": "shell1",
+                    "type": "flip",
+                    "x": 171,
+                    "y": 5
+                },
+                {
+                    "name": "shell2",
+                    "type": "flip",
+                    "x": 171,
+                    "y": 45
+                },
+                {
+                    "name": "shell3",
+                    "type": "flip",
+                    "x": 171,
+                    "y": 85
+                },
+            ]
         }
     ]
 }

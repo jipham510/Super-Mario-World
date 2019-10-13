@@ -1,4 +1,4 @@
-export default class Collider {
+export default class TileCollision {
     constructor(tileMap){
         this.tileMap = tileMap; 
         this.tileSize = 29;
@@ -38,15 +38,15 @@ export default class Collider {
 
     handleGroundCollisionX(gameObj, match) {
         if (gameObj.vel.x > 0) {
-            if (gameObj.getRight() > match.left) {
+            if (gameObj.getRight() > match.left && gameObj.getLastRight() <= match.left ) {
                 gameObj.pos.x = match.left - gameObj.width;
-                gameObj.vel.x = 0;
+                gameObj.vel.x = (gameObj.koopa === "koopaShell") ? -gameObj.vel.x : 0;
             }
         }
         if (gameObj.vel.x < 0) {
-            if (gameObj.pos.x < match.right) {
+            if (gameObj.getLeft() < match.right && gameObj.getLastLeft() >= match.right ) {
                 gameObj.pos.x = match.right;
-                gameObj.vel.x = 0;
+                gameObj.vel.x = (gameObj.koopa === "koopaShell") ? -gameObj.vel.x : 0;
             }
         }
     }

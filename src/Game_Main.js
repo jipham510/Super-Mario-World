@@ -15,7 +15,7 @@ export default class GameMain {
     }
     start() {
         //starting player position
-        this.game.mario.pos.set(145, 250);
+        this.game.mario.pos.set(0, 250);
 
         // //testing for maping out area
         // this.display.camera.pos.x = 4000;

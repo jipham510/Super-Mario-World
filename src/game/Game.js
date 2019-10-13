@@ -1,9 +1,11 @@
 import Mario from './objects/Mario';
 import Dragon from './objects/Dragon';
 import Bullet from './objects/Bullet';
+import Koopa from './objects/Koopa';
 import MysteryBox from './objects/Mystery_Box';
-import Collider from './Collider';
-import tilemap from '../display/tilemap';
+import TileCollision from './Tile_Collision';
+import tilemap from './background_tiles';
+import enemySpawns from './enemy_spawns';
 import SpawnEnemies from './behaviors/Spawn_Enemies';
 
 export default class Game {
@@ -20,39 +22,44 @@ export default class Game {
         this.totalTime = 0;
         this.tileMap = [];
         this.tileSize = 29;
-        this.collider = new Collider(this.tileMap);
+        this.tileCollision = new TileCollision(this.tileMap);
         this.setTilemapLayer = this.setTilemapLayer.bind(this);
         this.cameraView = this.cameraView.bind(this);
         this.restartLevel = this.restartLevel.bind(this);
         this.checkEnemyCollision = this.checkEnemyCollision.bind(this);
+        this.checkShellCollision = this.checkShellCollision.bind(this);
         this.setTilemapLayer();
     }
     update(deltaTime) {
         this.objects.forEach(object => {
-            object.update(deltaTime, this.totalTime, this.objects); //updates velocities
+            object.update(deltaTime, this.totalTime, this.objects, this.mario); //updates velocities
             object.frames = (object.frames + 1) % 60;
             object.lastPos.x = object.pos.x;
             object.lastPos.y = object.pos.y;
             object.pos.x += object.vel.x * deltaTime;
-            this.collider.checkX(object);
+            this.tileCollision.checkX(object);
             
             object.vel.y += this.gravity;
             object.pos.y += object.vel.y * deltaTime;
-            this.collider.checkY(object);
+            this.tileCollision.checkY(object);
             if (object !== this.mario) this.checkEnemyCollision(object);
+            if (object.lethalShell) this.checkShellCollision(object);
         })
-
         this.totalTime += deltaTime;
     }
     checkEnemyCollision(object){
-        if (this.mario.overlaps(object)) {
-            object.collides(this.mario);
-        }
+        if (this.mario.overlaps(object)) object.collides(this.mario);
+    }
+    checkShellCollision(shell){
+        this.objects.forEach( object => {
+            if (object === this.mario || object === shell) return;
+            if (shell.overlaps(object)) object.collidesShell(shell);
+        })
     }
     addSpawns() {
         const enemies = new Set();
         let newEnemy;
-        tilemap.enemies.forEach( enemy => {
+        enemySpawns.enemies.forEach( enemy => {
             if (enemy.name === "dragon") {
                 newEnemy = new Dragon(
                     enemy.x, enemy.y,  //initial spawn
@@ -61,6 +68,11 @@ export default class Game {
             } else if ( enemy.name === "bullet") {
                 newEnemy = new Bullet(
                     enemy.x, enemy.y //initial spawn
+                );
+            } else if ( enemy.name === "koopa") {
+                newEnemy = new Koopa(
+                    enemy.x, enemy.y,  //initial spawn
+                    enemy.x1Limit, enemy.x2Limit // walk path
                 );
             }
             newEnemy.trigger = enemy.trigger;
@@ -98,7 +110,7 @@ export default class Game {
             setTimeout( () => {
                 game.removeEnemies();
                 game.mario.lives = 1;
-                game.mario.pos.set(145, 100);
+                game.mario.pos.set(0, 250);
                 game.mario.invincible.cancel();
                 camera.pos.x = 0;
 

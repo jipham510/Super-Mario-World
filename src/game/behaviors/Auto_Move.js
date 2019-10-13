@@ -11,9 +11,9 @@ export default class AutoMove extends Behavior {
         //100 left limit
         // pos.x = 200
         // 300 right limit
-        // if (object.frame === "mushroom") debugger
         if(object.pos.x < this.moveLeftLimit ) {
             object.vel.x = object.speed * deltaTime;
+            // if (object.status === "koopa") debugger
         } else if (object.pos.x > this.moveRightLimit) {
             object.vel.x = -object.speed * deltaTime;
         } else if ( object.vel.x === 0 ) {

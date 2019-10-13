@@ -5,7 +5,7 @@ import Walk from '../behaviors/Walk';
 import Stomp from '../behaviors/Stomp';
 import Invincible from '../behaviors/Invincible';
 import Crouch from '../behaviors/Crouch';
-import { marioLoseSound, music } from '../../files';
+import { stomp1Sound, stomp2Sound, mushroomMarioHitSound, marioLoseSound, music } from '../../files';
 
 export default class Mario extends GameObject {
     constructor(){
@@ -15,8 +15,7 @@ export default class Mario extends GameObject {
         this.lives = 1;
         this.invinciblity = false;
         this.addBehavior(new Jump());
-        this.JumpOnLose = new JumpOnLose();
-        this.addBehavior(this.JumpOnLose);
+        this.addBehavior(new JumpOnLose());
         this.addBehavior(new Walk());
         this.addBehavior(new Stomp());
         this.addBehavior(new Invincible());
@@ -34,21 +33,23 @@ export default class Mario extends GameObject {
         this.behaviors.forEach(behavior => {
             behavior.update(this, deltaTime); //takes in object and deltaTime
         })
-        this.decideStatus(totalTime);
-        console.log(this.vel.y)
-        if(this.vel.y > 500) {
-            this.vel.y = 500;
+        this.decideFrame(totalTime);
+        if (this.invinciblity && this.lives === 1 && this.invincible.duration > 0.1) {
+            if (Math.floor(totalTime / 0.2) % 2) {
+                console.log(totalTime);
+                this.frame = "transparent"
+            }
         }
     }
 
-    decideStatus(totalTime){
+    decideFrame(totalTime){
         if (this.pos.y > 400) this.lives = 0; 
         if (this.lives === 0) {
             this.width = 29;
             this.height = 40;
             this.mario = "regularMario";
-            this.status = "ignoreCollisions";
-            if (this.status === "ignoreCollisions" && this.frame !== "lose") this.JumpOnLose.start();
+            // this.status = "ignoreCollisions";
+            if (this.frame !== "lose") this.jumpOnLose.start();
             this.frame = "lose";
             if (!music.paused) marioLoseSound.play();
             return;
@@ -90,8 +91,7 @@ export default class Mario extends GameObject {
                 }
 
             }
-        }
-        else if (this.vel.x > 0) {
+        } else if (this.vel.x > 0) {
             this.status = "walking";
             this.facing = "right"
             const totalDistance = Math.abs(this.walk.distance / 800)
@@ -116,8 +116,10 @@ export default class Mario extends GameObject {
                 this.frame = this.walkLeftFrames[frameIdx];
             }
         } else {
-            if (this.status === "idle" && !this.crouch.active) return;
-
+            if (this.status === "idle" && !this.crouch.active) {
+                this.frame = (this.facing === "right") ? "idleRight" : "idleLeft";
+                return;
+            }
             if (this.facing === "right") {
                 if (this.crouch.active) {
                     this.status = "crouch";
@@ -155,11 +157,6 @@ export default class Mario extends GameObject {
             }
 
         }
-
-        if (this.invinciblity && this.lives === 1) {
-            if ( Math.floor( totalTime / 0.2) % 2)
-            this.frame = "transparent"
-        }
     }
 
     draw(ctx, spriteSheets, camera){ 
@@ -169,16 +166,15 @@ export default class Mario extends GameObject {
         //     this.pos.y - camera.pos.y,
         //     this.width, this.height);
         // ctx.stroke();
-        // if(this.invinciblity) {
-        //     spriteSheets.get(this.mario).draw(this.frame, ctx, this.pos.x - camera.pos.x, this.pos.y - camera.pos.y);
-        // } else {
+
         spriteSheets.get(this.mario).draw(this.frame, ctx, this.pos.x - camera.pos.x, this.pos.y - camera.pos.y);
-        // }
     }
-    overlaps(object){
-        return this.getBottom() > object.getTop()
-            && this.getTop() < object.getBottom()
-            && this.getLeft() < object.getRight()
-            && this.getRight() > object.getLeft();
+
+    damage(){
+        if (this.invinciblity) return;
+        if (this.lives === 2 && !music.paused) mushroomMarioHitSound.play();
+        this.lives -= 1;
+        this.invincible.start();
+        this.invinciblity = true;
     }
 }

@@ -4,6 +4,7 @@ import enemies from "./imgs/enemies.png";
 import backgroundFirstLayer from "./imgs/background.png";
 import pageBackground from "./imgs/pageBackground.png";
 import thanks from "./imgs/thank_you.png";
+import favicon from "./imgs/favicon.png";
 import titleScreen from "./imgs/super-mario-world.png";
 
 

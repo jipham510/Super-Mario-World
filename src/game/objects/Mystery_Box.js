@@ -39,9 +39,9 @@ export default class MysteryBox extends GameObject {
         this.behaviors.forEach(behavior => {
             behavior.update(this, deltaTime, objects); //takes in object and deltaTime
         })
-        this.decideStatus(totalTime, objects);
+        this.decideFrame(totalTime, objects);
     }
-    decideStatus(totalTime, objects) {
+    decideFrame(totalTime, objects) {
         if (this.status === "ignoreCollisions") {
             this.frame = this.animationFrame(this.boxIdleAnimation, totalTime, 0.20);
         } else {

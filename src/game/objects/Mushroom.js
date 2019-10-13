@@ -20,13 +20,14 @@ export default class Mushroom extends GameObject {
         mario.lives = 2;
         this.status = "delete";
     }
+
     update(deltaTime, totalTime, objects) {
         this.behaviors.forEach(behavior => {
             behavior.update(this, deltaTime, objects); //takes in object and deltaTime
         })
-        this.decideStatus(totalTime, objects);
+        this.decideFrame(totalTime, objects);
     }
-    decideStatus(totalTime, objects) {
+    decideFrame(totalTime, objects) {
         if (this.status === "spawning") {
             // this.frame = this.animationFrame(this.mushroomSpawn, totalTime, 0.20);
         } else if (this.status === "delete") {
