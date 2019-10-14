@@ -36,7 +36,6 @@ export default class Mario extends GameObject {
         this.decideFrame(totalTime);
         if (this.invinciblity && this.lives === 1 && this.invincible.duration > 0.1) {
             if (Math.floor(totalTime / 0.2) % 2) {
-                console.log(totalTime);
                 this.frame = "transparent"
             }
         }

@@ -97,6 +97,14 @@ export default {
             "trigger": 4000
         },
         {
+            "name": "dragon",
+            "x": 5500,
+            "y": 0,
+            "x1Limit": 5350,
+            "x2Limit": 5600,
+            "trigger": 5000
+        },
+        {
             "name": "bullet",
             "x": 1300,
             "y": 90,

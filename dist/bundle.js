@@ -2636,6 +2636,13 @@ __webpack_require__.r(__webpack_exports__);
     "x2Limit": 5120,
     "trigger": 4000
   }, {
+    "name": "dragon",
+    "x": 5500,
+    "y": 0,
+    "x1Limit": 5350,
+    "x2Limit": 5600,
+    "trigger": 5000
+  }, {
     "name": "bullet",
     "x": 1300,
     "y": 90,
@@ -3396,7 +3403,6 @@ function (_GameObject) {
 
       if (this.invinciblity && this.lives === 1 && this.invincible.duration > 0.1) {
         if (Math.floor(totalTime / 0.2) % 2) {
-          console.log(totalTime);
           this.frame = "transparent";
         }
       }
