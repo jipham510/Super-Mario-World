@@ -5,6 +5,7 @@ body {
     align-items: center;
     background: #1B1B1D;
     color: white;
+    font-family: 'Press Start 2P', cursive;
 }
 #canvas {
     width: 100vw;
@@ -20,10 +21,9 @@ body {
     position: relative;
 }
 h1 {
-    font-family: sans-serif;
     font-weight: bold;
     font-size: 2.5em;
-    padding: 20px 0;
+    padding-top: 20px;
 }
 .sound {
     position: absolute;
@@ -41,8 +41,9 @@ h1 {
     font-size: 14px;
     font-family: sans-serif;
     padding: 10px;
-    background: #0E60B8;
+    background: rgb(0,240, 244);
     border-radius: 5px;
+    color: #1B1B1D;
     border: 2px black solid;
     font-weight: bold;
 }
@@ -52,14 +53,15 @@ h1 {
     position: absolute;
     right: 0px;
     top: 0px;
-    background: #0E60B8;
+    background: rgb(0,218, 244);
     border-radius: 1px;
+    color: #1B1B1D;
     border: 2px black solid;
     font-weight: bold;
     padding: 5px;
 }
 .expand:hover {
-    color: black;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     cursor: pointer;
 }
 .btn:hover {
@@ -67,11 +69,11 @@ h1 {
     cursor: pointer;
 }
 .icons {
-    margin: 20px;
+    margin-bottom: 20px;
 }
 a {
     /* margin: 10px; */
-    color: #0E60B8;
+    color: rgb(0,218, 244);
     text-decoration: none;
 }
 a:hover {
@@ -79,19 +81,23 @@ a:hover {
     color: white;
 }
 .instructions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 20px;
 }
 
 .heading {
 
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
 .instructionHighlight {
-    color: #0E60B8;
+    color: rgb(0,218, 244);
 }
 .WASD {
     font-weight: bold;

@@ -2137,7 +2137,7 @@ function (_Behavior) {
   }, {
     key: "startFrame",
     value: function startFrame() {
-      this.duration = 0.2;
+      this.duration = 0.22;
     }
   }, {
     key: "cancel",
@@ -3404,7 +3404,7 @@ function (_GameObject) {
       });
       this.decideFrame(totalTime);
 
-      if (this.invinciblity && this.lives === 1 && this.invincible.duration > 0.2) {
+      if (this.invinciblity && this.lives === 1 && this.invincible.duration > 0.22) {
         if (Math.floor(totalTime / 0.2) % 2) {
           this.frame = "transparent";
         }
