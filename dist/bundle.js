@@ -166,8 +166,8 @@ function () {
       var mario = this.gameMain.game.mario;
       this.map(input, function (keyState) {
         if (keyState && mario.vel.y <= 0) {
+          if (mario.isGrounded) mario.jump.start();
           mario.isGrounded = false;
-          mario.jump.start();
         } else {
           mario.jump.cancel();
         }
@@ -2137,7 +2137,7 @@ function (_Behavior) {
   }, {
     key: "startFrame",
     value: function startFrame() {
-      this.duration = 0.1;
+      this.duration = 0.2;
     }
   }, {
     key: "cancel",
@@ -2893,7 +2893,7 @@ function (_GameObject) {
   }, {
     key: "collides",
     value: function collides(mario) {
-      if (mario.invinciblity) return;
+      if (mario.invinciblity || this.status === "ignoreCollisions") return;
 
       if (this.stompedCount !== 2) {
         if (mario.vel.y > this.vel.y && mario.getBottom() > this.getTop() && mario.getLastBottom() <= this.getTop()) {
@@ -3204,7 +3204,7 @@ function (_GameObject) {
   }, {
     key: "collides",
     value: function collides(mario) {
-      if (mario.invinciblity) return;
+      if (mario.invinciblity || this.status === "ignoreCollisions") return;
 
       if (!this.stomped) {
         if (mario.vel.y > this.vel.y && mario.getBottom() > this.getTop() && mario.getLastBottom() <= this.getTop()) {
@@ -3226,12 +3226,15 @@ function (_GameObject) {
             mario.invinciblity = true;
           } else if (this.vel.x !== 0) {
             if (mario.vel.y > this.vel.y && mario.getBottom() > this.getTop() && mario.getLastBottom() <= this.getTop()) {
-              mario.stomp.bounce();
-
               if (!_files__WEBPACK_IMPORTED_MODULE_2__["music"].paused) {
                 _files__WEBPACK_IMPORTED_MODULE_2__["stomp1Sound"].currentTime = 0;
                 _files__WEBPACK_IMPORTED_MODULE_2__["stomp1Sound"].play();
               }
+
+              mario.stomp.bounce();
+              this.lethalShell = false;
+              this.vel.x = 0;
+              return;
             } else {
               mario.damage();
             }
@@ -3401,7 +3404,7 @@ function (_GameObject) {
       });
       this.decideFrame(totalTime);
 
-      if (this.invinciblity && this.lives === 1 && this.invincible.duration > 0.1) {
+      if (this.invinciblity && this.lives === 1 && this.invincible.duration > 0.2) {
         if (Math.floor(totalTime / 0.2) % 2) {
           this.frame = "transparent";
         }

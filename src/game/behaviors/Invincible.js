@@ -9,7 +9,7 @@ export default class Invincible extends Behavior {
         this.duration = this.maxDuration;
     }
     startFrame(){
-        this.duration = 0.1;
+        this.duration = 0.2;
     }
     cancel() {
         this.duration = 0;

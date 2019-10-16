@@ -44,7 +44,7 @@ export default class Dragon extends GameObject {
         }
     }
     collides(mario) {
-        if (mario.invinciblity) return;
+        if (mario.invinciblity || this.status ==="ignoreCollisions") return;
         if (this.stompedCount !== 2) {
             if (mario.vel.y > this.vel.y && mario.getBottom() > this.getTop() && mario.getLastBottom() <= this.getTop()) {
                 

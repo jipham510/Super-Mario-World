@@ -48,10 +48,9 @@ export default class Controller {
     mapJump(input){
         const mario = this.gameMain.game.mario
         this.map(input, keyState => {
-            if (keyState && mario.vel.y <= 0 ) {
-
+            if (keyState && mario.vel.y <= 0) {
+                if(mario.isGrounded) mario.jump.start();
                 mario.isGrounded = false;
-                mario.jump.start();
             } else {
                 mario.jump.cancel();
             }

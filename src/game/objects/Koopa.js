@@ -43,7 +43,7 @@ export default class Koopa extends GameObject {
 
     }
     collides(mario) {
-        if (mario.invinciblity) return;
+        if (mario.invinciblity || this.status === "ignoreCollisions") return;
         if (!this.stomped) {
             if (mario.vel.y > this.vel.y && mario.getBottom() > this.getTop() && mario.getLastBottom() <= this.getTop()) {
     
@@ -65,11 +65,14 @@ export default class Koopa extends GameObject {
                     mario.invinciblity = true;
                 } else if (this.vel.x !== 0) {
                     if (mario.vel.y > this.vel.y && mario.getBottom() > this.getTop() && mario.getLastBottom() <= this.getTop()) {
-                        mario.stomp.bounce();
                         if (!music.paused) {
                             stomp1Sound.currentTime = 0;
                             stomp1Sound.play();
                         }
+                        mario.stomp.bounce();
+                        this.lethalShell = false;
+                        this.vel.x = 0;
+                        return ;
                     } else {
                         mario.damage();
                     }
