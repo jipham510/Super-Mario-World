@@ -98,6 +98,7 @@ a:hover {
 
 .instructionHighlight {
     color: rgb(0,218, 244);
+    font-size: 24px;
 }
 .WASD {
     font-weight: bold;
