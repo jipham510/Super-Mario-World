@@ -12,15 +12,19 @@ export default class Controller {
         this.mapJump("Space"); //coresponds to e.code
         this.mapJump("KeyW"); 
         this.mapJump("ArrowUp"); 
+        this.mapJump("touch-input-jump"); 
         
         this.mapRightMove("ArrowRight"); 
         this.mapRightMove("KeyD"); 
+        this.mapRightMove("touch-input-right"); 
 
         this.mapLeftMove("ArrowLeft");
         this.mapLeftMove("KeyA");
+        this.mapLeftMove("touch-input-left");
 
         this.mapCrouch("ArrowDown");
         this.mapCrouch("KeyS");
+        this.mapCrouch("touch-input-crouch");
 
     }
     mapRightMove(input) {
@@ -68,6 +72,15 @@ export default class Controller {
         this.keyStates.set(e.code, keyState);
         this.keyMap.get(e.code)(keyState);
     }
+    handleTouchEvent(e) { 
+        e.preventDefault();
+        if (!this.keyMap.has(e.currentTarget.id)) return;
+        const keyState = e.type === 'touchstart' ? 1 : 0;
+
+        if (this.keyStates.get(e.currentTarget.id) === keyState) return;
+        this.keyStates.set(e.currentTarget.id, keyState);
+        this.keyMap.get(e.currentTarget.id)(keyState);
+    }
     listenForInput() {
         window.addEventListener("keydown", e => {
             this.handleEvent(e);
@@ -75,6 +88,39 @@ export default class Controller {
         window.addEventListener("keyup", e => {
             this.handleEvent(e);
         });
+        const touchInputLeft = document.getElementById("touch-input-left");
+        const touchInputRight = document.getElementById("touch-input-right");
+        const touchInputJump = document.getElementById("touch-input-jump");
+        const touchInputCrouch = document.getElementById("touch-input-crouch");
+        
+        touchInputLeft.ontouchstart = e => {
+            this.handleTouchEvent(e);
+        }
+        touchInputLeft.ontouchend = e => {
+            this.handleTouchEvent(e);
+        }
+
+        touchInputRight.ontouchstart = e => {
+            this.handleTouchEvent(e);
+        }
+        touchInputRight.ontouchend = e => {
+            this.handleTouchEvent(e);
+        }
+
+        touchInputJump.ontouchstart = e => {
+            this.handleTouchEvent(e);
+        }
+        touchInputJump.ontouchend = e => {
+            this.handleTouchEvent(e);
+        }
+
+        touchInputCrouch.ontouchstart = e => {
+            this.handleTouchEvent(e);
+        }
+        touchInputCrouch.ontouchend = e => {
+            this.handleTouchEvent(e);
+        }
+
     }
 }
 

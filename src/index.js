@@ -15,7 +15,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const sound = document.querySelector(".sound");
     const noSound = document.querySelector(".noSound");
     const expand = document.querySelector(".expand");
+    const touchControls = document.querySelector(".input-controls-wrapper")
 
+    
     sound.addEventListener("click", ()=> {
         music.play();
         gameMain.start();
@@ -36,11 +38,12 @@ document.addEventListener("DOMContentLoaded", function () {
             // e.target.innerHTML = "Shrink";
             e.target.classList.remove("fa-expand-arrows-alt");
             e.target.classList.add("fa-compress-arrows-alt");
+            touchControls.classList.add("attach-controls-to-bottom");
         } else {
             canvas.style.maxWidth = "700px";
             e.target.classList.remove("fa-compress-arrows-alt");
             e.target.classList.add("fa-expand-arrows-alt");
-            
+            touchControls.classList.remove("attach-controls-to-bottom");
         }
     })
     titleScreenImage.onload = function () {

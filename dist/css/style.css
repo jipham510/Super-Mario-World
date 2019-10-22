@@ -103,7 +103,47 @@ a:hover {
 .WASD {
     font-weight: bold;
     font-size: 20px;
+    margin-right: -5px;
 }
 .no-before::before {
     content: none !important;
+}
+.input-controls {
+    display: none;
+}
+.btn-input {
+    background-color: rgb(0,240, 244);
+    color: #1B1B1D;
+    border: 2px black solid;
+    /* border-radius: 50%; */
+    font-family: sans-serif;
+    font-size: 30px;
+    padding: 20px;
+}
+.controller-side {
+    display: flex;
+    flex-direction: row;
+    /* align-content: flex-start;
+    justify-content: flex-start; */
+}
+.crouch h4{
+    font-size: 25px;
+    margin-top: 4px;
+}
+.input-controls-wrapper {
+    display: none;
+    position: absolute;
+    width: 100%;
+}
+.attach-controls-to-bottom {
+    bottom: 0px;
+}
+@media only screen and (max-width: 1024px) { 
+
+    .input-controls {
+        display: flex;
+        flex-direction: row;
+        align-content: flex-start;
+        justify-content: space-evenly;
+    }
 }

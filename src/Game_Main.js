@@ -26,7 +26,8 @@ export default class GameMain {
 
         const controller = new Controller(this);
         controller.listenForInput();
-
+        const touchControls = document.querySelector(".input-controls-wrapper");
+        touchControls.style.display = "block";
 
         //start fixed timestep of 1/60
         this.deltaTime = 1 / 60;

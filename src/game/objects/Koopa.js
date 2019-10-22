@@ -131,6 +131,12 @@ export default class Koopa extends GameObject {
 
 
     draw(ctx, spriteSheets, camera) {
+        ctx.strokeStyle = 'red';
+        ctx.beginPath();
+        ctx.rect(this.pos.x - camera.pos.x,
+            this.pos.y - camera.pos.y,
+            this.width, this.height);
+        ctx.stroke();
         spriteSheets.get(this.koopa).draw(this.frame, ctx, this.pos.x - camera.pos.x, this.pos.y - camera.pos.y)
     }
 }

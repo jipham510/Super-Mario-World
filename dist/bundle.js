@@ -125,12 +125,16 @@ function () {
 
       this.mapJump("KeyW");
       this.mapJump("ArrowUp");
+      this.mapJump("touch-input-jump");
       this.mapRightMove("ArrowRight");
       this.mapRightMove("KeyD");
+      this.mapRightMove("touch-input-right");
       this.mapLeftMove("ArrowLeft");
       this.mapLeftMove("KeyA");
+      this.mapLeftMove("touch-input-left");
       this.mapCrouch("ArrowDown");
       this.mapCrouch("KeyS");
+      this.mapCrouch("touch-input-crouch");
     }
   }, {
     key: "mapRightMove",
@@ -190,6 +194,16 @@ function () {
       this.keyMap.get(e.code)(keyState);
     }
   }, {
+    key: "handleTouchEvent",
+    value: function handleTouchEvent(e) {
+      e.preventDefault();
+      if (!this.keyMap.has(e.currentTarget.id)) return;
+      var keyState = e.type === 'touchstart' ? 1 : 0;
+      if (this.keyStates.get(e.currentTarget.id) === keyState) return;
+      this.keyStates.set(e.currentTarget.id, keyState);
+      this.keyMap.get(e.currentTarget.id)(keyState);
+    }
+  }, {
     key: "listenForInput",
     value: function listenForInput() {
       var _this = this;
@@ -200,6 +214,42 @@ function () {
       window.addEventListener("keyup", function (e) {
         _this.handleEvent(e);
       });
+      var touchInputLeft = document.getElementById("touch-input-left");
+      var touchInputRight = document.getElementById("touch-input-right");
+      var touchInputJump = document.getElementById("touch-input-jump");
+      var touchInputCrouch = document.getElementById("touch-input-crouch");
+
+      touchInputLeft.ontouchstart = function (e) {
+        _this.handleTouchEvent(e);
+      };
+
+      touchInputLeft.ontouchend = function (e) {
+        _this.handleTouchEvent(e);
+      };
+
+      touchInputRight.ontouchstart = function (e) {
+        _this.handleTouchEvent(e);
+      };
+
+      touchInputRight.ontouchend = function (e) {
+        _this.handleTouchEvent(e);
+      };
+
+      touchInputJump.ontouchstart = function (e) {
+        _this.handleTouchEvent(e);
+      };
+
+      touchInputJump.ontouchend = function (e) {
+        _this.handleTouchEvent(e);
+      };
+
+      touchInputCrouch.ontouchstart = function (e) {
+        _this.handleTouchEvent(e);
+      };
+
+      touchInputCrouch.ontouchend = function (e) {
+        _this.handleTouchEvent(e);
+      };
     }
   }]);
 
@@ -255,7 +305,9 @@ function () {
       this.accumulatedTime = 0; // this.display.loadWorld();
 
       var controller = new _Controller__WEBPACK_IMPORTED_MODULE_0__["default"](this);
-      controller.listenForInput(); //start fixed timestep of 1/60
+      controller.listenForInput();
+      var touchControls = document.querySelector(".input-controls-wrapper");
+      touchControls.style.display = "block"; //start fixed timestep of 1/60
 
       this.deltaTime = 1 / 60;
       this.run();
@@ -2778,12 +2830,10 @@ function (_GameObject) {
   }, {
     key: "draw",
     value: function draw(ctx, spriteSheets, camera) {
-      // ctx.strokeStyle = 'red';
-      // ctx.beginPath();
-      // ctx.rect(this.pos.x - camera.pos.x, 
-      //     this.pos.y - camera.pos.y,
-      //     this.width, this.height);
-      // ctx.stroke();
+      ctx.strokeStyle = 'red';
+      ctx.beginPath();
+      ctx.rect(this.pos.x - camera.pos.x, this.pos.y - camera.pos.y, this.width, this.height);
+      ctx.stroke();
       spriteSheets.get("bullet").draw(this.frame, ctx, this.pos.x - camera.pos.x, this.pos.y - camera.pos.y);
     }
   }]);
@@ -2961,12 +3011,10 @@ function (_GameObject) {
   }, {
     key: "draw",
     value: function draw(ctx, spriteSheets, camera) {
-      // ctx.strokeStyle = 'red';
-      // ctx.beginPath();
-      // ctx.rect(this.pos.x - camera.pos.x,
-      //     this.pos.y - camera.pos.y,
-      //     this.width, this.height);
-      // ctx.stroke(); 
+      ctx.strokeStyle = 'red';
+      ctx.beginPath();
+      ctx.rect(this.pos.x - camera.pos.x, this.pos.y - camera.pos.y, this.width, this.height);
+      ctx.stroke();
       spriteSheets.get(this.dragon).draw(this.frame, ctx, this.pos.x - camera.pos.x, this.pos.y - camera.pos.y);
     }
   }]);
@@ -3298,6 +3346,10 @@ function (_GameObject) {
   }, {
     key: "draw",
     value: function draw(ctx, spriteSheets, camera) {
+      ctx.strokeStyle = 'red';
+      ctx.beginPath();
+      ctx.rect(this.pos.x - camera.pos.x, this.pos.y - camera.pos.y, this.width, this.height);
+      ctx.stroke();
       spriteSheets.get(this.koopa).draw(this.frame, ctx, this.pos.x - camera.pos.x, this.pos.y - camera.pos.y);
     }
   }]);
@@ -3532,16 +3584,17 @@ function (_GameObject) {
           }
         }
       }
-    }
+    } // getTop(){
+    //     return this.pos.y + 5;
+    // }
+
   }, {
     key: "draw",
     value: function draw(ctx, spriteSheets, camera) {
-      // ctx.strokeStyle = 'red';
-      // ctx.beginPath();
-      // ctx.rect(this.pos.x - camera.pos.x, 
-      //     this.pos.y - camera.pos.y,
-      //     this.width, this.height);
-      // ctx.stroke();
+      ctx.strokeStyle = 'red';
+      ctx.beginPath();
+      ctx.rect(this.getLeft() - camera.pos.x, this.getTop() - camera.pos.y, this.width, this.height);
+      ctx.stroke();
       spriteSheets.get(this.mario).draw(this.frame, ctx, this.pos.x - camera.pos.x, this.pos.y - camera.pos.y);
     }
   }, {
@@ -3902,6 +3955,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var sound = document.querySelector(".sound");
   var noSound = document.querySelector(".noSound");
   var expand = document.querySelector(".expand");
+  var touchControls = document.querySelector(".input-controls-wrapper");
   sound.addEventListener("click", function () {
     _files__WEBPACK_IMPORTED_MODULE_3__["music"].play();
     gameMain.start();
@@ -3926,10 +3980,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
       e.target.classList.remove("fa-expand-arrows-alt");
       e.target.classList.add("fa-compress-arrows-alt");
+      touchControls.classList.add("attach-controls-to-bottom");
     } else {
       canvas.style.maxWidth = "700px";
       e.target.classList.remove("fa-compress-arrows-alt");
       e.target.classList.add("fa-expand-arrows-alt");
+      touchControls.classList.remove("attach-controls-to-bottom");
     }
   });
 
