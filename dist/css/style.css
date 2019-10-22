@@ -134,7 +134,10 @@ a:hover {
     display: none;
     position: absolute;
     width: 100%;
-    margin-bottom: 70px;
+}
+.controller-padding {
+   height: 70px;
+   /* background: red; */
 }
 .attach-controls-to-bottom {
     bottom: 0px;
