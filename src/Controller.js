@@ -74,6 +74,8 @@ export default class Controller {
     }
     handleTouchEvent(e) { 
         e.preventDefault();
+        console.log(e.targetTouches)
+
         if (!this.keyMap.has(e.currentTarget.id)) return;
         const keyState = e.type === 'touchstart' ? 1 : 0;
 
@@ -93,6 +95,8 @@ export default class Controller {
         const touchInputJump = document.getElementById("touch-input-jump");
         const touchInputCrouch = document.getElementById("touch-input-crouch");
         
+        
+
         touchInputLeft.ontouchstart = e => {
             this.handleTouchEvent(e);
         }
@@ -114,12 +118,12 @@ export default class Controller {
             this.handleTouchEvent(e);
         }
 
-        touchInputCrouch.ontouchstart = e => {
-            this.handleTouchEvent(e);
-        }
-        touchInputCrouch.ontouchend = e => {
-            this.handleTouchEvent(e);
-        }
+        // touchInputCrouch.ontouchstart = e => {
+        //     this.handleTouchEvent(e);
+        // }
+        // touchInputCrouch.ontouchend = e => {
+        //     this.handleTouchEvent(e);
+        // }
 
     }
 }

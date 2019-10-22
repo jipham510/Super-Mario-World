@@ -197,6 +197,7 @@ function () {
     key: "handleTouchEvent",
     value: function handleTouchEvent(e) {
       e.preventDefault();
+      console.log(e.targetTouches);
       if (!this.keyMap.has(e.currentTarget.id)) return;
       var keyState = e.type === 'touchstart' ? 1 : 0;
       if (this.keyStates.get(e.currentTarget.id) === keyState) return;
@@ -241,15 +242,13 @@ function () {
 
       touchInputJump.ontouchend = function (e) {
         _this.handleTouchEvent(e);
-      };
+      }; // touchInputCrouch.ontouchstart = e => {
+      //     this.handleTouchEvent(e);
+      // }
+      // touchInputCrouch.ontouchend = e => {
+      //     this.handleTouchEvent(e);
+      // }
 
-      touchInputCrouch.ontouchstart = function (e) {
-        _this.handleTouchEvent(e);
-      };
-
-      touchInputCrouch.ontouchend = function (e) {
-        _this.handleTouchEvent(e);
-      };
     }
   }]);
 
@@ -2830,10 +2829,12 @@ function (_GameObject) {
   }, {
     key: "draw",
     value: function draw(ctx, spriteSheets, camera) {
-      ctx.strokeStyle = 'red';
-      ctx.beginPath();
-      ctx.rect(this.pos.x - camera.pos.x, this.pos.y - camera.pos.y, this.width, this.height);
-      ctx.stroke();
+      // ctx.strokeStyle = 'red';
+      // ctx.beginPath();
+      // ctx.rect(this.pos.x - camera.pos.x, 
+      //     this.pos.y - camera.pos.y,
+      //     this.width, this.height);
+      // ctx.stroke();
       spriteSheets.get("bullet").draw(this.frame, ctx, this.pos.x - camera.pos.x, this.pos.y - camera.pos.y);
     }
   }]);
@@ -3011,10 +3012,12 @@ function (_GameObject) {
   }, {
     key: "draw",
     value: function draw(ctx, spriteSheets, camera) {
-      ctx.strokeStyle = 'red';
-      ctx.beginPath();
-      ctx.rect(this.pos.x - camera.pos.x, this.pos.y - camera.pos.y, this.width, this.height);
-      ctx.stroke();
+      // ctx.strokeStyle = 'red';
+      // ctx.beginPath();
+      // ctx.rect(this.pos.x - camera.pos.x,
+      //     this.pos.y - camera.pos.y,
+      //     this.width, this.height);
+      // ctx.stroke(); 
       spriteSheets.get(this.dragon).draw(this.frame, ctx, this.pos.x - camera.pos.x, this.pos.y - camera.pos.y);
     }
   }]);
@@ -3346,10 +3349,12 @@ function (_GameObject) {
   }, {
     key: "draw",
     value: function draw(ctx, spriteSheets, camera) {
-      ctx.strokeStyle = 'red';
-      ctx.beginPath();
-      ctx.rect(this.pos.x - camera.pos.x, this.pos.y - camera.pos.y, this.width, this.height);
-      ctx.stroke();
+      // ctx.strokeStyle = 'red';
+      // ctx.beginPath();
+      // ctx.rect(this.pos.x - camera.pos.x,
+      //     this.pos.y - camera.pos.y,
+      //     this.width, this.height);
+      // ctx.stroke();
       spriteSheets.get(this.koopa).draw(this.frame, ctx, this.pos.x - camera.pos.x, this.pos.y - camera.pos.y);
     }
   }]);
@@ -3591,10 +3596,12 @@ function (_GameObject) {
   }, {
     key: "draw",
     value: function draw(ctx, spriteSheets, camera) {
-      ctx.strokeStyle = 'red';
-      ctx.beginPath();
-      ctx.rect(this.getLeft() - camera.pos.x, this.getTop() - camera.pos.y, this.width, this.height);
-      ctx.stroke();
+      // ctx.strokeStyle = 'red';
+      // ctx.beginPath();
+      // ctx.rect(this.getLeft() - camera.pos.x, 
+      //     this.getTop() - camera.pos.y,
+      //     this.width, this.height);
+      // ctx.stroke();
       spriteSheets.get(this.mario).draw(this.frame, ctx, this.pos.x - camera.pos.x, this.pos.y - camera.pos.y);
     }
   }, {

@@ -126,10 +126,10 @@ a:hover {
     /* align-content: flex-start;
     justify-content: flex-start; */
 }
-.crouch h4{
+/* .crouch h4{
     font-size: 25px;
     margin-top: 4px;
-}
+} */
 .input-controls-wrapper {
     display: none;
     position: absolute;
@@ -138,12 +138,23 @@ a:hover {
 .attach-controls-to-bottom {
     bottom: 0px;
 }
+#touch-input-right {
+    padding: 20px 35px;
+}
+#touch-input-left {
+    padding: 20px 35px;
+    margin-right: 100px;
+}
+#touch-input-jump {
+    padding: 20px 50px;
+    font-weight: bold;
+}
 @media only screen and (max-width: 1024px) { 
 
     .input-controls {
         display: flex;
         flex-direction: row;
         align-content: flex-start;
-        justify-content: space-evenly;
+        justify-content: space-around;
     }
 }
