@@ -306,7 +306,8 @@ function () {
       var controller = new _Controller__WEBPACK_IMPORTED_MODULE_0__["default"](this);
       controller.listenForInput();
       var touchControls = document.querySelector(".input-controls-wrapper");
-      touchControls.style.display = "block"; //start fixed timestep of 1/60
+      touchControls.style.display = "block";
+      window.scrollTo(0, document.body.scrollHeight); //start fixed timestep of 1/60
 
       this.deltaTime = 1 / 60;
       this.run();
@@ -3987,12 +3988,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
       e.target.classList.remove("fa-expand-arrows-alt");
       e.target.classList.add("fa-compress-arrows-alt");
-      touchControls.classList.add("attach-controls-to-bottom");
+      window.scrollTo(0, document.body.scrollHeight); // touchControls.classList.add("attach-controls-to-bottom");
     } else {
       canvas.style.maxWidth = "700px";
       e.target.classList.remove("fa-compress-arrows-alt");
       e.target.classList.add("fa-expand-arrows-alt");
-      touchControls.classList.remove("attach-controls-to-bottom");
+      window.scrollTo(0, document.body.scrollHeight); // touchControls.classList.remove("attach-controls-to-bottom");
     }
   });
 

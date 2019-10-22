@@ -38,12 +38,14 @@ document.addEventListener("DOMContentLoaded", function () {
             // e.target.innerHTML = "Shrink";
             e.target.classList.remove("fa-expand-arrows-alt");
             e.target.classList.add("fa-compress-arrows-alt");
-            touchControls.classList.add("attach-controls-to-bottom");
+            window.scrollTo(0, document.body.scrollHeight);
+            // touchControls.classList.add("attach-controls-to-bottom");
         } else {
             canvas.style.maxWidth = "700px";
             e.target.classList.remove("fa-compress-arrows-alt");
             e.target.classList.add("fa-expand-arrows-alt");
-            touchControls.classList.remove("attach-controls-to-bottom");
+            window.scrollTo(0, document.body.scrollHeight);
+            // touchControls.classList.remove("attach-controls-to-bottom");
         }
     })
     titleScreenImage.onload = function () {

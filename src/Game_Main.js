@@ -21,13 +21,13 @@ export default class GameMain {
         // this.display.camera.pos.x = 4000;
         this.lastTime = 0;
         this.accumulatedTime = 0;
-        
         // this.display.loadWorld();
 
         const controller = new Controller(this);
         controller.listenForInput();
         const touchControls = document.querySelector(".input-controls-wrapper");
         touchControls.style.display = "block";
+        window.scrollTo(0, document.body.scrollHeight);
 
         //start fixed timestep of 1/60
         this.deltaTime = 1 / 60;
