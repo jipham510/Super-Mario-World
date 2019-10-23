@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const canvas = document.getElementById("canvas"); 
         const instructions = document.querySelector(".instructions"); 
         const controllerPadding = document.querySelector(".controller-padding"); 
+        const inputControlsWrapper = document.querySelector(".input-controls-wrapper"); 
         if (canvas.style.maxWidth === "700px"){
             canvas.style.maxWidth = "100vw";
             // e.target.innerHTML = "Shrink";
@@ -44,6 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (window.innerWidth > 1024 ) { 
                 controllerPadding.classList.add("close");
             } else {
+                inputControlsWrapper.classList.add("position-controls-bottom");
                 canvas.classList.add("canvas-max-height")
             }
             window.scrollTo(0, 0);
@@ -54,10 +56,11 @@ document.addEventListener("DOMContentLoaded", function () {
             instructions.classList.add("remove");
             e.target.classList.add("fa-expand-arrows-alt");
             instructions.classList.remove("close");
-
+            
             if (window.innerWidth > 1024) {
                 controllerPadding.classList.remove("close");
             } else {
+                if (inputControlsWrapper.classList.contains("position-controls-bottom")) inputControlsWrapper.classList.remove("position-controls-bottom");
                 canvas.classList.remove("canvas-max-height")
             }
             window.scrollTo(0, document.body.scrollHeight);

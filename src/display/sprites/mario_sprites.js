@@ -123,7 +123,7 @@ export default {
         },
         {
             "SpriteSheet": "crouchingRegularMario",
-            "width": 29,
+            "width": 32,
             "height": 30,
             "sprites": [
                 {
@@ -146,7 +146,7 @@ export default {
         },
         {
             "SpriteSheet": "crouchingMushroomMario",
-            "width": 29,
+            "width": 35,
             "height": 32,
             "sprites": [
                 {

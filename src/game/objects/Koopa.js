@@ -43,7 +43,7 @@ export default class Koopa extends GameObject {
 
     }
     collides(mario) {
-        if (mario.invinciblity || this.status === "ignoreCollisions") return;
+        if (this.status === "ignoreCollisions" || mario.status === "ignoreCollisions") return;
         if (!this.stomped) {
             if (mario.vel.y > this.vel.y && mario.getBottom() > this.getTop() && mario.getLastBottom() <= this.getTop()) {
     
@@ -60,14 +60,18 @@ export default class Koopa extends GameObject {
         } else if ( this.koopa === "koopaShell" ) {
             if (mario.getRight() > this.getLeft()) {
                 if (mario.vel.x > 0 && this.vel.x === 0) {
+                    if (!music.paused) {
+                        stomp1Sound.currentTime = 0;
+                        stomp1Sound.play();
+                    }
                     this.vel.x = this.shellSpeed;
                     mario.invincible.startFrame();
                     mario.invinciblity = true;
                 } else if (this.vel.x !== 0) {
                     if (mario.vel.y > this.vel.y && mario.getBottom() > this.getTop() && mario.getLastBottom() <= this.getTop()) {
                         if (!music.paused) {
-                            stomp1Sound.currentTime = 0;
-                            stomp1Sound.play();
+                            stomp2Sound.currentTime = 0;
+                            stomp2Sound.play();
                         }
                         mario.stomp.bounce();
                         this.lethalShell = false;
@@ -80,6 +84,10 @@ export default class Koopa extends GameObject {
             }
             if (mario.getLeft() < this.getRight()) {
                 if (mario.vel.x < 0 && this.vel.x === 0) {
+                    if (!music.paused) {
+                        stomp2Sound.currentTime = 0;
+                        stomp2Sound.play();
+                    }
                     this.vel.x = -this.shellSpeed;
                     mario.invincible.startFrame();
                     mario.invinciblity = true;
