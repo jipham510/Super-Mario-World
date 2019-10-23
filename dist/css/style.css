@@ -11,8 +11,10 @@ body {
     width: 100vw;
     max-width: 700px;
     min-width: 540px;
-    max-height: 80vh;
-
+    max-height: 100vh;
+}
+.canvas-max-height {
+    max-height: 80vh !important;
 }
 .canvasScreen {
     background: url("../files/background.png");
@@ -38,7 +40,8 @@ h1 {
 }
 
 .btn {
-    font-size: 14px;
+    font-size: 20px;
+    width: 220px;
     font-family: sans-serif;
     padding: 10px;
     background: rgb(0,240, 244);
@@ -136,8 +139,17 @@ a:hover {
     width: 100%;
 }
 .controller-padding {
-   height: 70px;
-   /* background: red; */
+    display: none;
+    height: 70px;
+}
+.mobile-portrait-view-text {
+    display: none;
+    align-items: flex-end;
+    justify-content: center;
+}
+.close {
+    display: none;
+    height: 0px;
 }
 .attach-controls-to-bottom {
     bottom: 0px;
@@ -153,12 +165,30 @@ a:hover {
     padding: 20px 50px;
     font-weight: bold;
 }
+h4 {
+    text-align: center;
+}
 @media only screen and (max-width: 1024px) { 
-
     .input-controls {
         display: flex;
         flex-direction: row;
         align-content: flex-start;
         justify-content: space-around;
     }
+    
+}
+@media only screen and (orientation: portrait) {
+
+    .controller-padding {
+        display: block !important;
+    }
+    .mobile-portrait-view-text {
+        display: flex;
+    }
+    .mobile-portrait-view-text h1 {
+        margin-bottom: -300px;
+        line-height: 50px;
+        padding: 50px;
+    }
+
 }

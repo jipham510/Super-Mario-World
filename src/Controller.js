@@ -74,8 +74,7 @@ export default class Controller {
     }
     handleTouchEvent(e) { 
         e.preventDefault();
-        console.log(e.targetTouches)
-
+        
         if (!this.keyMap.has(e.currentTarget.id)) return;
         const keyState = e.type === 'touchstart' ? 1 : 0;
 

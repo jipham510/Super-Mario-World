@@ -197,7 +197,6 @@ function () {
     key: "handleTouchEvent",
     value: function handleTouchEvent(e) {
       e.preventDefault();
-      console.log(e.targetTouches);
       if (!this.keyMap.has(e.currentTarget.id)) return;
       var keyState = e.type === 'touchstart' ? 1 : 0;
       if (this.keyStates.get(e.currentTarget.id) === keyState) return;
@@ -3962,37 +3961,55 @@ document.addEventListener("DOMContentLoaded", function () {
   var gameMain = new _Game_Main_js__WEBPACK_IMPORTED_MODULE_2__["default"](game, display);
   var sound = document.querySelector(".sound");
   var noSound = document.querySelector(".noSound");
+  var soundControls = document.querySelector(".sound-controls");
   var expand = document.querySelector(".expand");
   var touchControls = document.querySelector(".input-controls-wrapper");
   sound.addEventListener("click", function () {
     _files__WEBPACK_IMPORTED_MODULE_3__["music"].play();
     gameMain.start();
-    noSound.parentNode.removeChild(noSound);
-    sound.parentNode.removeChild(sound);
+    soundControls.parentNode.removeChild(soundControls);
   }, {
     once: true
   });
   noSound.addEventListener("click", function () {
     gameMain.start();
-    sound.parentNode.removeChild(sound);
-    noSound.parentNode.removeChild(noSound);
+    soundControls.parentNode.removeChild(soundControls);
   }, {
     once: true
   });
   canvas.style.maxWidth = "700px";
   expand.addEventListener("click", function (e) {
     var canvas = document.getElementById("canvas");
+    var instructions = document.querySelector(".instructions");
+    var controllerPadding = document.querySelector(".controller-padding");
 
     if (canvas.style.maxWidth === "700px") {
-      canvas.style.maxWidth = "1200px"; // e.target.innerHTML = "Shrink";
+      canvas.style.maxWidth = "100vw"; // e.target.innerHTML = "Shrink";
 
       e.target.classList.remove("fa-expand-arrows-alt");
       e.target.classList.add("fa-compress-arrows-alt");
-      window.scrollTo(0, document.body.scrollHeight); // touchControls.classList.add("attach-controls-to-bottom");
+      instructions.classList.add("close");
+
+      if (window.innerWidth > 1024) {
+        controllerPadding.classList.add("close");
+      } else {
+        canvas.classList.add("canvas-max-height");
+      }
+
+      window.scrollTo(0, 0); // touchControls.classList.add("attach-controls-to-bottom");
     } else {
       canvas.style.maxWidth = "700px";
       e.target.classList.remove("fa-compress-arrows-alt");
+      instructions.classList.add("remove");
       e.target.classList.add("fa-expand-arrows-alt");
+      instructions.classList.remove("close");
+
+      if (window.innerWidth > 1024) {
+        controllerPadding.classList.remove("close");
+      } else {
+        canvas.classList.remove("canvas-max-height");
+      }
+
       window.scrollTo(0, document.body.scrollHeight); // touchControls.classList.remove("attach-controls-to-bottom");
     }
   });
