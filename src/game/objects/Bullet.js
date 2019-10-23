@@ -26,7 +26,7 @@ export default class Bullet extends GameObject {
     }
 
     collides(mario) {
-        if (mario.status === "ignoreCollisions") return;
+        if (mario.invinciblity) return;
         if (!this.falling) {
             if (mario.vel.y > this.vel.y &&  mario.getBottom() > this.getTop() && mario.getLastBottom() <= this.getTop() ) {
                 if (!music.paused) {
@@ -40,7 +40,10 @@ export default class Bullet extends GameObject {
                 this.removeBehavior("autoMove");
                 this.falling = true;
             } else {
-                mario.damage();
+                if (mario.lives === 2 && !music.paused) mushroomMarioHitSound.play();
+                mario.lives -= 1;
+                mario.invincible.start();
+                mario.invinciblity = true;
             }
         }
     }

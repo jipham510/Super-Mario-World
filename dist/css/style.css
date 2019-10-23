@@ -11,11 +11,11 @@ body {
     width: 100vw;
     max-width: 700px;
     min-width: 540px;
-    max-height: -webkit-fill-available;
+    max-height: 100vh;
 }
-/* .canvas-max-height {
+.canvas-max-height {
     max-height: 80vh !important;
-} */
+}
 .canvasScreen {
     background: url("../files/background.png");
     background-repeat: no-repeat;
@@ -168,11 +168,6 @@ a:hover {
 h4 {
     text-align: center;
 }
-@media only screen and (max-width: 1024px) and (orientation: landscape) { 
-    .position-controls-bottom {
-        bottom: 0px;
-    }
-}
 @media only screen and (max-width: 1024px) { 
     .input-controls {
         display: flex;
@@ -180,7 +175,7 @@ h4 {
         align-content: flex-start;
         justify-content: space-around;
     }
-
+    
 }
 @media only screen and (orientation: portrait) {
 

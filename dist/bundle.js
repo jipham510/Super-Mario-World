@@ -1062,7 +1062,7 @@ __webpack_require__.r(__webpack_exports__);
     }]
   }, {
     "SpriteSheet": "crouchingRegularMario",
-    "width": 32,
+    "width": 29,
     "height": 30,
     "sprites": [{
       "name": "crouchingRight",
@@ -1080,7 +1080,7 @@ __webpack_require__.r(__webpack_exports__);
     }]
   }, {
     "SpriteSheet": "crouchingMushroomMario",
-    "width": 35,
+    "width": 29,
     "height": 32,
     "sprites": [{
       "name": "crouchingRight",
@@ -2803,7 +2803,7 @@ function (_GameObject) {
   }, {
     key: "collides",
     value: function collides(mario) {
-      if (mario.status === "ignoreCollisions") return;
+      if (mario.invinciblity) return;
 
       if (!this.falling) {
         if (mario.vel.y > this.vel.y && mario.getBottom() > this.getTop() && mario.getLastBottom() <= this.getTop()) {
@@ -2819,7 +2819,10 @@ function (_GameObject) {
           this.removeBehavior("autoMove");
           this.falling = true;
         } else {
-          mario.damage();
+          if (mario.lives === 2 && !_files__WEBPACK_IMPORTED_MODULE_3__["music"].paused) _files__WEBPACK_IMPORTED_MODULE_3__["mushroomMarioHitSound"].play();
+          mario.lives -= 1;
+          mario.invincible.start();
+          mario.invinciblity = true;
         }
       }
     }
@@ -2941,7 +2944,7 @@ function (_GameObject) {
   }, {
     key: "collides",
     value: function collides(mario) {
-      if (this.status === "ignoreCollisions" || mario.status === "ignoreCollisions") return;
+      if (mario.invinciblity || this.status === "ignoreCollisions") return;
 
       if (this.stompedCount !== 2) {
         if (mario.vel.y > this.vel.y && mario.getBottom() > this.getTop() && mario.getLastBottom() <= this.getTop()) {
@@ -2958,7 +2961,10 @@ function (_GameObject) {
             }
           }
         } else {
-          mario.damage();
+          if (mario.lives === 2 && !_files__WEBPACK_IMPORTED_MODULE_2__["music"].paused) _files__WEBPACK_IMPORTED_MODULE_2__["mushroomMarioHitSound"].play();
+          mario.lives -= 1;
+          mario.invincible.start();
+          mario.invinciblity = true;
         }
       }
     }
@@ -3249,7 +3255,7 @@ function (_GameObject) {
   }, {
     key: "collides",
     value: function collides(mario) {
-      if (this.status === "ignoreCollisions" || mario.status === "ignoreCollisions") return;
+      if (mario.invinciblity || this.status === "ignoreCollisions") return;
 
       if (!this.stomped) {
         if (mario.vel.y > this.vel.y && mario.getBottom() > this.getTop() && mario.getLastBottom() <= this.getTop()) {
@@ -3266,19 +3272,14 @@ function (_GameObject) {
       } else if (this.koopa === "koopaShell") {
         if (mario.getRight() > this.getLeft()) {
           if (mario.vel.x > 0 && this.vel.x === 0) {
-            if (!_files__WEBPACK_IMPORTED_MODULE_2__["music"].paused) {
-              _files__WEBPACK_IMPORTED_MODULE_2__["stomp1Sound"].currentTime = 0;
-              _files__WEBPACK_IMPORTED_MODULE_2__["stomp1Sound"].play();
-            }
-
             this.vel.x = this.shellSpeed;
             mario.invincible.startFrame();
             mario.invinciblity = true;
           } else if (this.vel.x !== 0) {
             if (mario.vel.y > this.vel.y && mario.getBottom() > this.getTop() && mario.getLastBottom() <= this.getTop()) {
               if (!_files__WEBPACK_IMPORTED_MODULE_2__["music"].paused) {
-                _files__WEBPACK_IMPORTED_MODULE_2__["stomp2Sound"].currentTime = 0;
-                _files__WEBPACK_IMPORTED_MODULE_2__["stomp2Sound"].play();
+                _files__WEBPACK_IMPORTED_MODULE_2__["stomp1Sound"].currentTime = 0;
+                _files__WEBPACK_IMPORTED_MODULE_2__["stomp1Sound"].play();
               }
 
               mario.stomp.bounce();
@@ -3293,11 +3294,6 @@ function (_GameObject) {
 
         if (mario.getLeft() < this.getRight()) {
           if (mario.vel.x < 0 && this.vel.x === 0) {
-            if (!_files__WEBPACK_IMPORTED_MODULE_2__["music"].paused) {
-              _files__WEBPACK_IMPORTED_MODULE_2__["stomp2Sound"].currentTime = 0;
-              _files__WEBPACK_IMPORTED_MODULE_2__["stomp2Sound"].play();
-            }
-
             this.vel.x = -this.shellSpeed;
             mario.invincible.startFrame();
             mario.invinciblity = true;
@@ -3986,7 +3982,6 @@ document.addEventListener("DOMContentLoaded", function () {
     var canvas = document.getElementById("canvas");
     var instructions = document.querySelector(".instructions");
     var controllerPadding = document.querySelector(".controller-padding");
-    var inputControlsWrapper = document.querySelector(".input-controls-wrapper");
 
     if (canvas.style.maxWidth === "700px") {
       canvas.style.maxWidth = "100vw"; // e.target.innerHTML = "Shrink";
@@ -3998,7 +3993,6 @@ document.addEventListener("DOMContentLoaded", function () {
       if (window.innerWidth > 1024) {
         controllerPadding.classList.add("close");
       } else {
-        inputControlsWrapper.classList.add("position-controls-bottom");
         canvas.classList.add("canvas-max-height");
       }
 
@@ -4013,7 +4007,6 @@ document.addEventListener("DOMContentLoaded", function () {
       if (window.innerWidth > 1024) {
         controllerPadding.classList.remove("close");
       } else {
-        if (inputControlsWrapper.classList.contains("position-controls-bottom")) inputControlsWrapper.classList.remove("position-controls-bottom");
         canvas.classList.remove("canvas-max-height");
       }
 

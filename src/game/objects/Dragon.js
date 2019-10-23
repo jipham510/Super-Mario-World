@@ -44,7 +44,7 @@ export default class Dragon extends GameObject {
         }
     }
     collides(mario) {
-        if (this.status === "ignoreCollisions" || mario.status === "ignoreCollisions") return;
+        if (mario.invinciblity || this.status ==="ignoreCollisions") return;
         if (this.stompedCount !== 2) {
             if (mario.vel.y > this.vel.y && mario.getBottom() > this.getTop() && mario.getLastBottom() <= this.getTop()) {
                 
@@ -61,7 +61,10 @@ export default class Dragon extends GameObject {
                 }
 
             } else {
-                mario.damage();
+                if (mario.lives === 2 && !music.paused) mushroomMarioHitSound.play();
+                mario.lives -= 1;
+                mario.invincible.start();
+                mario.invinciblity = true;
             }
         }
     }

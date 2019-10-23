@@ -90,8 +90,8 @@ export default class Display {
             
             game.objects.forEach(object => object.draw(this.ctx, this.spriteSheets, this.camera) )
             
-            if(game.mario.pos.x > 5000)
-            this.spriteSheets.get("thanks").draw("thanks", this.ctx, 5900 - this.camera.pos.x, 0 - this.camera.pos.y)
+                        if(game.mario.pos.x > 5000)
+                        this.spriteSheets.get("thanks").draw("thanks", this.ctx, 5900 - this.camera.pos.x, 0 - this.camera.pos.y)
         }
     }
     finishedLoading(){ 
