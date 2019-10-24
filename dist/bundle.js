@@ -967,7 +967,7 @@ __webpack_require__.r(__webpack_exports__);
   "marios": [{
     "SpriteSheet": "mushroomMario",
     "width": 36,
-    "height": 56,
+    "height": 65,
     "sprites": [{
       "name": "idleRight",
       "x": 207,
@@ -998,21 +998,21 @@ __webpack_require__.r(__webpack_exports__);
     }, {
       "name": "jumpingRight",
       "x": 207,
-      "y": 116
+      "y": 114
     }, {
       "name": "jumpingLeft",
       "type": "flip",
       "x": 207,
-      "y": 116
+      "y": 114
     }, {
       "name": "fallingRight",
       "x": 247,
-      "y": 116
+      "y": 114
     }, {
       "name": "fallingLeft",
       "type": "flip",
       "x": 247,
-      "y": 116
+      "y": 114
     }]
   }, {
     "SpriteSheet": "regularMario",
@@ -1053,12 +1053,12 @@ __webpack_require__.r(__webpack_exports__);
     }, {
       "name": "fallingRight",
       "x": 247,
-      "y": 116
+      "y": 38
     }, {
       "name": "fallingLeft",
       "type": "flip",
       "x": 247,
-      "y": 116
+      "y": 38
     }]
   }, {
     "SpriteSheet": "crouchingRegularMario",
