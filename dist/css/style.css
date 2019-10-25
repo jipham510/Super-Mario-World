@@ -65,9 +65,13 @@ h1 {
 }
 .expand:hover {
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    background-color: rgb(45,68,244);
+    color: white;
     cursor: pointer;
 }
 .btn:hover {
+    background-color: rgb(45,68,244);
+    color: white;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     cursor: pointer;
 }
@@ -167,6 +171,10 @@ a:hover {
 }
 h4 {
     text-align: center;
+}
+.touch-btn-active {
+    background-color: rgb(45,68,244);
+    color: white;
 }
 @media only screen and (max-width: 1024px) { 
     .input-controls {

@@ -198,7 +198,16 @@ function () {
     value: function handleTouchEvent(e) {
       e.preventDefault();
       if (!this.keyMap.has(e.currentTarget.id)) return;
-      var keyState = e.type === 'touchstart' ? 1 : 0;
+      var keyState;
+
+      if (e.type === "touchstart") {
+        keyState = 1;
+        e.currentTarget.classList.add("touch-btn-active");
+      } else {
+        keyState = 0;
+        e.currentTarget.classList.remove("touch-btn-active");
+      }
+
       if (this.keyStates.get(e.currentTarget.id) === keyState) return;
       this.keyStates.set(e.currentTarget.id, keyState);
       this.keyMap.get(e.currentTarget.id)(keyState);
