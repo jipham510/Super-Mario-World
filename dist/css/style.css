@@ -76,7 +76,8 @@ h1 {
     cursor: pointer;
 }
 .icons {
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
+    padding: 10px;
 }
 a {
     /* margin: 10px; */
@@ -92,15 +93,18 @@ a:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
 }
-
+.instruction-content {
+    /* padding: 10px; */
+}
 .heading {
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 10px;
 }
 
 .instructionHighlight {
